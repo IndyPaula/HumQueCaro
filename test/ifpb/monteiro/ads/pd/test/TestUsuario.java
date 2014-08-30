@@ -7,7 +7,7 @@ import ifpb.monteiro.ads.pd.fachada.Fachada;
 import org.junit.Test;
 
 /*
- * Classe para testes do Usuário:
+ * Classe para testes do UsuÃ¡rio:
  * Adicionar, Alterar, Remover e Buscar. 
  * 
  * >>> EM ANDAMENTO <<<
@@ -27,12 +27,18 @@ public class TestUsuario {
 		}
 
 		try {
+			fachada.adicionaUsuario("email@email.com", "1234", "Jose");
+		} catch (HumQueCaroException e) {
+			e.printStackTrace();
+		}
+		
+		try {
 			fachada.adicionaUsuario("email2@email.com", "111", "Carlos");
 		} catch (HumQueCaroException e) {
 			e.printStackTrace();
 		}
 
-		// USUÁRIO JÁ CADASTRADO
+		// USUÃ�RIO JÃ� CADASTRADO
 		try {
 			fachada.adicionaUsuario("email@email.com", "111", "Joana");
 			fail("Usuário já cadastrado");
@@ -45,37 +51,37 @@ public class TestUsuario {
 	@Test
 	public void testUsuarioInvalido() {
 		try {
-			fachada.adicionaUsuario("", "111", "José");
+			fachada.adicionaUsuario("", "111", "Jose");
 			fail("Campo email inválido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			fachada.adicionaUsuario(null, "111", "José");
+			fachada.adicionaUsuario(null, "111", "Jose");
 			fail("Campo email inválido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			fachada.adicionaUsuario("12312@ç%4.12", "111", "José");
+			fachada.adicionaUsuario("12312@Ã§%4.12", "111", "Jose");
 			fail("Campo email inválido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			fachada.adicionaUsuario("â000@email.q", "111", "José");
+			fachada.adicionaUsuario("Ã¢000@email.q", "111", "Jose");
 			fail("Campo email inválido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			fachada.adicionaUsuario("email@email.com", "", "José");
+			fachada.adicionaUsuario("email@email.com", "", "Jose");
 			fail("Campo senha inválido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			fachada.adicionaUsuario("email@email.com", null, "José");
+			fachada.adicionaUsuario("email@email.com", null, "Jose");
 			fail("Campo senha inválido");
 		} catch (HumQueCaroException e) {
 		}
@@ -93,7 +99,7 @@ public class TestUsuario {
 		}
 
 		try {
-			fachada.adicionaUsuario("email@email.com", "123", "$*#é_@");
+			fachada.adicionaUsuario("email@email.com", "123", "$*#Ã©_@");
 			fail("Campo nome inválido");
 		} catch (HumQueCaroException e) {
 		}
@@ -103,17 +109,17 @@ public class TestUsuario {
 	@Test
 	public void testGetUsuario() {
 
-		// TESTES PARA USUÁRIOS NÃO ENCONTRADOS
+		// TESTES PARA USUÃ�RIOS NÃƒO ENCONTRADOS
 		try {
 			fachada.buscaUsuario("emai2l@email.com");
-			fail("Usuário não encontrado");
+			fail("Usuario nao encontrado");
 		} catch (HumQueCaroException e) {
 			e.printStackTrace();
 		}
 
 		try {
-			fachada.buscaUsuario("#$&çépontocom");
-			fail("Usuário não encontrado");
+			fachada.buscaUsuario("#$&Ã§Ã©pontocom");
+			fail("Usuario nao encontrado");
 		} catch (HumQueCaroException e) {
 			e.printStackTrace();
 		}
@@ -149,7 +155,7 @@ public class TestUsuario {
 			fail("Campo email inválido");
 		}
 
-		// REMOVER USUÁRIO JÁ REMOVIDO, NÃO CADASTRADO E/OU SENHA INCORRETA
+		// REMOVER USUÃ�RIO JÃ� REMOVIDO, NÃƒO CADASTRADO E/OU SENHA INCORRETA
 		try {
 			fachada.removeUsuario("email@email.com", "123");
 			fail("Campo email inválido");
@@ -195,6 +201,88 @@ public class TestUsuario {
 		try {
 			fachada.removeUsuario("email@email.com", null);
 			fail("Campo senha inválido");
+		} catch (HumQueCaroException e) {
+		}
+	}
+	
+	@Test
+	public void testAlteraUsuario() {
+		
+		try {
+			fachada.alteraProduto(" ", "jose", "1234");
+			fail("Campo Codigo inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.alteraProduto(null, "jose", "1234");
+			fail("Campo Codigo invalido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.alteraProduto("132456hfgh", "jose", "1234");
+			fail("Campo Codigo invalido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.alteraProduto("214i#$%", "jose", "1234");
+			fail("Campo Codigo invalido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.alteraProduto("1", "nome", " ");
+			fail("Campo Atributo invalido");
+		} catch (HumQueCaroException e) {
+		}
+		
+		try {
+			fachada.alteraProduto("1", "nome", null);
+			fail("Campo Atributo invalido");
+		} catch (HumQueCaroException e) {
+		}
+		
+		try {
+			fachada.alteraProduto("1", "nome", "maria42");
+			fail("Campo Atributo invalido");
+		} catch (HumQueCaroException e) {
+		}
+		try {
+			fachada.alteraProduto("1", "nome", "mari$%");
+			fail("Campo Atributo invalido");
+		} catch (HumQueCaroException e) {
+		}
+		try {
+			fachada.alteraProduto("1", "nome", "435$%¨$");
+			fail("Campo Atributo invalido");
+		} catch (HumQueCaroException e) {
+		}
+		try {
+			fachada.alteraProduto("1", "nome", "m09))(){}");
+			fail("Campo Atributo invalido");
+		} catch (HumQueCaroException e) {
+		}
+		try {
+			fachada.alteraProduto("1", "nome", "SADFdf");
+			fail("Campo Atributo invalido");
+		} catch (HumQueCaroException e) {
+		}
+		try {
+			fachada.alteraProduto("1", "nome", "111");
+			fail("Campo Atributo invalido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.alteraProduto("1", "senha", " ");
+			fail("Campo NovoValor invalido");
+		} catch (HumQueCaroException e) {
+		}
+		try {
+			fachada.alteraProduto("1", "senha", null);
+			fail("Campo NovoValor invalido");
 		} catch (HumQueCaroException e) {
 		}
 
