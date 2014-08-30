@@ -22,23 +22,23 @@ import static org.junit.Assert.*;
  */
 public class TestAlteraUsuario {
     
-    public Fachada fachada;
+    private Fachada fachada;
     
     @Before
     public void setUp() {
         fachada = new Fachada();
         try {
-            fachada.alteraUsuario("luiz.antonio95@live.com", "nome", "Luiz Antonio");
+            fachada.alteraUsuario("luiz-antonio95@live.com", "nome", "Luiz Antonio");
         } catch (HumQueCaroException e) {
             fail("Acusou erro no alteraUsuário: " + e.getMessage());
         }
         try {
-            fachada.alteraUsuario("luiz.antonio95@live.com", "senha", "minhaSenha");
+            fachada.alteraUsuario("luiz-antonio95@live.com", "senha", "minhaSenha");
         } catch (HumQueCaroException e) {
             fail("Acusou erro no alteraUsuário: " + e.getMessage());
         }
         try {
-            fachada.alteraUsuario("luiz.antonio95@live.com", "email", "luizAntonio@hotmail.com");
+            fachada.alteraUsuario("luiz-antonio95@live.com", "email", "luizAntonio@hotmail.com");
         } catch (HumQueCaroException e) {
             fail("Acusou erro no alteraUsuário: " + e.getMessage());
         }

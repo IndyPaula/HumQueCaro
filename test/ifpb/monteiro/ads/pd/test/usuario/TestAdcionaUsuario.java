@@ -20,13 +20,13 @@ import org.junit.Test;
  */
 public class TestAdcionaUsuario {
 
-    public Fachada fachada;
+    private Fachada fachada;
 
     @Before
     public void setUp() {
         fachada = new Fachada();
         try {
-            fachada.adicionaUsuario("luiz.antonio95@live.com", "senha", "nome");
+            fachada.adicionaUsuario("luiz-antonio95@live.com", "senha", "nome");
         } catch (HumQueCaroException e) {
             fail("Acusou erro no CriaUsuário: " + e.getMessage());
         }
@@ -240,6 +240,17 @@ public class TestAdcionaUsuario {
         } catch (HumQueCaroException e) {
         }
         
-        //Adcionando usuário já cadastrado - FALTA
+        //Adcionando usuário já cadastrado
+        try {
+            fachada.adicionaUsuario("luiz-antonio95@live.com", "senha", "nome");
+            fail("Não era para adcionar Usuário - usuário já cadastrado");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.adicionaUsuario("luiz.antonioPS95@gmail.com", "senha", "Luiz Antonio P Silva");
+            fail("Não era para adcionar Usuário - usuário já cadastrado");
+        } catch (HumQueCaroException e) {
+        }
     }
 }

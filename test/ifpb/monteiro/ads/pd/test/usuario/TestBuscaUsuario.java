@@ -23,8 +23,8 @@ import static org.junit.Assert.*;
  */
 public class TestBuscaUsuario {
     
-    public Fachada fachada;
-    public Usuario user1, user2;
+    private Fachada fachada;
+    private Usuario user1, user2;
     
     @Before
     public void setUp() {
