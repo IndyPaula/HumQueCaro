@@ -11,7 +11,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
+/*
+ * Classe para testes do Usuario:
+ * Alterar! 
+ * 
+ * Agora esta classe está sobre meu poder. Um abraço!
+ * Att, Luiz Antonio
  *
  * @author Luiz Antonio
  */

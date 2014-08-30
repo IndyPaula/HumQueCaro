@@ -11,7 +11,7 @@ import org.junit.Test;
 
 /*
  * Classe para testes do Usuario:
- * Adicionar, Alterar, Remover e Buscar. 
+ * Adicionar! 
  * 
  * Agora esta classe está sobre meu poder. Um abraço!
  * Att, Luiz Antonio
