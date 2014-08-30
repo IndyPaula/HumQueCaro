@@ -84,7 +84,7 @@ public class TestBuscaUsuario {
         }
         
         try {
-            fachada.buscaUsuario("luiz-antonioPS@live.com");
+            fachada.buscaUsuario("luiz-antonio95@live.com");
             fail("Não era para buscar Usuário - email inválido ou inexistente");
         } catch (HumQueCaroException e) {
         }

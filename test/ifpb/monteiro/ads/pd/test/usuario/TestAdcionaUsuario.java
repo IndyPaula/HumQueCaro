@@ -38,7 +38,7 @@ public class TestAdcionaUsuario {
     }
 
     @After
-    public static void tearDown() {
+    public void tearDown() {
     }
 
     @Test
