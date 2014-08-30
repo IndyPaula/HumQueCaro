@@ -37,7 +37,11 @@ public class TestAlteraUsuario {
         } catch (HumQueCaroException e) {
             fail("Acusou erro no alteraUsuário: " + e.getMessage());
         }
-        //Posso alterar o email?
+        try {
+            fachada.alteraUsuario("luiz.antonio95@live.com", "email", "luizAntonio@hotmail.com");
+        } catch (HumQueCaroException e) {
+            fail("Acusou erro no alteraUsuário: " + e.getMessage());
+        }
     }
     
     @After

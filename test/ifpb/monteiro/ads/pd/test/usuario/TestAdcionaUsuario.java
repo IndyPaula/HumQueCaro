@@ -239,5 +239,7 @@ public class TestAdcionaUsuario {
             fail("Não era para adcionar Usuário - senha inválido");
         } catch (HumQueCaroException e) {
         }
+        
+        //Adcionando usuário já cadastrado - FALTA
     }
 }
