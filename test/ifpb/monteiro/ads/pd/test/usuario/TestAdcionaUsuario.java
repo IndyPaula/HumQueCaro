@@ -210,12 +210,6 @@ public class TestAdcionaUsuario {
         }
         
         try {
-            fachada.adicionaUsuario("luiz@gmail", "senha", "Luiz");
-            fail("Não era para adcionar Usuário - email inválido");
-        } catch (HumQueCaroException e) {
-        }
-        
-        try {
             fachada.adicionaUsuario("luiz@hotmail", "senha", "Luiz");
             fail("Não era para adcionar Usuário - email inválido");
         } catch (HumQueCaroException e) {

@@ -162,6 +162,100 @@ public class TestAlteraUsuario {
         }
         
         //Alterando com email inválido
+        try {
+            fachada.alteraUsuario("luiz.antonioPS95@gmail.com", "email", "@gmail.com");
+            fail("Não era para alterar Usuário - email inválido");
+        } catch (HumQueCaroException e) {
+        }
         
+        try {
+            fachada.alteraUsuario("luiz.antonioPS95@gmail.com", "email", "luiz@.com");
+            fail("Não era para alterar Usuário - email inválido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraUsuario("luiz.antonioPS95@gmail.com", "email", "@");
+            fail("Não era para alterar Usuário - email inválido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraUsuario("luiz.antonioPS95@gmail.com", "email", " @ ");
+            fail("Não era para alterar Usuário - email inválido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraUsuario("luiz.antonioPS95@gmail.com", "email", "@_.");
+            fail("Não era para alterar Usuário - email inválido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraUsuario("luiz.antonioPS95@gmail.com", "email", "@_.com");
+            fail("Não era para alterar Usuário - email inválido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraUsuario("luiz.antonioPS95@gmail.com", "email", "luiz@gmail");
+            fail("Não era para alterar Usuário - email inválido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraUsuario("luiz.antonioPS95@gmail.com", "email", "luiz@gmail.2");
+            fail("Não era para alterar Usuário - email inválido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraUsuario("luiz.antonioPS95@gmail.com", "email", "luiz@@gmail.com");
+            fail("Não era para alterar Usuário - email inválido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraUsuario("luiz.antonioPS95@gmail.com", "email", "luiz@g@mail.com");
+            fail("Não era para alterar Usuário - email inválido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraUsuario("luiz.antonioPS95@gmail.com", "email", "luiz@ntonio@gmail.com");
+            fail("Não era para alterar Usuário - email inválido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraUsuario("luiz.antonioPS95@gmail.com", "email", "luiz antonio@gmail.com");
+            fail("Não era para alterar Usuário - email inválido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraUsuario("luiz.antonioPS95@gmail.com", "email", "luiz@g mail.com");
+            fail("Não era para alterar Usuário - email inválido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraUsuario("luiz.antonioPS95@gmail.com", "email", "lui;z@gmail.com");
+            fail("Não era para alterar Usuário - email inválido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraUsuario("luiz.antonioPS95@gmail.com", "email", "l:uiz@gmail.com");
+            fail("Não era para alterar Usuário - email inválido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraUsuario("luiz.antonioPS95@gmail.com", "email", "luiz(LêFodovisk)@gmail.com");
+            fail("Não era para alterar Usuário - email inválido");
+        } catch (HumQueCaroException e) {
+        }
     }
 }
