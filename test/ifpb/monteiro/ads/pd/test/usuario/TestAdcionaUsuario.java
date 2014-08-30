@@ -1,4 +1,4 @@
-package ifpb.monteiro.ads.pd.test;
+package ifpb.monteiro.ads.pd.test.usuario;
 
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachada.Fachada;
