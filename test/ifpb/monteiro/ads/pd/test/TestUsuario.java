@@ -209,79 +209,79 @@ public class TestUsuario {
 	public void testAlteraUsuario() {
 		
 		try {
-			fachada.alteraProduto(" ", "jose", "1234");
+			fachada.alteraUsuario(" ", "jose", "1234");
 			fail("Campo Codigo inválido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			fachada.alteraProduto(null, "jose", "1234");
+			fachada.alteraUsuario(null, "jose", "1234");
 			fail("Campo Codigo invalido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			fachada.alteraProduto("132456hfgh", "jose", "1234");
+			fachada.alteraUsuario("132456hfgh", "jose", "1234");
 			fail("Campo Codigo invalido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			fachada.alteraProduto("214i#$%", "jose", "1234");
+			fachada.alteraUsuario("214i#$%", "jose", "1234");
 			fail("Campo Codigo invalido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			fachada.alteraProduto("1", "nome", " ");
+			fachada.alteraUsuario("1", "nome", " ");
 			fail("Campo Atributo invalido");
 		} catch (HumQueCaroException e) {
 		}
 		
 		try {
-			fachada.alteraProduto("1", "nome", null);
+			fachada.alteraUsuario("1", "nome", null);
 			fail("Campo Atributo invalido");
 		} catch (HumQueCaroException e) {
 		}
 		
 		try {
-			fachada.alteraProduto("1", "nome", "maria42");
+			fachada.alteraUsuario("1", "nome", "maria42");
 			fail("Campo Atributo invalido");
 		} catch (HumQueCaroException e) {
 		}
 		try {
-			fachada.alteraProduto("1", "nome", "mari$%");
+			fachada.alteraUsuario("1", "nome", "mari$%");
 			fail("Campo Atributo invalido");
 		} catch (HumQueCaroException e) {
 		}
 		try {
-			fachada.alteraProduto("1", "nome", "435$%¨$");
+			fachada.alteraUsuario("1", "nome", "435$%¨$");
 			fail("Campo Atributo invalido");
 		} catch (HumQueCaroException e) {
 		}
 		try {
-			fachada.alteraProduto("1", "nome", "m09))(){}");
+			fachada.alteraUsuario("1", "nome", "m09))(){}");
 			fail("Campo Atributo invalido");
 		} catch (HumQueCaroException e) {
 		}
 		try {
-			fachada.alteraProduto("1", "nome", "SADFdf");
+			fachada.alteraUsuario("1", "nome", "SADFdf");
 			fail("Campo Atributo invalido");
 		} catch (HumQueCaroException e) {
 		}
 		try {
-			fachada.alteraProduto("1", "nome", "111");
+			fachada.alteraUsuario("1", "nome", "111");
 			fail("Campo Atributo invalido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			fachada.alteraProduto("1", "senha", " ");
+			fachada.alteraUsuario("1", "senha", " ");
 			fail("Campo NovoValor invalido");
 		} catch (HumQueCaroException e) {
-		}
+                }
 		try {
-			fachada.alteraProduto("1", "senha", null);
+			fachada.alteraUsuario("1", "senha", null);
 			fail("Campo NovoValor invalido");
 		} catch (HumQueCaroException e) {
 		}
