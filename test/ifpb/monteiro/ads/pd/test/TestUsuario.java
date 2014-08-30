@@ -7,12 +7,13 @@ import ifpb.monteiro.ads.pd.fachada.Fachada;
 import org.junit.Test;
 
 /*
- * Classe para testes do UsuÃ¡rio:
+ * Classe para testes do Usuario:
  * Adicionar, Alterar, Remover e Buscar. 
  * 
- * >>> EM ANDAMENTO <<<
- * 
- * @author Deivid Azevedo
+ * Agora esta classe está sobre meu poder. Um abraço!
+ * Att, Luiz Antonio
+ *
+ * @author Luiz Antonio
  */
 public class TestUsuario {
 
