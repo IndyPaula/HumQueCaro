@@ -8,38 +8,42 @@ import ifpb.monteiro.ads.pd.validacao.Validacao;
 
 public class GerenciadorProduto implements GerenciadorProdutoIF {
 
-	private FachadaBancoIF pDAO;
+    private FachadaBancoIF pDAO;
 
-	public GerenciadorProduto() {
-		pDAO = new FachadaBD();
-	}
+    public GerenciadorProduto() {
+        pDAO = new FachadaBD();
+    }
 
-	@Override
-	public void adicionaProduto(String nomeProduto, String codigo,
-			String fabricante) throws HumQueCaroException {
-		Validacao.validaEntrada(nomeProduto, "Campo nome do produto invalido");
-		Validacao.validaEntrada(codigo, "Campo codigo invalido");
-		Validacao.validaEntrada(fabricante, "Campo Fabricante invalido");
-		try {
-			pDAO.addProduto(new Produto(nomeProduto, codigo, fabricante));
-		} catch (HumQueCaroException e) {
-			throw new HumQueCaroException("Erro ao adicionar um produto");
-		}
-	}
+    @Override
+    public void adicionaProduto(String nomeProduto, String codigo,
+            String fabricante) throws HumQueCaroException {
+        Validacao.validaEntrada(nomeProduto, "Campo nome do produto invalido");
+        Validacao.validaEntrada(codigo, "Campo codigo invalido");
+        Validacao.validaEntrada(fabricante, "Campo Fabricante invalido");
+        try {
+            if (pDAO.buscaProduto(codigo) == null) {
+                pDAO.addProduto(new Produto(nomeProduto, codigo, fabricante));
+            } else {
+                throw new HumQueCaroException("Produto já cadastrado");
+            }
+        } catch (HumQueCaroException e) {
+            throw new HumQueCaroException("Erro ao adicionar um produto");
+        }
+    }
 
-	@Override
-	public void alteraProduto(String codigo, String atributo, String novoValor)
-			throws HumQueCaroException {
-		pDAO.alteraProduto(codigo, atributo, novoValor);
-	}
+    @Override
+    public void alteraProduto(String codigo, String atributo, String novoValor)
+            throws HumQueCaroException {
+        pDAO.alteraProduto(codigo, atributo, novoValor);
+    }
 
-	@Override
-	public void removeProduto(String codigo) throws HumQueCaroException {
-		pDAO.removeProduto(new Produto(null, codigo, null));
-	}
+    @Override
+    public void removeProduto(String codigo) throws HumQueCaroException {
+        pDAO.removeProduto(new Produto(null, codigo, null));
+    }
 
-	@Override
-	public Produto buscaProduto(String codigo) throws HumQueCaroException {
-		return pDAO.buscaProduto(codigo);
-	}
+    @Override
+    public Produto buscaProduto(String codigo) throws HumQueCaroException {
+        return pDAO.buscaProduto(codigo);
+    }
 }
