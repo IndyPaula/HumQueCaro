@@ -1,57 +1,60 @@
 package ifpb.monteiro.ads.pd.beans;
 
 public class Usuario {
-	private String email, senha, nome;
-	private int codigoUsuario;
 
-	
-	public Usuario(String email, String senha, String nome, int codigoUsuario) {
-		this.email = email;
-		this.senha = senha;
-		this.nome = nome;
-		this.codigoUsuario = codigoUsuario;
-	}
+    private String email, senha, nome;
+    private int codigoUsuario;
 
-	public Usuario(String email, String senha, String nome) {
-		this.email = email;
-		this.senha = senha;
-		this.nome = nome;
-	}
+    public Usuario() {
+    }
 
-	public Usuario(String email, String senha) {
-		this.email = email;
-		this.senha = senha;
-	}
+    public Usuario(String email, String senha, String nome, int codigoUsuario) {
+        this.email = email;
+        this.senha = senha;
+        this.nome = nome;
+        this.codigoUsuario = codigoUsuario;
+    }
 
-	public int getCodigoUsuario() {
-		return codigoUsuario;
-	}
+    public Usuario(String email, String senha, String nome) {
+        this.email = email;
+        this.senha = senha;
+        this.nome = nome;
+    }
 
-	public void setCodigoUsuario(int codigoUsuario) {
-		this.codigoUsuario = codigoUsuario;
-	}
+    public Usuario(String email, String senha) {
+        this.email = email;
+        this.senha = senha;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public int getCodigoUsuario() {
+        return codigoUsuario;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setCodigoUsuario(int codigoUsuario) {
+        this.codigoUsuario = codigoUsuario;
+    }
 
-	public String getSenha() {
-		return senha;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public String getSenha() {
+        return senha;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }
