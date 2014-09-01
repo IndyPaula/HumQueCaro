@@ -3,6 +3,7 @@ package ifpb.monteiro.ads.pd.test;
 import static org.junit.Assert.*;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachada.Fachada;
+import org.junit.BeforeClass;
 
 import org.junit.Test;
 
@@ -11,130 +12,142 @@ import org.junit.Test;
  */
 public class TestCliente {
 
-	public Fachada fachada = new Fachada();
+    public static Fachada fachada = new Fachada();
 
-	@Test
-	public void testAddCliente() {
-		try {
-			fachada.adicionaCliente("Mirna", "11111111111");
-		} catch (HumQueCaroException e) {
-			fail("Cliente j� cadastrado");
-		}
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        try {
+            fachada.adicionaCliente("Alvaro", "08799001122");
+        } catch (HumQueCaroException e) {
+            fail("Cliente nao adicionado");
+        }
 
-		try {
-			fachada.adicionaCliente("Z� da Ro�a", "12345678901");
-		} catch (HumQueCaroException e) {
-			fail("Cliente j� cadastrado");
-		}
+        try {
+            fachada.adicionaCliente("Tiririca", "08791001122");
+        } catch (HumQueCaroException e) {
+            fail("Cliente nao adicionado");
+        }
+    }
+    // TESTE PARA ADICIONAR CLIENTE
 
-		// TESTE PARA CLIENTES J� CADASTRADOS ATRAV�S DO TELEFONE
-		try {
-			fachada.adicionaCliente("Mariquinha", "12345678901");
-			fail("Cliente j� cadastrado");
-		} catch (HumQueCaroException e) {
-		}
+    @Test
+    public void testAddCliente() {
+        try {
+            fachada.adicionaCliente("Mirna", "08792001122");
+        } catch (HumQueCaroException e) {
+            fail("Cliente ja cadastrado");
+        }
 
-		try {
-			fachada.adicionaCliente("Mariquinha", "11111111111");
-			fail("Cliente j� cadastrado");
-		} catch (HumQueCaroException e) {
-		}
-	}
+        try {
+            fachada.adicionaCliente("Ze do pao", "08788001122");
+        } catch (HumQueCaroException e) {
+            fail("Cliente ja cadastrado");
+        }
+    }
 
-	@Test
-	public void testClienteInvalido() {
-		try {
-			fachada.adicionaCliente("", "1111111111");
-			fail("Campo nome do cliente inv�lido");
-		} catch (HumQueCaroException e) {
-		}
+    // TESTE PARA ADICIONAR CLIENTES JA CADASTRADOS ATRAVES DO TELEFONE
+    @Test
+    public void addClienteInvalido() {
+        try {
+            fachada.adicionaCliente("Mariquinha", "08799001122");
+            fail("Cliente ja cadastrado");
+        } catch (HumQueCaroException e) {
+        }
 
-		try {
-			fachada.adicionaCliente(null, "1111111111");
-			fail("Campo nome do cliente inv�lido");
-		} catch (HumQueCaroException e) {
-		}
+        try {
+            fachada.adicionaCliente("Mariquinha", "08791001122");
+            fail("Cliente ja cadastrado");
+        } catch (HumQueCaroException e) {
+        }
+    }
 
-		try {
-			fachada.adicionaCliente("NomeDoCliente", "");
-			fail("Campo telefone inv�lido");
-		} catch (HumQueCaroException e) {
-		}
+    // TESTANDO COM ENTRADAS INVALIDAS
+    @Test
+    public void testClienteInvalido() {
+        // NOME NULO OU VAZIO
+        try {
+            fachada.adicionaCliente("", "1111111111");
+            fail("Campo nome do cliente invalido");
+        } catch (HumQueCaroException e) {
+        }
 
-		try {
-			fachada.adicionaCliente("NomeDoCliente", null);
-			fail("Campo telefone inv�lido");
-		} catch (HumQueCaroException e) {
-		}
+        try {
+            fachada.adicionaCliente(null, "22222222222");
+            fail("Campo nome do cliente invalido");
+        } catch (HumQueCaroException e) {
+        }
+        // TELEFONE NULO OU VAZIO
+        try {
+            fachada.adicionaCliente("Nome", "");
+            fail("Campo telefone invalido");
+        } catch (HumQueCaroException e) {
+        }
 
-		// NUMERO DE TELEFONE DO CLIENTE DEVE, OBRIGATORIAMENTE
-		// CONTER 11 N�MEROS, AO CONTR�RIO DEVE LAN�AR EXCE��O
-		try {
-			fachada.adicionaCliente("NomeDoCliente", "1231231231");
-			fail("Campo telefone inv�lido");
-		} catch (HumQueCaroException e) {
-		}
+        try {
+            fachada.adicionaCliente("Nome", null);
+            fail("Campo telefone invalido");
+        } catch (HumQueCaroException e) {
+        }
+        // NUMERO DE TELEFONE COM MENOS OU MAIS DE 11 DIGITOS
+        try {
+            fachada.adicionaCliente("Nome", "1231231231");
+            fail("Campo telefone invalido");
+        } catch (HumQueCaroException e) {
+        }
 
-		try {
-			fachada.adicionaCliente("NomeDoCliente", "123123123123");
-			fail("Campo telefone inv�lido");
-		} catch (HumQueCaroException e) {
-		}
+        try {
+            fachada.adicionaCliente("Nome", "123123123123");
+            fail("Campo telefone invalido");
+        } catch (HumQueCaroException e) {
+        }
+    }
+    
+    // TESTE PARA REMOVER CLIENTE
+    @Test
+    public void testRemoveCliente() {
+        // REMOVENDO CLIENTES CADASTRADOS
+        try {
+            fachada.removeCliente("08799001122");
+        } catch (HumQueCaroException e) {
+            fail("Cliente nao cadastrado");
+        }
 
-	}
+        // REMOVENDO CLIENTES QUE NAO EXISTEM
+        try {
+            fachada.removeCliente("00000000000");
+            fail("Cliente nao cadastrado");
+        } catch (HumQueCaroException e) {
+        }
 
-	@Test
-	public void testRemoveCliente() {
-		// Removendo clientes cadastrados
-		try {
-			fachada.removeCliente("11111111111");
-		} catch (HumQueCaroException e) {
-			fail("Cliente n�o cadastrado");
-		}
+        try {
+            fachada.removeCliente("99999999999");
+            fail("Cliente nao cadastrado");
+        } catch (HumQueCaroException e) {
+        }
+        // REMOVENDO CLIENTES COM ENTRADAS INVALIDAS
+        try {
+            fachada.removeCliente("");
+            fail("Campo invalido");
+        } catch (HumQueCaroException e) {
+        }
 
-		try {
-			fachada.removeCliente("12345678901");
-		} catch (HumQueCaroException e) {
-			fail("Cliente n�o cadastrado");
-		}
+        try {
+            fachada.removeCliente(null);
+            fail("Campo invalido");
+        } catch (HumQueCaroException e) {
+        }
 
-		// REMOVENDO CLIENTES J� REMOVIDOS E VALORES INV�LIDOS
-		try {
-			fachada.removeCliente("11111111111");
-			fail("Cliente n�o cadastrado");
-		} catch (HumQueCaroException e) {
-		}
+        try {
+            fachada.removeCliente("123456789012");
+            fail("Campo invalido");
+        } catch (HumQueCaroException e) {
+        }
 
-		try {
-			fachada.removeCliente("12345678901");
-			fail("Cliente n�o cadastrado");
-		} catch (HumQueCaroException e) {
-		}
+        try {
+            fachada.removeCliente("1234567890");
+            fail("Campo invalido");
+        } catch (HumQueCaroException e) {
+        }
 
-		try {
-			fachada.removeCliente("");
-			fail("Campo inv�lido");
-		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			fachada.removeCliente(null);
-			fail("Campo inv�lido");
-		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			fachada.removeCliente("123456789012");
-			fail("Campo inv�lido");
-		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			fachada.removeCliente("1234567890");
-			fail("Campo inv�lido");
-		} catch (HumQueCaroException e) {
-		}
-
-	}
-
+    }
 }
