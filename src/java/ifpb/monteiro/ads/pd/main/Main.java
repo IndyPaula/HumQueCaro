@@ -9,7 +9,7 @@ public class Main {
 	public static void main(String[] args) {
 		FachadaIF fachada = new Fachada();
 		try {
-			fachada.alteraProduto("123123", "fabricante", "fabricante");
+			fachada.adicionaCliente("Malvino", "08988112233");
 		} catch (HumQueCaroException e) {
 			e.printStackTrace();
 		}
