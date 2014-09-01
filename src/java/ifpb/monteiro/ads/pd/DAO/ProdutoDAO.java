@@ -12,10 +12,10 @@ public class ProdutoDAO extends DAO<Produto> {
     public void adiciona(Produto produto) throws HumQueCaroException {
         try {
             abrirBanco();
-                getStmt().executeUpdate(
-                        "INSERT INTO produtos (codigo, nome, fabricante) VALUES ('"
-                        + produto.getCodigo() + "', '" + produto.getNome()
-                        + "', '" + produto.getFabricante() + "' )");
+            getStmt().executeUpdate(
+                    "INSERT INTO produtos (codigo, nome, fabricante) VALUES ('"
+                    + produto.getCodigo() + "', '" + produto.getNome()
+                    + "', '" + produto.getFabricante() + "' )");
             fecharBanco();
         } catch (Exception e) {
             throw new HumQueCaroException("Erro no adiciona de Produto "
@@ -68,9 +68,6 @@ public class ProdutoDAO extends DAO<Produto> {
                 produto = new Produto(rSet.getString("nome"),
                         rSet.getString("codigo"), rSet.getString("fabricante"));
                 produto.setCodigoProduto(rSet.getInt("codigo_produtos"));
-            } else {
-                throw new HumQueCaroException(
-                        "Campo codigo de identificacao invalido");
             }
             fecharBanco();
             return produto;
