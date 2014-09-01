@@ -21,15 +21,24 @@ public class GerenciadorUsuario implements GerenciadorUsuarioIF {
 		Validacao.validaEntrada(nome, "Atributo nome invalido");
 		fachadaBd.addUsuario(new Usuario(email, senha, nome));
 	}
-
+	/**
+	 * M�todo Altera Usu�rio est� alterando normalmente!
+	 */
 	@Override
 	public void alteraUsuario(String email, String atributo, String novoValor)
 			throws HumQueCaroException {
-		//TODO Procurar uma forma eficiente de fazer isso
-		if(Dados.NOME.getNome().equals(atributo)){
-			fachadaBd.alteraUsuario(new Usuario(email, null, novoValor));
-		}else if (Dados.SENHA.getNome().equals(atributo)){
-			fachadaBd.alteraUsuario(new Usuario(email, novoValor,null));
+		Validacao.validaEntrada(atributo, "Atributo invalido");
+		Validacao.validaEntrada(novoValor, "NovoValor invalido");
+		
+		Usuario usuAntigo = buscaUsuario(email);
+		
+		if (atributo.equals(Dados.NOME.getNome())) {
+			usuAntigo.setNome(novoValor);
+			fachadaBd.alteraUsuario(usuAntigo);
+			
+		} else if (atributo.equals(Dados.SENHA.getNome())) {
+			usuAntigo.setSenha(novoValor);
+			fachadaBd.alteraUsuario(usuAntigo);
 		}
 	}
 
@@ -45,12 +54,12 @@ public class GerenciadorUsuario implements GerenciadorUsuarioIF {
 	@Override
 	public Usuario buscaUsuario(String email) throws HumQueCaroException {
 		Usuario user = fachadaBd.buscaUsuario(email);
-		if(user!= null){
-			return user; 
-		}else{
+		if (user != null) {
+			return user;
+		} else {
 			throw new HumQueCaroException("Atribulo email invalido");
 		}
-		
+
 	}
 
 }
