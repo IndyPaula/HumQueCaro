@@ -21,20 +21,24 @@
                         <h:panelGrid columns="3">
 
                             <h:outputLabel for="nome" value="Nome: *" />  
-                            <p:inputText id="nome" value="" size="25" required="true" requiredMessage="Digite o nome do Cliente">  
+                            <p:inputText id="nome" value="#{ClienteMB.cliente.nome}" size="25" required="true" requiredMessage="Digite o nome do Cliente">  
                                 <f:validateLength minimum="2" />  
                                 <p:ajax update="msgNome" event="keyup" />
                             </p:inputText>  
                             <p:message for="nome" id="msgNome" display="icon"/>
 
                             <h:outputLabel for="telefone" value="Telefone: *" />  
-                            <p:inputText id="telefone"  value="" size="15" required="true" requiredMessage="Digite o telefone do Cliente">  
+                            <p:inputText id="telefone"  value="#{ClienteMB.cliente.telefone}" size="15" required="true" requiredMessage="Digite o telefone do Cliente">  
                                 <f:validateLength minimum="11" maximum="11"/>  
                                 <p:ajax update="msgTelefone" event="keyup" />
                             </p:inputText>  
                             <h:outputLabel for="telefone" value="Ex:(08399887766)" />
                             <p:message for="telefone" id="msgTelefone" display="icon"/>
                         </h:panelGrid>
+                        <p:spacer height="10" />
+                        <p:separator/>
+                        <p:commandButton id="btn" value="Salvar" image="btSalvar" update="panel" actionListener="#{ClienteMB.cadastraCliente(actionEvent)}"/>
+
                     </p:panel>
                 </h:form>
             </ui:define>

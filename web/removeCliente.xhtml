@@ -20,7 +20,7 @@
                         <h:panelGrid columns="3">
 
                             <h:outputLabel for="telefone" value="Telefone: *" />  
-                            <p:inputText id="telefone"  value="" size="15" required="true" requiredMessage="Digite o telefone do Cliente">  
+                            <p:inputText id="telefone"  value="#{ClienteMB.cliente.telefone}" size="15" required="true" requiredMessage="Digite o telefone do Cliente">  
                                 <f:validateLength minimum="11" maximum="11" />  
                                 <p:ajax update="msgTelefone" event="keyup" />
                             </p:inputText>  
@@ -30,7 +30,7 @@
                         </h:panelGrid>
                         <p:spacer height="10" />
                         <p:separator/>
-                        <p:commandButton id="btn" value="Remover" image="bt" update="panel" actionListener="#{ProdutoMB.alterarProduto}"/>
+                        <p:commandButton id="btn" value="Remover" image="bt" update="panel" actionListener="#{ClienteMB.removeCliente(actionEvent)}"/>
 
                     </p:panel>
                 </h:form>
