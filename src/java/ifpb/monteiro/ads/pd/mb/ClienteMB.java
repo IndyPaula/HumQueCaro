@@ -42,6 +42,22 @@ public class ClienteMB {
         novo();
         return "home.xhtml";
     }
+    
+    public String alteraCliente(ActionEvent actionEvent) {
+        try {
+            Cliente clienteTemp = fachada.buscaCliente(cliente.getTelefone());
+            if (clienteTemp != null) {
+                fachada.alteraCliente(clienteTemp.getTelefone(), cliente.getNome(), cliente.getCodigo());
+                Messages.mensInfo("Cliente alterado com sucesso!");
+            } else {
+                Messages.mensInfo("Cliente não encontrado!");
+            }
+        } catch (HumQueCaroException ex) {
+            Messages.mensInfo("Cliente não alterado! " + ex.getMessage());
+        }
+        novo();
+        return "home.xhtml";
+    }
 
     public String removeCliente(ActionEvent actionEvent) {
         try {
@@ -49,6 +65,8 @@ public class ClienteMB {
             if (clienteTemp != null) {
                 fachada.removeCliente(clienteTemp);
                 Messages.mensInfo("Cliente " + clienteTemp.getNome() + " removido(a) com sucesso");
+            } else {
+                Messages.mensInfo("Cliente não encontrado");
             }
         } catch (HumQueCaroException ex) {
             Messages.mensInfo("Cliente não cadastrado" + ex.getMessage());

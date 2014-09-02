@@ -105,15 +105,15 @@ public class FachadaBD implements FachadaBancoIF {
         Cliente c = cliDAO.procura(telefone);
         if (atributo == null || atributo.equals("") || novoValor == null
                 || novoValor.equals("")) {
-            throw new HumQueCaroException("Campo inv�lido");
+            throw new HumQueCaroException("Campo invalido");
         }
-        if (!atributo.equals("nome") && !atributo.equals("telefone")) {
-            throw new HumQueCaroException("Campo atributo inv�lido");
+        if (!atributo.equals("Nome") && !atributo.equals("Telefone")) {
+            throw new HumQueCaroException("Campo atributo invalido");
         }
-        if (atributo.equals("nome") && (novoValor != null || novoValor != (""))) {
+        if (atributo.equals("Nome") && (novoValor != null || novoValor != (""))) {
             c.setNome(novoValor);
         }
-        if (atributo.equals("telefone")
+        if (atributo.equals("Telefone")
                 && (novoValor != null || novoValor != (""))
                 && novoValor.length() == 11) {
             c.setTelefone(novoValor);
