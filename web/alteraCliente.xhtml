@@ -20,22 +20,22 @@
                         <h:panelGrid columns="3">
 
                             <h:outputLabel for="telefone" value="Telefone: *" />  
-                            <p:inputText id="telefone"  value="" size="15" required="true" requiredMessage="Digite o telefone do Cliente">  
+                            <p:inputText id="telefone"  value="#{ClienteMB.cliente.telefone}" size="15" required="true" requiredMessage="Digite o telefone do Cliente">  
                                 <f:validateLength minimum="11" maximum="11" />  
                                 <p:ajax update="msgTelefone" event="keyup" />
                             </p:inputText>  
                             <p:message for="telefone" id="msgTelefone" display="icon"/>
 
                             <h:outputLabel for="atributo" value="Atributo: *" />
-                            <p:selectOneMenu id="atributo" value="" required="true" requiredMessage="Selecione o campo de alteração">
+                            <p:selectOneMenu id="atributo" value="#{ClienteMB.cliente.nome}" required="true" requiredMessage="Selecione o campo de alteração">
                                 <f:selectItem itemLabel="Selecione" itemValue="" />
-                                <f:selectItem itemLabel="Nome" itemValue="" />
-                                <f:selectItem itemLabel="Telefone" itemValue="" />
+                                <f:selectItem itemLabel="Nome" itemValue="Nome" />
+                                <f:selectItem itemLabel="Telefone" itemValue="Telefone" />
                             </p:selectOneMenu>
                             <p:message for="atributo" id="msgAtributo" display="icon"/>
 
                             <h:outputLabel for="novoValor" value="Novo Valor: *" />  
-                            <p:inputText id="novoValor"  value="" size="20" required="true" requiredMessage="Digite o novo valor do campo a ser alterado">  
+                            <p:inputText id="novoValor"  value="#{ClienteMB.cliente.codigo}" size="20" required="true" requiredMessage="Digite o novo valor do campo a ser alterado">  
                                 <f:validateLength minimum="1" />  
                                 <p:ajax update="msgNovoValor" event="keyup" />
                             </p:inputText>  
@@ -44,7 +44,7 @@
                         </h:panelGrid>
                         <p:spacer height="10" />
                         <p:separator/>
-                        <p:commandButton id="btn" value="Alterar" image="bt" update="panel" actionListener="#{ProdutoMB.alterarProduto}"/>
+                        <p:commandButton id="btn" value="Alterar" image="bt" update="panel" actionListener="#{ClienteMB.alteraCliente(actionEvent)}"/>
 
 
                     </p:panel>
