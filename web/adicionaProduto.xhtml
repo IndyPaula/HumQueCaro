@@ -3,20 +3,48 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>HumQueCaro - Menu</title>
     </h:head>
     <h:body>
-
         <ui:composition template="./template/template.xhtml">
             <ui:define name="content">
                 <h:form id="form" acceptcharset="ISO-8859-1">
                     <p:panel id="panel" header="Cadastrar Produto">
 
                         <p:messages id="msgs"/> 
+
+                        <h:panelGrid columns="3">
+
+                            <h:outputLabel for="nome" value="Nome: *" />  
+                            <p:inputText id="nome" value="#{ProdutoMB.produto.nome}" size="25" required="true" requiredMessage="Digite o nome do Produto">  
+                                <f:validateLength minimum="2" />  
+                                <p:ajax update="msgNome" event="keyup" />
+                            </p:inputText>  
+                            <p:message for="nome" id="msgNome" display="icon"/>
+
+                            <h:outputLabel for="codigo" value="Código: *" />  
+                            <p:inputText id="codigo"  value="#{ProdutoMB.produto.codigo}" size="10" required="true" requiredMessage="Digite o código do Produto">  
+                                <f:validateLength minimum="1" />  
+                                <p:ajax update="msgCodigo" event="keyup" />
+                            </p:inputText>  
+                            <p:message for="codigo" id="msgCodigo" display="icon"/>
+
+                            <h:outputLabel for="fabricante" value="Fabricante: *" />  
+                            <p:inputText id="fabricante"  value="#{ProdutoMB.produto.fabricante}" size="20" required="true" requiredMessage="Digite o fabricante do Produto">  
+                                <f:validateLength minimum="1" />  
+                                <p:ajax update="msgFabricante" event="keyup" />
+                            </p:inputText>  
+                            <p:message for="fabricante" id="msgFabricante" display="icon"/>
+
+                        </h:panelGrid>
+                        <p:spacer height="10" />
+                        <p:separator/>
+                        <p:commandButton id="btn" value="Salvar" image="btSalvar" update="panel" actionListener="#{ProdutoMB.cadastraProduto}"/>
 
                     </p:panel>
                 </h:form>
