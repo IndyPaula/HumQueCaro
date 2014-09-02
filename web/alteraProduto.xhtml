@@ -27,13 +27,16 @@
                             </p:inputText>  
                             <p:message for="codigo" id="msgCodigo" display="icon"/>
 
-                            <p:selectOneMenu id="atributo" value="#{ProdutoMB.atributo}" required="true" requiredMessage="Selecione o campo de alteração">
-                                <f:selectItem itemLabel="Nome" itemValue="" />
-                                <f:selectItem itemLabel="Fabricante" itemValue="" />
+                            <h:outputLabel for="atributo" value="Atributo: *" />
+                            <p:selectOneMenu id="atributo" value="#{ProdutoMB.produto.nome}" required="true" requiredMessage="Selecione o campo de alteração">
+                                <f:selectItem itemLabel="Selecione" itemValue="" />
+                                <f:selectItem itemLabel="Nome" itemValue="Nome" />
+                                <f:selectItem itemLabel="Fabricante" itemValue="Fabricante" />
                             </p:selectOneMenu>
+                            <p:message for="atributo" id="msgAtributo" display="icon"/>
 
                             <h:outputLabel for="novoValor" value="Novo Valor: *" />  
-                            <p:inputText id="novoValor"  value="#{ProdutoMB.novoValor}" size="20" required="true" requiredMessage="Digite o novo valor do campo a ser alterado">  
+                            <p:inputText id="novoValor"  value="#{ProdutoMB.produto.fabricante}" size="20" required="true" requiredMessage="Digite o novo valor do campo a ser alterado">  
                                 <f:validateLength minimum="1" />  
                                 <p:ajax update="msgNovoValor" event="keyup" />
                             </p:inputText>  
@@ -42,7 +45,7 @@
                         </h:panelGrid>
                         <p:spacer height="10" />
                         <p:separator/>
-                        <p:commandButton id="btn" value="Alterar" image="bt" update="panel" actionListener="#{ProdutoMB.alterarProduto}"/>
+                        <p:commandButton id="btn" value="Alterar" image="btAlterar" update="panel" actionListener="#{ProdutoMB.alterarProduto}"/>
 
 
                     </p:panel>
