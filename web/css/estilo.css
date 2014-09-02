@@ -1,0 +1,134 @@
+/* 
+    Document   : estilo
+    Created on : 20/08/2013, 13:03:53
+    Author     : Widancassio
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* Define o Tamanho da fonte do Sistema */ 
+.ui-widget {  
+    font-size: 12px !important;  
+}
+
+/* Define as imagens da barra de Cadastros e em seus itens de menu */
+.cadastros{ 
+    width: 16px; height: 16px; background-image: url(icones/cadastro.png) !important;
+}
+
+.btVisualizar{ 
+    width: 16px; height: 16px; background-image: url(icones/visualizar.png) !important;
+}
+
+.medico{ 
+    width: 16px; height: 16px; background-image: url(icones/medico.png) !important;
+}
+
+.btAtiva{ 
+    width: 16px; height: 16px; background-image: url(icones/ativar.png) !important;
+}
+
+.siasf{ 
+    width: 16px; height: 16px; background-image: url(icones/siasf.png) !important;
+}
+
+.btDesativa{ 
+    width: 16px; height: 16px; background-image: url(icones/desativa.png) !important;
+}
+
+.btAdd{ 
+    width: 16px; height: 16px; background-image: url(icones/add.png) !important;
+}
+
+.distribui{ 
+    width: 16px; height: 16px; background-image: url(icones/distribui.png) !important;
+}
+
+.btConsulta{ 
+    width: 16px; height: 16px; background-image: url(icones/consultas.png) !important;
+}
+
+.desMedico{ 
+    width: 16px; height: 16px; background-image: url(icones/desativamedico.png) !important;
+}
+
+.medicamento{ 
+    width: 16px; height: 16px; background-image: url(icones/medicamento.png) !important;
+}
+
+.addMedicamento{ 
+    width: 16px; height: 16px; background-image: url(icones/addmedicamento.png) !important;
+}
+
+.consulta{ 
+    width: 16px; height: 16px; background-image: url(icones/consulta.png) !important;
+}
+
+.consultar{ 
+    width: 16px; height: 16px; background-image: url(icones/consultar.png) !important;
+}
+
+.paciente{ 
+    width: 16px; height: 16px; background-image: url(icones/paciente.png) !important;
+}
+
+.sair{ 
+    width: 16px; height: 16px; background-image: url(icones/sair.png) !important;
+}
+
+/* Define as imagens da barra de Relatorio e em seus itens de menu */
+.relatorio{ 
+    width: 16px; height: 16px; background-image: url(icones/relatorio.png) !important;
+}
+
+/* Define as imagens da barra de Sobre e em seus itens de menu */
+.sobre{ 
+    width: 16px; height: 16px; background-image: url(icones/comment.png) !important;
+}
+
+/* Define as imagens da barra de principal */
+.home{ 
+    width: 16px; height: 16px; background-image: url(icones/inicio.png) !important;
+}
+
+.cadastrar{ 
+    width: 16px; height: 16px; background-image: url(icones/cadastrar.png) !important;
+}
+
+.listar{ 
+    width: 16px; height: 16px; background-image: url(icones/listar.png) !important;
+}
+
+/* Confirmação da exclusão botões dialog */
+.btSim{ 
+    width: 16px; height: 16px; background-image: url(icones/sim.png) !important;
+}
+
+.btNao{ 
+    width: 16px; height: 16px; background-image: url(icones/nao.png) !important;
+}
+
+
+.btAlterar {  
+    width: 16px; height: 16px; background-image: url(icones/editar.png) !important;
+}
+
+.btExcluir{ 
+    width: 16px; height: 16px; background-image: url(icones/excluir.png) !important;
+}
+
+.btCancela{ 
+    width: 16px; height: 16px; background-image: url(icones/cancela.png) !important;
+}
+
+.btMais{ 
+    width: 16px; height: 16px; background-image: url(icones/adiciona.png) !important;
+}
+
+
+
+
+
+
+
+
