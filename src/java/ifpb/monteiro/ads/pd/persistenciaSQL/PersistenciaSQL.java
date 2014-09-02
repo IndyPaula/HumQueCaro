@@ -11,6 +11,7 @@ public class PersistenciaSQL {
 		String username = "root";
 		String password = "senhafraca";
 		Connection connection;
+                DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 		connection = DriverManager.getConnection(url, username, password);
 		return connection;
 	}
