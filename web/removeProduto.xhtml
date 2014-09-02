@@ -18,14 +18,14 @@
 
                         <p:messages id="msgs"/> 
 
-                        <h:panelGrid columns="1">
+                        <h:panelGrid columns="2">
 
-                            <h:outputLabel for="remover" value="Remover: *" />  
-                            <p:inputText id="remover" value="#{ProdutoMB.produto}" size="25" required="true" requiredMessage="Digite o nome do Produto">  
+                            <h:outputLabel for="codigo" value="Código: *" />  
+                            <p:inputText id="codigo" value="#{ProdutoMB.produto.codigo}" size="20" required="true" requiredMessage="Digite o código do Produto">  
                                 <f:validateLength minimum="2" />  
-                                <p:ajax update="msgNome" event="keyup" />
+                                <p:ajax update="msgCodigo" event="keyup" />
                             </p:inputText>  
-                            <p:message for="nome" id="msgNome" display="icon"/>
+                            <p:message for="codigo" id="msgCodigo" display="icon"/>
                         </h:panelGrid>
 
                         <p:spacer height="10" />
