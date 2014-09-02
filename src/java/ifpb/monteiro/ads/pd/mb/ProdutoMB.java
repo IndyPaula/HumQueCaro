@@ -57,7 +57,7 @@ public class ProdutoMB implements java.io.Serializable {
             fachada.addProduto(produto);
             Messages.mensInfo("Produto cadastrado com sucesso");
         } catch (HumQueCaroException ex) {
-            Messages.mensInfo("Produto não cadastrado! Tente novamente!" + ex.getMessage());
+            Messages.mensInfo("Produto não cadastrado! " + ex.getMessage());
         }
         novo();
         return "home.xhtml";
@@ -65,11 +65,17 @@ public class ProdutoMB implements java.io.Serializable {
 
     public String alterarProduto(ActionEvent actionEvent) {
         try {
-            fachada.alteraProduto(produto.getCodigo(), produto.getNome(), produto.getFabricante());
-            Messages.mensInfo("Produto alterado com sucesso!");
+            Produto temp = fachada.buscaProduto(produto.getCodigo());
+            if (temp != null) {
+                fachada.alteraProduto(temp.getCodigo(), produto.getNome(), produto.getFabricante());
+                Messages.mensInfo("Produto alterado com sucesso!");
+            } else {
+                Messages.mensInfo("Produto não encontrado!");
+            }
         } catch (HumQueCaroException ex) {
-            Messages.mensInfo("Produto não alterado! Tente Novamente!" + ex.getMessage());
+            Messages.mensInfo("Produto não alterado! " + ex.getMessage());
         }
+        novo();
         return "home.xhtml";
     }
 
@@ -78,10 +84,14 @@ public class ProdutoMB implements java.io.Serializable {
             Produto temp = fachada.buscaProduto(produto.getCodigo());
             if (temp != null) {
                 fachada.removeProduto(temp);
+                Messages.mensInfo("Produto removido com sucesso!");
+            } else {
+                Messages.mensInfo("Produto não encontrado!");
             }
         } catch (HumQueCaroException ex) {
-            Logger.getLogger(ProdutoMB.class.getName()).log(Level.SEVERE, null, ex);
+            Messages.mensInfo("Produto não removido! " + ex.getMessage());
         }
+        novo();
         return "home.xhtml";
     }
 }
