@@ -29,14 +29,11 @@ public class ProdutoDAO extends DAO<Produto> {
     @Override
     public void remove(Produto produto) throws HumQueCaroException {
         try {
-            procura(produto.getCodigo());
             abrirBanco();
             getStmt().execute(
                     "DELETE FROM produtos WHERE codigo = '" + produto.getCodigo()
                     + "' ");
             fecharBanco();
-        } catch (HumQueCaroException e) {
-            throw new HumQueCaroException(e.getMessage());
         } catch (Exception e) {
             throw new HumQueCaroException("Erro no remove de Produto "
                     + e.getMessage());
@@ -108,5 +105,4 @@ public class ProdutoDAO extends DAO<Produto> {
     public ArrayList<Produto> getProdutos() {
         return produtos;
     }
-    
 }
