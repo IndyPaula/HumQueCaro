@@ -5,8 +5,11 @@ import java.sql.SQLException;
 
 import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
+import java.util.ArrayList;
 
 public class ProdutoDAO extends DAO<Produto> {
+
+    public ArrayList<Produto> produtos = new ArrayList<Produto>();
 
     @Override
     public void adiciona(Produto produto) throws HumQueCaroException {
@@ -76,4 +79,34 @@ public class ProdutoDAO extends DAO<Produto> {
                     + e.getMessage());
         }
     }
+
+    public ArrayList<Produto> carregaProdutos() throws HumQueCaroException {
+        try {
+            abrirBanco();
+            ResultSet rs;
+            rs = getStmt().executeQuery("SELECT * FROM produtos");
+            Produto prod;
+            while (rs.next()) {
+                String nome = rs.getString("nome");
+                String codigo = rs.getString("codigo");
+                String fabricante = rs.getString("fabricante");
+                int codigo_produto = rs.getInt("codigo_produtos");
+                prod = new Produto(nome, codigo, fabricante);
+                prod.setCodigoProduto(codigo_produto);
+                if (!produtos.contains(prod)) {
+                    produtos.add(prod);
+                }
+            }
+            rs.close();
+            fecharBanco();
+            return produtos;
+        } catch (SQLException ex) {
+        }
+        return null;
+    }
+
+    public ArrayList<Produto> getProdutos() {
+        return produtos;
+    }
+    
 }
