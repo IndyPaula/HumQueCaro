@@ -16,13 +16,14 @@ public class GerenciadorProduto implements GerenciadorProdutoIF {
 
     @Override
     public void adicionaProduto(String nomeProduto, String codigo,
-            String fabricante) throws HumQueCaroException {
+            String fabricante, String valor) throws HumQueCaroException {
         Validacao.validaEntrada(nomeProduto, "Campo nome do produto invalido");
         Validacao.validaEntrada(codigo, "Campo codigo invalido");
         Validacao.validaEntrada(fabricante, "Campo Fabricante invalido");
+        Validacao.validaEntrada(valor, "Campo valor invalido");
         try {
             if (pDAO.buscaProduto(codigo) == null) {
-                pDAO.addProduto(new Produto(nomeProduto, codigo, fabricante));
+                pDAO.addProduto(new Produto(nomeProduto, codigo, fabricante, valor));
             } else {
                 throw new HumQueCaroException("Produto já cadastrado");
             }
@@ -39,7 +40,7 @@ public class GerenciadorProduto implements GerenciadorProdutoIF {
 
     @Override
     public void removeProduto(String codigo) throws HumQueCaroException {
-        pDAO.removeProduto(new Produto(null, codigo, null));
+        pDAO.removeProduto(new Produto(null, codigo, null, null));
     }
 
     @Override
