@@ -66,7 +66,7 @@ public class ProdutoDAO extends DAO<Produto> {
                     "SELECT * FROM produtos WHERE codigo = '" + codigo + "' ");
             if (rSet.next()) {
                 produto = new Produto(rSet.getString("nome"),
-                        rSet.getString("codigo"), rSet.getString("fabricante"));
+                        rSet.getString("codigo"), rSet.getString("fabricante"), rSet.getString("valor"));
                 produto.setCodigoProduto(rSet.getInt("codigo_produtos"));
             }
             fecharBanco();
@@ -87,8 +87,9 @@ public class ProdutoDAO extends DAO<Produto> {
                 String nome = rs.getString("nome");
                 String codigo = rs.getString("codigo");
                 String fabricante = rs.getString("fabricante");
+                String valor = rs.getString("valor");
                 int codigo_produto = rs.getInt("codigo_produtos");
-                prod = new Produto(nome, codigo, fabricante);
+                prod = new Produto(nome, codigo, fabricante, valor);
                 prod.setCodigoProduto(codigo_produto);
                 if (!produtos.contains(prod)) {
                     produtos.add(prod);
