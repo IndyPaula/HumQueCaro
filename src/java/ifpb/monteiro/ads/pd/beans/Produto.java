@@ -6,11 +6,13 @@ public class Produto {
     private String nome;
     private String codigo;
     private String fabricante;
+    private String valor;
 
-    public Produto(String nome, String codigo, String fabricante) {
+    public Produto(String nome, String codigo, String fabricante, String valor) {
         this.nome = nome;
         this.codigo = codigo;
         this.fabricante = fabricante;
+        this.valor = valor;
     }
 
     public Produto() {
@@ -46,5 +48,13 @@ public class Produto {
 
     public void setCodigoProduto(int codigoProduto) {
         this.codigoProduto = codigoProduto;
+    }
+
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
     }
 }
