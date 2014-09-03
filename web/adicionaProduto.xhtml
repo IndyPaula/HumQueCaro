@@ -34,6 +34,13 @@
                             </p:inputText>  
                             <p:message for="codigo" id="msgCodigo" display="icon"/>
 
+                            <h:outputLabel for="valor" value="Valor: *" />  
+                            <p:inputText id="valor"  value="#{ProdutoMB.produto.valor}" size="10" required="true" requiredMessage="Digite o valor do Produto">  
+                                <f:validateLength minimum="1" />  
+                                <p:ajax update="msgValor" event="keyup" />
+                            </p:inputText>  
+                            <p:message for="valor" id="msgValor" display="icon"/>
+
                             <h:outputLabel for="fabricante" value="Fabricante: *" />  
                             <p:inputText id="fabricante"  value="#{ProdutoMB.produto.fabricante}" size="20" required="true" requiredMessage="Digite o fabricante do Produto">  
                                 <f:validateLength minimum="1" />  
