@@ -43,8 +43,8 @@ public class Fachada implements FachadaIF {
 
 	@Override
 	public void adicionaProduto(String nomeProduto, String codigo,
-			String fabricante) throws HumQueCaroException {
-		gProduto.adicionaProduto(nomeProduto, codigo, fabricante);
+			String fabricante, String valor) throws HumQueCaroException {
+		gProduto.adicionaProduto(nomeProduto, codigo, fabricante, valor);
 	}
 
 	@Override
