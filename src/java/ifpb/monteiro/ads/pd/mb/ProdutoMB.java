@@ -7,10 +7,10 @@ package ifpb.monteiro.ads.pd.mb;
 import ifpb.monteiro.ads.pd.DAO.ProdutoDAO;
 import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
+import ifpb.monteiro.ads.pd.fachada.Fachada;
 import ifpb.monteiro.ads.pd.fachada.FachadaBD;
+import ifpb.monteiro.ads.pd.fachadaIF.FachadaIF;
 import ifpb.monteiro.ads.pd.messages.Messages;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
@@ -21,13 +21,13 @@ import javax.faces.model.ListDataModel;
 @ManagedBean(name = "ProdutoMB")
 public class ProdutoMB implements java.io.Serializable {
 
-    FachadaBD fachada;
+    FachadaIF fachada;
     private Produto produto;
     private DataModel model;
     ProdutoDAO pDAO;
 
     public ProdutoMB() {
-        fachada = new FachadaBD();
+        fachada = new Fachada();
         produto = new Produto();
     }
 
@@ -54,7 +54,8 @@ public class ProdutoMB implements java.io.Serializable {
 
     public String cadastraProduto(ActionEvent actionEvent) {
         try {
-            fachada.addProduto(produto);
+            fachada.adicionaProduto(produto.getNome(), produto.getCodigo(),
+                    produto.getFabricante(), produto.getValor());
             Messages.mensInfo("Produto cadastrado com sucesso");
         } catch (HumQueCaroException ex) {
             Messages.mensInfo("Produto não cadastrado! " + ex.getMessage());
@@ -83,7 +84,7 @@ public class ProdutoMB implements java.io.Serializable {
         try {
             Produto temp = fachada.buscaProduto(produto.getCodigo());
             if (temp != null) {
-                fachada.removeProduto(temp);
+                fachada.removeProduto(temp.getCodigo());
                 Messages.mensInfo("Produto removido com sucesso!");
             } else {
                 Messages.mensInfo("Produto não encontrado!");
