@@ -108,7 +108,7 @@ public interface FachadaIF {
 	 *         codigo identificador.
 	 */
 	public void adicionaProduto(String nomeProduto, String codigo,
-			String fabricante) throws HumQueCaroException;
+			String fabricante, String valor) throws HumQueCaroException;
 
 	/**
 	 * Ajusta o atributo para o novo valor passado como parametro. Pedera altera
