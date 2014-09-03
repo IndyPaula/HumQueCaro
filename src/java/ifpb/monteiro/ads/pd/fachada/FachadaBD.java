@@ -70,6 +70,8 @@ public class FachadaBD implements FachadaBancoIF {
             produto.setNome(novoValor);
         } else if (atributo.equals("Fabricante")) {
             produto.setFabricante(novoValor);
+        } else if (atributo.equals("Valor")) {
+            produto.setValor(novoValor);
         } else {
             throw new HumQueCaroException("Campo atributo invalido");
         }
