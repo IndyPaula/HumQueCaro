@@ -16,9 +16,9 @@ public class ProdutoDAO extends DAO<Produto> {
         try {
             abrirBanco();
             getStmt().executeUpdate(
-                    "INSERT INTO produtos (codigo, nome, fabricante) VALUES ('"
+                    "INSERT INTO produtos (codigo, nome, fabricante, valor) VALUES ('"
                     + produto.getCodigo() + "', '" + produto.getNome()
-                    + "', '" + produto.getFabricante() + "' )");
+                    + "', '" + produto.getFabricante() + "', '" + produto.getValor() + "' )");
             fecharBanco();
         } catch (Exception e) {
             throw new HumQueCaroException("Erro no adiciona de Produto "
@@ -49,6 +49,7 @@ public class ProdutoDAO extends DAO<Produto> {
                     + produto.getCodigoProduto() + "', codigo = '"
                     + produto.getCodigo() + "', nome ='" + produto.getNome()
                     + "', fabricante ='" + produto.getFabricante()
+                    + "', valor ='" + produto.getValor()
                     + "' WHERE codigo like '" + produto.getCodigo() + "'");
             fecharBanco();
         } catch (Exception e) {
