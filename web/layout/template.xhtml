@@ -10,16 +10,21 @@
         <link rel="shortcut icon" href="/imagens/favicon.ico"/>
         <style type="text/css">
             body {background-color: #eeeeee; font-size: 12px}
-
         </style> 
     </h:head>
     <h:body>
+
         <div align="center">
             <p:layout style="min-width:1020px;max-width:1020px;min-height:600px">  
-                <p:layoutUnit position="north" size="105">  
-                    <img src="./resources/imagens/banner.png" alt="humQueCaroComNotas"/>
-
-                    <h:graphicImage/>
+                <p:layoutUnit position="north" size="110">  
+                    <h:form>
+                        <img src="./resources/imagens/banner.png" alt="humQueCaroComNotas"/>
+                        <p:menuButton value="Config."  >
+                            <p:menuitem value="Alterar usuário" outcome="/alteraUsuario.xhtml"/>
+                            <p:menuitem value="Remover usuário"  outcome="/removeUsuario.xhtml"/>
+                            <p:menuitem value="Sair"  outcome="/index.xhtml"/>
+                        </p:menuButton>
+                    </h:form>
                 </p:layoutUnit>  
 
                 <p:layoutUnit position="west" size="260">  
@@ -27,37 +32,26 @@
                         <h:form>
                             <h3 style="margin-top: 0"> Menu HumQueCaro </h3>
 
-                            <p:panelGrid columns="2">
-                                <p:outputLabel  for="alterar" value="Alterar Usuário: "/> 
-                                <p:button id="alterar" value="Alterar" outcome="/alteraUsuario.xhtml"/>
+                            <h:form>
+                                <p:growl id="messages" showDetail="true"/>
 
-                                <p:outputLabel  for="remover" value="Remover Usuário: "/> 
-                                <p:button id="remover" value="Remover" outcome="/removeUsuario.xhtml"/>
+                                <p:panelMenu style="width:250px">
+                                    <p:submenu label="Clientes" >
+                                        <p:menuitem value="Cadastrar" outcome="/adicionaCliente.xhtml"/>
+                                        <p:menuitem value="Alterar" outcome="/alteraCliente.xhtml"/>
+                                        <p:menuitem value="Remover" outcome="/removeCliente.xhtml"/>
+                                        <p:menuitem value="Listar" outcome="/listClientes" />
+                                    </p:submenu>
+                                    <p:submenu label="Produtos" >
+                                        <p:menuitem value="Cadastrar" outcome="/adicionaProduto.xhtml"/>
+                                        <p:menuitem value="Alterar" outcome="/alteraProduto.xhtml"/>
+                                        <p:menuitem value="Remover" outcome="/removeProduto.xhtml"/>
+                                        <p:menuitem value="Listar" outcome="/listProdutos"/>
+                                    </p:submenu>
+                                </p:panelMenu>
 
-                                <p:outputLabel  for="addCliente" value="Cadastrar Cliente: "/> 
-                                <p:button id="addCliente" value="Cadastrar" outcome="/adicionaCliente.xhtml"/>
+                            </h:form>
 
-                                <p:outputLabel  for="listClientes" value="Clientes: "/> 
-                                <p:button id="listClientes" value="Listar" outcome="/listClientes.xhtml"/>
-
-                                <p:outputLabel  for="altCliente" value="Alterar Cliente: "/> 
-                                <p:button id="altCliente" value="Alterar" outcome="/alteraCliente.xhtml"/>
-
-                                <p:outputLabel  for="remCliente" value="Remover Cliente: "/> 
-                                <p:button id="remCliente" value="Remover" outcome="/removeCliente.xhtml"/>
-
-                                <p:outputLabel  for="addProduto" value="Cadastrar Produto: "/> 
-                                <p:button id="addProduto" value="Cadastrar" outcome="/adicionaProduto.xhtml"/>
-
-                                <p:outputLabel  for="listProdutos" value="Produtos: "/> 
-                                <p:button id="listProdutos" value="Listar" outcome="/listProdutos.xhtml"/>
-
-                                <p:outputLabel  for="altProduto" value="Alterar Produto: "/> 
-                                <p:button id="altProduto" value="Alterar" outcome="/alteraProduto.xhtml"/>
-
-                                <p:outputLabel  for="remProduto" value="Remover Produto: "/> 
-                                <p:button id="remProduto" value="Remover" outcome="/removeProduto.xhtml"/>
-                            </p:panelGrid>
                         </h:form>
                     </ui:insert>
                 </p:layoutUnit>  
