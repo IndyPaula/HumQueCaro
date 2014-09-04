@@ -3,64 +3,70 @@ package ifpb.monteiro.ads.pd.gerenciadores;
 import ifpb.monteiro.ads.pd.beans.Cliente;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachada.FachadaBD;
+import ifpb.monteiro.ads.pd.fachadaIF.FachadaBancoIF;
+import java.util.List;
 
 public class GerenciadorCliente implements GerenciadorClienteIF {
 
-	private FachadaBD cliDAO;
+    private FachadaBancoIF cliDAO;
 
-	public GerenciadorCliente() {
-		cliDAO = new FachadaBD();
-	}
+    public GerenciadorCliente() {
+        cliDAO = new FachadaBD();
+    }
 
-	@Override
-	public void adicionaCliente(String nome, String telefone)
-			throws HumQueCaroException {
-		if (cliDAO.buscaCliente(telefone) == null
-				&& verificaAtributos(nome, telefone)) {
-			cliDAO.addCliente(new Cliente(nome, telefone));
-		} else {
-			throw new HumQueCaroException("Cliente já cadastrado");
-		}
-	}
+    @Override
+    public void adicionaCliente(String nome, String telefone)
+            throws HumQueCaroException {
+        if (cliDAO.buscaCliente(telefone) == null
+                && verificaAtributos(nome, telefone)) {
+            cliDAO.addCliente(new Cliente(nome, telefone));
+        } else {
+            throw new HumQueCaroException("Cliente jï¿½ cadastrado");
+        }
+    }
 
-	public boolean verificaAtributos(String nome, String telefone)
-			throws HumQueCaroException {
-		if (nome == null || nome.equals("")) {
-			throw new HumQueCaroException("Campo nome do cliente inválido");
-		}
-		if (telefone == null || telefone.equals("") || telefone.length() != 11) {
-			throw new HumQueCaroException("Campo telefone inválido");
-		}
-		return true;
+    public boolean verificaAtributos(String nome, String telefone)
+            throws HumQueCaroException {
+        if (nome == null || nome.equals("")) {
+            throw new HumQueCaroException("Campo nome do cliente invï¿½lido");
+        }
+        if (telefone == null || telefone.equals("") || telefone.length() != 11) {
+            throw new HumQueCaroException("Campo telefone invï¿½lido");
+        }
+        return true;
 
-	}
+    }
 
-	@Override
-	public void alteraCliente(String telefone, String atributo, String novoValor)
-			throws HumQueCaroException {
-		cliDAO.alteraCliente(telefone, atributo, novoValor);
-	}
+    @Override
+    public void alteraCliente(String telefone, String atributo, String novoValor)
+            throws HumQueCaroException {
+        cliDAO.alteraCliente(telefone, atributo, novoValor);
+    }
 
-	@Override
-	public void removeCliente(String telefone) throws HumQueCaroException {
-		if (telefone == null || telefone.equals("")) {
-			throw new HumQueCaroException("Campo telefone inválido");
-		}
-		if (buscaCliente(telefone) != null) {
-			cliDAO.removeCliente(new Cliente(null, telefone));
-		} else {
-			throw new HumQueCaroException("Cliente não cadastrado");
-		}
-	}
+    @Override
+    public void removeCliente(String telefone) throws HumQueCaroException {
+        if (telefone == null || telefone.equals("")) {
+            throw new HumQueCaroException("Campo telefone invï¿½lido");
+        }
+        if (buscaCliente(telefone) != null) {
+            cliDAO.removeCliente(new Cliente(null, telefone));
+        } else {
+            throw new HumQueCaroException("Cliente nï¿½o cadastrado");
+        }
+    }
 
-	@Override
-	public Cliente buscaCliente(String telefone) throws HumQueCaroException {
-		Cliente cliente = cliDAO.buscaCliente(telefone);
-		if (cliente != null) {
-			return cliente;
-		} else {
-			throw new HumQueCaroException("Cliente naõ cadastrado");
-		}
-	}
+    @Override
+    public Cliente buscaCliente(String telefone) throws HumQueCaroException {
+        Cliente cliente = cliDAO.buscaCliente(telefone);
+        if (cliente != null) {
+            return cliente;
+        } else {
+            throw new HumQueCaroException("Cliente naï¿½ cadastrado");
+        }
+    }
 
+    @Override
+    public List<Cliente> getClientes() throws HumQueCaroException {
+        return cliDAO.getClientes();
+    }
 }
