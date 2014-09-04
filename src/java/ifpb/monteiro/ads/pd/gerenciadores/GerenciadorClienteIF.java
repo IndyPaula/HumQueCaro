@@ -2,6 +2,7 @@ package ifpb.monteiro.ads.pd.gerenciadores;
 
 import ifpb.monteiro.ads.pd.beans.Cliente;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
+import java.util.List;
 
 public interface GerenciadorClienteIF {
 
@@ -15,4 +16,6 @@ public interface GerenciadorClienteIF {
 
 	public Cliente buscaCliente(String telefone) throws HumQueCaroException;
 
+        public List<Cliente> getClientes() throws HumQueCaroException;
+        
 }
