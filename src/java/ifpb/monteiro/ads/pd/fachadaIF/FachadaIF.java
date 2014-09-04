@@ -264,4 +264,14 @@ public interface FachadaIF {
          */
         public List<Pedido> getPedidos() throws HumQueCaroException;
 
+        
+        /**
+         * Busca o pedido cadastrado no sistema. 
+         * 
+         * @param telefone
+         * @return Pedido
+         * @throws HumQueCaroException 
+         */
+	public Pedido buscaPedido(String telefone) throws HumQueCaroException;
+        
 }
