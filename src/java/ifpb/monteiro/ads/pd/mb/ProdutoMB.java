@@ -4,11 +4,9 @@
  */
 package ifpb.monteiro.ads.pd.mb;
 
-import ifpb.monteiro.ads.pd.DAO.ProdutoDAO;
 import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachada.Fachada;
-import ifpb.monteiro.ads.pd.fachada.FachadaBD;
 import ifpb.monteiro.ads.pd.fachadaIF.FachadaIF;
 import ifpb.monteiro.ads.pd.messages.Messages;
 import javax.faces.bean.ManagedBean;
@@ -19,12 +17,11 @@ import javax.faces.model.ListDataModel;
 
 @SessionScoped
 @ManagedBean(name = "ProdutoMB")
-public class ProdutoMB implements java.io.Serializable {
+public class ProdutoMB {
 
     FachadaIF fachada;
     private Produto produto;
     private DataModel model;
-    ProdutoDAO pDAO;
 
     public ProdutoMB() {
         fachada = new Fachada();
@@ -43,12 +40,8 @@ public class ProdutoMB implements java.io.Serializable {
         this.produto = produto;
     }
 
-    public DataModel todosProdutos() {
-        return model;
-    }
-
     public DataModel getTodosProdutos() throws HumQueCaroException {
-        model = new ListDataModel(pDAO.getProdutos());
+        model = new ListDataModel(fachada.getProdutos());
         return model;
     }
 
