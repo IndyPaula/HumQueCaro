@@ -68,6 +68,9 @@ public class FachadaBD implements FachadaBancoIF {
         Validacao.validaEntrada(atributo, "Campo atributo inválido");
         Validacao.validaEntrada(novoValor, "Campo novoValor inválido");
         Produto produto = pDAO.procura(codigo);
+        if (produto==null) {
+            throw new HumQueCaroException("Produto não cadastrado");
+        }
         if (atributo.equals("Nome")) {
             produto.setNome(novoValor);
         } else if (atributo.equals("Fabricante")) {
