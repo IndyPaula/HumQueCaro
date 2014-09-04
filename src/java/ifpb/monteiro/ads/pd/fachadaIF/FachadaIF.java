@@ -164,7 +164,7 @@ public interface FachadaIF {
          * @return List<Produto>
          *             Lista com produtos cadastrados no sistema.
          */
-        public List<Produto> getProdutos();
+        public List<Produto> getProdutos() throws HumQueCaroException;
 
 	/**
 	 * Esse metodo adiciona Cliente.
@@ -225,7 +225,7 @@ public interface FachadaIF {
          * @return List<Cliente>
          *            Lista com clientes cadastrados no sistema.
          */
-        public List<Cliente> getClientes();
+        public List<Cliente> getClientes() throws HumQueCaroException;
         
         /**
          * Esse metodo adcionira um pedido ao sistema.
@@ -262,6 +262,6 @@ public interface FachadaIF {
          * * @return List<Pedido>
          *            Lista de pedidos com status Pedente.
          */
-        public List<Pedido> getPedidos();
+        public List<Pedido> getPedidos() throws HumQueCaroException;
 
 }
