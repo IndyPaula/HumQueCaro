@@ -27,7 +27,7 @@ public interface FachadaBancoIF{
 
 	void alteraProduto (String codigo, String atributo, String novoValor) throws HumQueCaroException;
         
-        List<Produto> getProdutos ();
+        List<Produto> getProdutos () throws HumQueCaroException;
 
 	void addCliente (Cliente cliente) throws HumQueCaroException;
 
@@ -37,9 +37,9 @@ public interface FachadaBancoIF{
 
 	void alteraCliente (String telefone, String atributo, String novoValor) throws HumQueCaroException;
         
-        List<Cliente> getClientes ();
+        List<Cliente> getClientes () throws HumQueCaroException;
 
         void addPedidos (Pedido pedido) throws HumQueCaroException;
         
-        List<Pedido> getPedidos ();
+        List<Pedido> getPedidos () throws HumQueCaroException;
 }
