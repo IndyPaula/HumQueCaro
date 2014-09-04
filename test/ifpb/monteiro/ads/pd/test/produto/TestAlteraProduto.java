@@ -6,6 +6,7 @@ package ifpb.monteiro.ads.pd.test.produto;
 
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachada.Fachada;
+import ifpb.monteiro.ads.pd.fachadaIF.FachadaIF;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +18,7 @@ import static org.junit.Assert.*;
  */
 public class TestAlteraProduto {
 
-    Fachada fachada;
+    FachadaIF fachada;
 
     public TestAlteraProduto() {
     }
@@ -34,17 +35,17 @@ public class TestAlteraProduto {
     @Test
     public void testAlteraProduto() {
         try {
-            fachada.alteraProduto("001", "Nome", "X-Milho");
+            fachada.alteraProduto("01", "Nome", "X-Milho");
         } catch (HumQueCaroException ex) {
             fail("Erro em adicionar Produto: " + ex.getMessage());
         }
         try {
-            fachada.alteraProduto("002", "Fabricante", "Maria Zefinha");
+            fachada.alteraProduto("02", "Fabricante", "Maria Zefinha");
         } catch (HumQueCaroException ex) {
             fail("Erro em adicionar Produto: " + ex.getMessage());
         }
         try {
-            fachada.alteraProduto("123123", "Nome", "Pippos");
+            fachada.alteraProduto("03", "Nome", "Pippos");
         } catch (HumQueCaroException ex) {
             fail("Erro em adicionar Produto: " + ex.getMessage());
         }
@@ -53,37 +54,42 @@ public class TestAlteraProduto {
     @Test
     public void testAlteraProdutoInvalido() {
         try {
-            fachada.alteraProduto("123123", "nooome", "Pippos");
+            fachada.alteraProduto("04", "nooome", "Pippos");
             fail("Erro ao adicionar Produto");
         } catch (HumQueCaroException ex) {
         }
         try {
-            fachada.alteraProduto("", "nooome", "Pippos");
+            fachada.alteraProduto("04", "Fabriicantee", "Fab2");
             fail("Erro ao adicionar Produto");
         } catch (HumQueCaroException ex) {
         }
         try {
-            fachada.alteraProduto(null, "000", "fab");
+            fachada.alteraProduto("", "Nome", "Pippos");
             fail("Erro ao adicionar Produto");
         } catch (HumQueCaroException ex) {
         }
         try {
-            fachada.alteraProduto("003", "", "fab");
+            fachada.alteraProduto(null, "Nome", "fab");
             fail("Erro ao adicionar Produto");
         } catch (HumQueCaroException ex) {
         }
         try {
-            fachada.alteraProduto("002", null, "fab");
+            fachada.alteraProduto("03", "", "fab");
             fail("Erro ao adicionar Produto");
         } catch (HumQueCaroException ex) {
         }
         try {
-            fachada.alteraProduto("000", "Fabricante", "");
+            fachada.alteraProduto("02", null, "fab");
             fail("Erro ao adicionar Produto");
         } catch (HumQueCaroException ex) {
         }
         try {
-            fachada.alteraProduto("001", "Nome", null);
+            fachada.alteraProduto("04", "Fabricante", "");
+            fail("Erro ao adicionar Produto");
+        } catch (HumQueCaroException ex) {
+        }
+        try {
+            fachada.alteraProduto("01", "Nome", null);
             fail("Erro ao adicionar Produto");
         } catch (HumQueCaroException ex) {
         }

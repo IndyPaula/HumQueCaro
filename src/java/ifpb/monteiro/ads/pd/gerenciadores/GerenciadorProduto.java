@@ -46,7 +46,12 @@ public class GerenciadorProduto implements GerenciadorProdutoIF {
 
     @Override
     public Produto buscaProduto(String codigo) throws HumQueCaroException {
-        return pDAO.buscaProduto(codigo);
+        Produto prod = pDAO.buscaProduto(codigo);
+        if (prod != null) {
+            return prod;
+        } else {
+            throw new HumQueCaroException("Produto não encontrado");
+        }
     }
 
     @Override

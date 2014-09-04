@@ -6,6 +6,7 @@ package ifpb.monteiro.ads.pd.test.produto;
 
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachada.Fachada;
+import ifpb.monteiro.ads.pd.fachadaIF.FachadaIF;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +18,7 @@ import static org.junit.Assert.*;
  */
 public class TestAdicionaProduto {
 
-    Fachada fachada;
+    FachadaIF fachada;
 
     public TestAdicionaProduto() {
     }
@@ -34,22 +35,22 @@ public class TestAdicionaProduto {
     @Test
     public void testAddProduto() {
         try {
-            fachada.adicionaProduto("Produto", "001", "fabricante", "3.00");
+            fachada.adicionaProduto("Produto1", "01", "Fabricante1", "2.00");
         } catch (HumQueCaroException ex) {
             fail("Erro em adicionar Produto: " + ex.getMessage());
         }
         try {
-            fachada.adicionaProduto("Coxinha", "002", "Maria da Coxinha", "3.00");
+            fachada.adicionaProduto("Produto2", "02", "Fabricante2", "2.00");
         } catch (HumQueCaroException ex) {
             fail("Erro em adicionar Produto: " + ex.getMessage());
         }
         try {
-            fachada.adicionaProduto("Hamburguer", "003", "Neguinha", "2.00");
+            fachada.adicionaProduto("Produto3", "03", "Fabricante3", "2.00");
         } catch (HumQueCaroException ex) {
             fail("Erro em adicionar Produto: " + ex.getMessage());
         }
         try {
-            fachada.adicionaProduto("Roscovo", "004", "Sizenando", "2.00");
+            fachada.adicionaProduto("Produto4", "04", "Fabricante4", "2.00");
         } catch (HumQueCaroException ex) {
             fail("Erro em adicionar Produto: " + ex.getMessage());
         }
@@ -84,6 +85,16 @@ public class TestAdicionaProduto {
         }
         try {
             fachada.adicionaProduto("Produto", "codigoProduto", null, "valor");
+            fail("Erro ao adicionar Produto");
+        } catch (HumQueCaroException ex) {
+        }
+        try {
+            fachada.adicionaProduto("Produto", "codigoProduto", "fabricante", "");
+            fail("Erro ao adicionar Produto");
+        } catch (HumQueCaroException ex) {
+        }
+        try {
+            fachada.adicionaProduto("Produto", "codigoProduto", "fabricante", null);
             fail("Erro ao adicionar Produto");
         } catch (HumQueCaroException ex) {
         }
