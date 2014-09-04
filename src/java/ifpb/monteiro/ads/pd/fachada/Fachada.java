@@ -8,6 +8,8 @@ import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachadaIF.FachadaIF;
 import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorCliente;
 import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorClienteIF;
+import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorPedido;
+import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorPedidoIF;
 import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorProduto;
 import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorProdutoIF;
 import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorUsuario;
@@ -19,6 +21,7 @@ public class Fachada implements FachadaIF {
     GerenciadorProdutoIF gProduto = new GerenciadorProduto();
     GerenciadorUsuarioIF gUsuario = new GerenciadorUsuario();
     GerenciadorClienteIF gCliente = new GerenciadorCliente();
+    GerenciadorPedidoIF gPedido = new GerenciadorPedido();
 
     @Override
     public void adicionaUsuario(String email, String senha, String nome)
@@ -101,17 +104,23 @@ public class Fachada implements FachadaIF {
 
     @Override
     public void addPedido(String telefoneCliente, String codigoProduto) throws HumQueCaroException {
+        gPedido.addPedido(telefoneCliente, codigoProduto);
         
     }
 
     @Override
     public void setStatusPedido(String codigo, String novoStatus) throws HumQueCaroException {
-        
+        gPedido.setStatusPedido(codigo, novoStatus);
     }
 
     @Override
     public List<Pedido> getPedidos() throws HumQueCaroException {
-        return null;
+        return gPedido.getPedidos();
+    }
+
+    @Override
+    public Pedido buscaPedido(String codigo) throws HumQueCaroException {
+        return gPedido.buscaPedido(codigo);
     }
 
 }

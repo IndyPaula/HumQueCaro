@@ -2,6 +2,7 @@ package ifpb.monteiro.ads.pd.fachada;
 
 import ifpb.monteiro.ads.pd.DAO.ClienteDAO;
 import ifpb.monteiro.ads.pd.DAO.DAO;
+import ifpb.monteiro.ads.pd.DAO.PedidoDAO;
 import ifpb.monteiro.ads.pd.DAO.ProdutoDAO;
 import ifpb.monteiro.ads.pd.DAO.UsuarioDAO;
 import ifpb.monteiro.ads.pd.beans.Cliente;
@@ -18,11 +19,13 @@ public class FachadaBD implements FachadaBancoIF {
     private DAO<Cliente> cliDAO;
     private DAO<Produto> pDAO;
     private DAO<Usuario> pUsuario;
+    private DAO<Pedido> pedidoDAO;
 
     public FachadaBD() {
         cliDAO = new ClienteDAO();
         pDAO = new ProdutoDAO();
         pUsuario = new UsuarioDAO();
+        pedidoDAO = new PedidoDAO();
     }
 
     @Override
@@ -68,7 +71,7 @@ public class FachadaBD implements FachadaBancoIF {
         Validacao.validaEntrada(atributo, "Campo atributo inválido");
         Validacao.validaEntrada(novoValor, "Campo novoValor inválido");
         Produto produto = pDAO.procura(codigo);
-        if (produto==null) {
+        if (produto == null) {
             throw new HumQueCaroException("Produto não cadastrado");
         }
         if (atributo.equals("Nome")) {
@@ -141,10 +144,20 @@ public class FachadaBD implements FachadaBancoIF {
 
     @Override
     public void addPedidos(Pedido pedido) throws HumQueCaroException {
+        pedidoDAO.adiciona(pedido);
+    }
+
+    @Override
+    public void pedidoStatus(String codigo, String novoStatus) throws HumQueCaroException {
     }
 
     @Override
     public List<Pedido> getPedidos() throws HumQueCaroException {
-        return null;
+        return pedidoDAO.getAll();
+    }
+
+    @Override
+    public Pedido buscaPedido(String codigoPedido) throws HumQueCaroException {
+        return pedidoDAO.procura(codigoPedido);
     }
 }
