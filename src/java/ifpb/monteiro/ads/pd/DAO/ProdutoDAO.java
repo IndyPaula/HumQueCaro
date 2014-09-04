@@ -31,12 +31,17 @@ public class ProdutoDAO extends DAO<Produto> {
 
     @Override
     public void remove(Produto produto) throws HumQueCaroException {
+        Produto p = procura(produto.getCodigo());
         try {
-            abrirBanco();
-            getStmt().execute(
-                    "DELETE FROM produtos WHERE codigo = '" + produto.getCodigo()
-                    + "' ");
-            fecharBanco();
+            if (p != null) {
+                abrirBanco();
+                getStmt().execute(
+                        "DELETE FROM produtos WHERE codigo = '" + produto.getCodigo()
+                        + "' ");
+                fecharBanco();
+            } else {
+                throw new HumQueCaroException("Produto não encontrado");
+            }
         } catch (Exception e) {
             throw new HumQueCaroException("Erro no remove de Produto "
                     + e.getMessage());
