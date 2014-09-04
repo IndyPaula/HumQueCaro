@@ -133,7 +133,7 @@ public class FachadaBD implements FachadaBancoIF {
 
     @Override
     public List<Cliente> getClientes() throws HumQueCaroException {
-        return null;
+        return cliDAO.getAll();
     }
 
     @Override
