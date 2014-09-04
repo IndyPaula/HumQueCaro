@@ -2,22 +2,26 @@ package ifpb.monteiro.ads.pd.mb;
 
 import ifpb.monteiro.ads.pd.beans.Cliente;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
-import ifpb.monteiro.ads.pd.fachada.FachadaBD;
+import ifpb.monteiro.ads.pd.fachada.Fachada;
+import ifpb.monteiro.ads.pd.fachadaIF.FachadaIF;
 import ifpb.monteiro.ads.pd.messages.Messages;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 
 @SessionScoped
 @ManagedBean(name = "ClienteMB")
 public class ClienteMB {
 
-    FachadaBD fachada;
+    FachadaIF fachada;
     private Cliente cliente;
+    private DataModel model;
 
     public ClienteMB() {
         cliente = new Cliente();
-        fachada = new FachadaBD();
+        fachada = new Fachada();
     }
 
     protected void novo() {
@@ -32,9 +36,14 @@ public class ClienteMB {
         this.cliente = cliente;
     }
 
+    public DataModel getTodosClientes() throws HumQueCaroException {
+        model = new ListDataModel(fachada.getClientes());
+        return model;
+    }
+
     public String cadastraCliente(ActionEvent actionEvent) {
         try {
-            fachada.addCliente(cliente);
+            fachada.adicionaCliente(cliente.getNome(), cliente.getTelefone());
             Messages.mensInfo("Cliente " + cliente.getNome() + " cadastrado(a) com sucesso");
         } catch (HumQueCaroException ex) {
             Messages.mensInfo("Cliente não cadastrado" + ex.getMessage());
@@ -42,7 +51,7 @@ public class ClienteMB {
         novo();
         return "home.xhtml";
     }
-    
+
     public String alteraCliente(ActionEvent actionEvent) {
         try {
             Cliente clienteTemp = fachada.buscaCliente(cliente.getTelefone());
@@ -63,7 +72,7 @@ public class ClienteMB {
         try {
             Cliente clienteTemp = fachada.buscaCliente(cliente.getTelefone());
             if (clienteTemp != null) {
-                fachada.removeCliente(clienteTemp);
+                fachada.removeCliente(clienteTemp.getTelefone());
                 Messages.mensInfo("Cliente " + clienteTemp.getNome() + " removido(a) com sucesso");
             } else {
                 Messages.mensInfo("Cliente não encontrado");
