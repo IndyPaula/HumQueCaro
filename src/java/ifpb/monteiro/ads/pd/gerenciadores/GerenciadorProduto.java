@@ -5,6 +5,7 @@ import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachada.FachadaBD;
 import ifpb.monteiro.ads.pd.fachadaIF.FachadaBancoIF;
 import ifpb.monteiro.ads.pd.validacao.Validacao;
+import java.util.List;
 
 public class GerenciadorProduto implements GerenciadorProdutoIF {
 
@@ -46,5 +47,10 @@ public class GerenciadorProduto implements GerenciadorProdutoIF {
     @Override
     public Produto buscaProduto(String codigo) throws HumQueCaroException {
         return pDAO.buscaProduto(codigo);
+    }
+
+    @Override
+    public List<Produto> getProdutos() throws HumQueCaroException {
+        return pDAO.getProdutos();
     }
 }
