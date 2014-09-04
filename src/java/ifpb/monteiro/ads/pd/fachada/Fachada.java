@@ -1,6 +1,7 @@
 package ifpb.monteiro.ads.pd.fachada;
 
 import ifpb.monteiro.ads.pd.beans.Cliente;
+import ifpb.monteiro.ads.pd.beans.Pedido;
 import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.beans.Usuario;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
@@ -11,6 +12,7 @@ import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorProduto;
 import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorProdutoIF;
 import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorUsuario;
 import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorUsuarioIF;
+import java.util.List;
 
 public class Fachada implements FachadaIF {
 
@@ -64,8 +66,8 @@ public class Fachada implements FachadaIF {
     }
 
     @Override
-    public void getProdutos() {
-
+    public List<Produto> getProdutos() {
+        return null;
     }
 
     @Override
@@ -93,23 +95,23 @@ public class Fachada implements FachadaIF {
     }
 
     @Override
-    public void getClientes() {
-
+    public List<Cliente> getClientes() {
+        return null;
     }
 
     @Override
     public void addPedido(String telefoneCliente, String codigoProduto) throws HumQueCaroException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void setStatusPedido(String codigo, String novoStatus) throws HumQueCaroException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
-    public void getPedidos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Pedido> getPedidos() {
+        return null;
     }
 
 }

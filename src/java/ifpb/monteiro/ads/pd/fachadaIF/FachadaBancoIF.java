@@ -5,6 +5,7 @@ import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.beans.Usuario;
 import ifpb.monteiro.ads.pd.beans.Pedido;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
+import java.util.List;
 
 
 
@@ -26,7 +27,7 @@ public interface FachadaBancoIF{
 
 	void alteraProduto (String codigo, String atributo, String novoValor) throws HumQueCaroException;
         
-        void getProdutos ();
+        List<Produto> getProdutos ();
 
 	void addCliente (Cliente cliente) throws HumQueCaroException;
 
@@ -36,9 +37,9 @@ public interface FachadaBancoIF{
 
 	void alteraCliente (String telefone, String atributo, String novoValor) throws HumQueCaroException;
         
-        void getClientes ();
+        List<Cliente> getClientes ();
 
         void addPedidos (Pedido pedido) throws HumQueCaroException;
         
-        void getPedidos ();
+        List<Pedido> getPedidos ();
 }

@@ -11,6 +11,7 @@ import ifpb.monteiro.ads.pd.beans.Usuario;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachadaIF.FachadaBancoIF;
 import ifpb.monteiro.ads.pd.validacao.Validacao;
+import java.util.List;
 
 public class FachadaBD implements FachadaBancoIF {
 
@@ -80,8 +81,8 @@ public class FachadaBD implements FachadaBancoIF {
     }
 
     @Override
-    public void getProdutos() {
-
+    public List<Produto> getProdutos() {
+        return null;
     }
 
     @Override
@@ -131,8 +132,8 @@ public class FachadaBD implements FachadaBancoIF {
     }
 
     @Override
-    public void getClientes() {
-
+    public List<Cliente> getClientes() {
+        return null;
     }
 
     @Override
@@ -141,7 +142,7 @@ public class FachadaBD implements FachadaBancoIF {
     }
 
     @Override
-    public void getPedidos() {
-
+    public List<Pedido> getPedidos() {
+        return null;
     }
 }

@@ -1,9 +1,11 @@
 package ifpb.monteiro.ads.pd.fachadaIF;
 
 import ifpb.monteiro.ads.pd.beans.Cliente;
+import ifpb.monteiro.ads.pd.beans.Pedido;
 import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.beans.Usuario;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
+import java.util.List;
 
 /**
  Instituto Federal de Educacao, Ciencia e Tecnologia da Paraiba
@@ -158,8 +160,11 @@ public interface FachadaIF {
         
         /**
          * Esse método retornará todos os produtos cadastrados no banco.
+         * 
+         * @return List<Produto>
+         *             Lista com produtos cadastrados no sistema.
          */
-        public void getProdutos();
+        public List<Produto> getProdutos();
 
 	/**
 	 * Esse metodo adiciona Cliente.
@@ -216,8 +221,11 @@ public interface FachadaIF {
         
         /**
          * Esse metodo retornara todos os clientes cadastrados no banco.
+         * 
+         * @return List<Cliente>
+         *            Lista com clientes cadastrados no sistema.
          */
-        public void getClientes();
+        public List<Cliente> getClientes();
         
         /**
          * Esse metodo adcionira um pedido ao sistema.
@@ -250,7 +258,10 @@ public interface FachadaIF {
         
         /**
          * Esse metodo retornara todos os pedidos com status pedentes do sistema.
+         * 
+         * * @return List<Pedido>
+         *            Lista de pedidos com status Pedente.
          */
-        public void getPedidos();
+        public List<Pedido> getPedidos();
 
 }
