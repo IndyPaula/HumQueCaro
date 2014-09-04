@@ -34,10 +34,10 @@
                             <p:message for="email" id="msgEmail" display="icon"/>
 
                             <h:outputLabel for="senha" value="Senha: *" />  
-                            <p:inputText id="senha" value="#{usuarioMB.usuario.senha}" size="25" required="true" requiredMessage="Digite o senha do Usuário">  
+                            <p:password id="senha" value="#{usuarioMB.usuario.senha}" size="25" required="true" requiredMessage="Digite o senha do Usuário">  
                                 <f:validateLength minimum="2" />  
                                 <p:ajax update="msgSenha" event="keyup" />
-                            </p:inputText>  
+                            </p:password>  
                             <p:message for="senha" id="msgSenha" display="icon"/>
                         </h:panelGrid>
                         <p:spacer height="10" />
