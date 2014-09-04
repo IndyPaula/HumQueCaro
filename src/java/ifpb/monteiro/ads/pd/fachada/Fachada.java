@@ -66,8 +66,8 @@ public class Fachada implements FachadaIF {
     }
 
     @Override
-    public List<Produto> getProdutos() {
-        return null;
+    public List<Produto> getProdutos() throws HumQueCaroException {
+        return gProduto.getProdutos();
     }
 
     @Override
@@ -95,8 +95,8 @@ public class Fachada implements FachadaIF {
     }
 
     @Override
-    public List<Cliente> getClientes() {
-        return null;
+    public List<Cliente> getClientes() throws HumQueCaroException {
+        return gCliente.getClientes();
     }
 
     @Override
@@ -110,7 +110,7 @@ public class Fachada implements FachadaIF {
     }
 
     @Override
-    public List<Pedido> getPedidos() {
+    public List<Pedido> getPedidos() throws HumQueCaroException {
         return null;
     }
 
