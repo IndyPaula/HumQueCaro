@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<html  xmlns="http://www.w3.org/1999/xhtml"  
+       xmlns:h="http://java.sun.com/jsf/html"  
+       xmlns:f="http://java.sun.com/jsf/core"  
+       xmlns:ui="http://java.sun.com/jsf/facelets"  
+       xmlns:p="http://primefaces.org/ui">
+
+    <h:body>
+
+        <ui:composition template="./layout/template.xhtml">
+            <ui:define name="content">
+
+                <h:form id="form"> 
+                    <p:dataTable id="dataTable" var="produto" value="#{ProdutoMB.todosProdutos}"  
+                                 paginator="true" rows="10"  
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                                 rowsPerPageTemplate="5,10,15" emptyMessage="Nenhum Registro Encontrado!" rowStyleClass="#{empty rowIx or rowIx mod 2 ne 0 ? 'even-row' : 'odd-row'}" rowIndexVar="rowIx">  
+                        <f:facet name="header">  
+                            Produtos Cadastrados 
+                        </f:facet>  
+
+                        <p:column filterStyle="max-width: 40px; min-width: 130px;" filterBy="#{produto.nome}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Produto" />  
+                            </f:facet>
+                            <h:outputText value="#{produto.nome}" />  
+                        </p:column>
+
+                        <p:column filterStyle="max-width: 40px; min-width: 130px; " filterBy="#{produto.codigo}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Código" />  
+                            </f:facet>  
+                            <h:outputText value="#{produto.codigo}" /> 
+                        </p:column>
+
+                        <p:column filterStyle="max-width: 40px; min-width: 130px; " filterBy="#{produto.fabricante}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Fabricante" />  
+                            </f:facet>  
+                            <h:outputText value="#{produto.fabricante}" /> 
+                        </p:column>
+
+                        <p:column filterStyle="max-width: 40px; min-width: 130px; " filterBy="#{produto.valor}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Valor" />  
+                            </f:facet>  
+                            <h:outputText value="#{produto.valor}" /> 
+                        </p:column>
+
+                    </p:dataTable> 
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
+
