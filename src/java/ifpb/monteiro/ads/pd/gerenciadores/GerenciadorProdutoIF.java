@@ -2,6 +2,7 @@ package ifpb.monteiro.ads.pd.gerenciadores;
 
 import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
+import java.util.List;
 
 public interface GerenciadorProdutoIF {
 	
@@ -14,4 +15,6 @@ public interface GerenciadorProdutoIF {
 	public void removeProduto(String codigo) throws HumQueCaroException;
 	
 	public Produto buscaProduto(String codigo) throws HumQueCaroException;
+        
+        public List<Produto> getProdutos() throws HumQueCaroException;
 }
