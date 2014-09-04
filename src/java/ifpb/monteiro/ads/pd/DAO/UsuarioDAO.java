@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import ifpb.monteiro.ads.pd.beans.Usuario;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
+import java.util.List;
 
 public class UsuarioDAO extends DAO<Usuario> {
 
@@ -73,6 +74,11 @@ public class UsuarioDAO extends DAO<Usuario> {
             throw new HumQueCaroException(" Erro ao procurar uma Usuario - "
                     + e.getMessage());
         }
+    }
+
+    @Override
+    public List<Usuario> getAll() throws HumQueCaroException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

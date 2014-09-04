@@ -6,6 +6,7 @@ import ifpb.monteiro.ads.pd.persistenciaSQL.PersistenciaSQL;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 public abstract class DAO<T> {
 	private Connection conexao;
@@ -44,5 +45,7 @@ public abstract class DAO<T> {
 	public abstract void altera(T algo) throws HumQueCaroException;
 
 	public abstract T procura(String algo) throws HumQueCaroException;
+        
+        public abstract List<T> getAll() throws HumQueCaroException;
 
 }

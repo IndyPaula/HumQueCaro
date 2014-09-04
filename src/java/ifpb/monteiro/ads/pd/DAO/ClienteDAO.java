@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import ifpb.monteiro.ads.pd.beans.Cliente;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
+import java.util.List;
 
 public class ClienteDAO extends DAO<Cliente> {
 
@@ -20,7 +21,7 @@ public class ClienteDAO extends DAO<Cliente> {
 							+ cli.getNome() + "','" + cli.getTelefone() + "')");
 			fecharBanco();
 		} catch (SQLException e) {
-			throw new HumQueCaroException("Cliente não adicionado"
+			throw new HumQueCaroException("Cliente nï¿½o adicionado"
 					+ e.getMessage());
 		}
 
@@ -35,7 +36,7 @@ public class ClienteDAO extends DAO<Cliente> {
 							+ cli.getTelefone() + "'");
 			fecharBanco();
 		} catch (SQLException e) {
-			throw new HumQueCaroException("Cliente não removido"
+			throw new HumQueCaroException("Cliente nï¿½o removido"
 					+ e.getMessage());
 		}
 	}
@@ -52,7 +53,7 @@ public class ClienteDAO extends DAO<Cliente> {
 							+ "'");
 			fecharBanco();
 		} catch (SQLException e) {
-			throw new HumQueCaroException("Cliente não alterado"
+			throw new HumQueCaroException("Cliente nï¿½o alterado"
 					+ e.getMessage());
 		}
 
@@ -77,9 +78,14 @@ public class ClienteDAO extends DAO<Cliente> {
 			fecharBanco();
 			return cli;
 		} catch (SQLException e) {
-			throw new HumQueCaroException("Cliente não encontrado"
+			throw new HumQueCaroException("Cliente nï¿½o encontrado"
 					+ e.getMessage());
 		}
 	}
+
+    @Override
+    public List<Cliente> getAll() throws HumQueCaroException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

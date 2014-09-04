@@ -9,7 +9,10 @@ import java.util.ArrayList;
 
 public class ProdutoDAO extends DAO<Produto> {
 
-    public ArrayList<Produto> produtos = new ArrayList<Produto>();
+    private ArrayList<Produto> produtos;
+
+    public ProdutoDAO() {
+    }
 
     @Override
     public void adiciona(Produto produto) throws HumQueCaroException {
@@ -78,7 +81,9 @@ public class ProdutoDAO extends DAO<Produto> {
         }
     }
 
-    public ArrayList<Produto> carregaProdutos() throws HumQueCaroException {
+    @Override
+    public ArrayList<Produto> getAll() {
+        produtos = new ArrayList<>();
         try {
             abrirBanco();
             ResultSet rs;
