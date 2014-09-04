@@ -81,8 +81,8 @@ public class FachadaBD implements FachadaBancoIF {
     }
 
     @Override
-    public List<Produto> getProdutos() {
-        return null;
+    public List<Produto> getProdutos() throws HumQueCaroException {
+        return pDAO.getAll();
     }
 
     @Override
@@ -132,17 +132,16 @@ public class FachadaBD implements FachadaBancoIF {
     }
 
     @Override
-    public List<Cliente> getClientes() {
+    public List<Cliente> getClientes() throws HumQueCaroException {
         return null;
     }
 
     @Override
     public void addPedidos(Pedido pedido) throws HumQueCaroException {
-
     }
 
     @Override
-    public List<Pedido> getPedidos() {
+    public List<Pedido> getPedidos() throws HumQueCaroException {
         return null;
     }
 }
