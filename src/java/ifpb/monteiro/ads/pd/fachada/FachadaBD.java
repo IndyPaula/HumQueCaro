@@ -5,6 +5,7 @@ import ifpb.monteiro.ads.pd.DAO.DAO;
 import ifpb.monteiro.ads.pd.DAO.ProdutoDAO;
 import ifpb.monteiro.ads.pd.DAO.UsuarioDAO;
 import ifpb.monteiro.ads.pd.beans.Cliente;
+import ifpb.monteiro.ads.pd.beans.Pedido;
 import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.beans.Usuario;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
@@ -79,6 +80,11 @@ public class FachadaBD implements FachadaBancoIF {
     }
 
     @Override
+    public void getProdutos() {
+
+    }
+
+    @Override
     public void addCliente(Cliente cliente) throws HumQueCaroException {
         cliDAO.adiciona(cliente);
 
@@ -121,6 +127,21 @@ public class FachadaBD implements FachadaBancoIF {
             c.setTelefone(novoValor);
         }
         cliDAO.altera(c);
+
+    }
+
+    @Override
+    public void getClientes() {
+
+    }
+
+    @Override
+    public void addPedidos(Pedido pedido) throws HumQueCaroException {
+
+    }
+
+    @Override
+    public void getPedidos() {
 
     }
 }

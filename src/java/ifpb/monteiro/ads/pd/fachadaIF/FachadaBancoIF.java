@@ -3,6 +3,7 @@ package ifpb.monteiro.ads.pd.fachadaIF;
 import ifpb.monteiro.ads.pd.beans.Cliente;
 import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.beans.Usuario;
+import ifpb.monteiro.ads.pd.beans.Pedido;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 
 
@@ -24,6 +25,8 @@ public interface FachadaBancoIF{
 	Produto buscaProduto (String codigo) throws HumQueCaroException;
 
 	void alteraProduto (String codigo, String atributo, String novoValor) throws HumQueCaroException;
+        
+        void getProdutos ();
 
 	void addCliente (Cliente cliente) throws HumQueCaroException;
 
@@ -32,5 +35,10 @@ public interface FachadaBancoIF{
 	Cliente buscaCliente (String telefone) throws HumQueCaroException;
 
 	void alteraCliente (String telefone, String atributo, String novoValor) throws HumQueCaroException;
+        
+        void getClientes ();
 
+        void addPedidos (Pedido pedido) throws HumQueCaroException;
+        
+        void getPedidos ();
 }

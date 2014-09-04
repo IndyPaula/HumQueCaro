@@ -155,6 +155,11 @@ public interface FachadaIF {
 	 *             "Campo codigo de identificacao invalido".
 	 */
 	public Produto buscaProduto(String codigo) throws HumQueCaroException;
+        
+        /**
+         * Esse método retornará todos os produtos cadastrados no banco.
+         */
+        public void getProdutos();
 
 	/**
 	 * Esse metodo adiciona Cliente.
@@ -208,5 +213,44 @@ public interface FachadaIF {
 	 * @throws HumQueCaroException
 	 */
 	public Cliente buscaCliente(String telefone) throws HumQueCaroException;
+        
+        /**
+         * Esse metodo retornara todos os clientes cadastrados no banco.
+         */
+        public void getClientes();
+        
+        /**
+         * Esse metodo adcionira um pedido ao sistema.
+         * 
+         * @param telefoneCliente
+         *            telefone do Cliente.
+         * @param codigoProduto
+	 *            Codigo de identificacao do produto.
+         * 
+         * @throws HumQueCaroException 
+         *            Excecao lancada caso o cliente ou o produto nao esteja
+         *            cadastrado no banco.
+         */
+        public void addPedido(String telefoneCliente, String codigoProduto) throws HumQueCaroException;
+        
+        /**
+         * Esse metodo serve para mudar o status de algum pedido registrado no 
+         * sistema.
+         * 
+         * @param codigo
+         *            Codigo de identificacao do produto.
+         * @param novoStatus
+         *            Status a qual o pedido agora pertence.
+         * @throws HumQueCaroException 
+         *            Excecao lancada caso o pedido ainda nao esteja cadastrado 
+         *            no sistema ou o novo status nao corresponda aos esperados
+         *            pelo sistema(Pedente, ...).
+         */
+        public void setStatusPedido(String codigo, String novoStatus) throws HumQueCaroException;
+        
+        /**
+         * Esse metodo retornara todos os pedidos com status pedentes do sistema.
+         */
+        public void getPedidos();
 
 }
