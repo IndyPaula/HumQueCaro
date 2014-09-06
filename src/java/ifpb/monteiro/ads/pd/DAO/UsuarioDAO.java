@@ -30,7 +30,7 @@ public class UsuarioDAO extends DAO<Usuario> {
         try {
             abrirBanco();
             Usuario userAux = procura(algo.getEmail());
-            getStmt().executeUpdate("DELETE FROM usuarios WHERE codigo_usuario ='" + userAux.getCodigoUsuario() + "'");
+            getStmt().executeUpdate("DELETE FROM usuarios WHERE codigo ='" + userAux.getCodigoUsuario() + "'");
             fecharBanco();
         } catch (Exception e) {
             throw new HumQueCaroException("- Erro ao remover Usuario -" + e.getMessage());
@@ -43,11 +43,11 @@ public class UsuarioDAO extends DAO<Usuario> {
         try {
             abrirBanco();
             getStmt().executeUpdate(
-                    "UPDATE usuarios SET codigo_usuario = '"
+                    "UPDATE usuarios SET codigo = '"
                     + algo.getCodigoUsuario() + "', email = '"
                     + algo.getEmail() + "', nome ='" + algo.getNome()
                     + "', senha ='" + algo.getSenha()
-                    + "' WHERE codigo_usuario like '" + algo.getCodigoUsuario() + "'");
+                    + "' WHERE codigo like '" + algo.getCodigoUsuario() + "'");
             fecharBanco();
         } catch (Exception e) {
             throw new HumQueCaroException("Erro no altera de Produto "
@@ -66,7 +66,7 @@ public class UsuarioDAO extends DAO<Usuario> {
                     "SELECT * FROM usuarios WHERE usuarios.email like '"
                     + algo + "'");
             while (rs.next()) {
-                pessoa = new Usuario(rs.getString("email"), rs.getString("senha"), rs.getString("nome"), rs.getInt("codigo_usuario"));
+                pessoa = new Usuario(rs.getString("email"), rs.getString("senha"), rs.getString("nome"), rs.getInt("codigo"));
             }
             return pessoa;
 
