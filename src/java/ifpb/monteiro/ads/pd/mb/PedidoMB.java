@@ -42,10 +42,8 @@ public class PedidoMB {
     }
 
     //TODO Fiz uma mudança aqui para receber um List<Produto>, pois recebia apenas
-    //um código. POR FAVOR, AGORA NO COMENTÁRIO, FICANDO ASSIM REGISTRADO, QUE 
-    //APENAS MODIFIQUEI PARA NÃO CONTINUAR O ERRO, MESMO PODENDO ESTÁ INCORRETO.
-    //CABE A QUEM FOR O RESPONSAVEL PELO METODO, MODIFICAR E POR O CORRETO, NAO
-    //SEGIR O INCORRETO.
+    //um código. Lembrando que eu modifiquei apenas para retirar o erro. Quem for
+    //o resposável pelo método, verifique se o método continua correto ou não.
     public String cadastraPedido(ActionEvent actionEvent) {
         try {
             fachadaIF.addPedido(pedido.getTelefoneCliente(), pedido.getProdutos());
