@@ -3,6 +3,7 @@ package ifpb.monteiro.ads.pd.mb;
 import ifpb.monteiro.ads.pd.beans.Usuario;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachada.FachadaBD;
+import ifpb.monteiro.ads.pd.messages.Messages;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -66,11 +67,12 @@ public class UsuarioMB {
     public String salvar() {
         try {
             fachadaBD.addUsuario(usuario);
+            Messages.mensInfo("Usuario " + usuario.getNome() + " cadastrado(a) com sucesso");
         } catch (HumQueCaroException e) {
             addMessage(getMessageFromI18N("msg.erro.salvar.usuario"), e.getMessage());
             return "";
         }
-        return "listaMercadorias";
+        return "";
     }
 
     public String remover() {
