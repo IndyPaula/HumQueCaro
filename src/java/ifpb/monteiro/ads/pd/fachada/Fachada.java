@@ -8,6 +8,8 @@ import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachadaIF.FachadaIF;
 import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorCliente;
 import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorClienteIF;
+import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorLogin;
+import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorLoginIF;
 import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorPedido;
 import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorPedidoIF;
 import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorProduto;
@@ -22,6 +24,7 @@ public class Fachada implements FachadaIF {
     GerenciadorUsuarioIF gUsuario = new GerenciadorUsuario();
     GerenciadorClienteIF gCliente = new GerenciadorCliente();
     GerenciadorPedidoIF gPedido = new GerenciadorPedido();
+    GerenciadorLoginIF gLogin = new GerenciadorLogin();
 
     @Override
     public void adicionaUsuario(String email, String senha, String nome)
@@ -123,4 +126,10 @@ public class Fachada implements FachadaIF {
         return gPedido.buscaPedido(codigo);
     }
 
+    @Override
+    public void fazerLogin(String email, String senha) throws HumQueCaroException {
+        gLogin.fazerLogin(email, senha);
+    }
+
+    
 }
