@@ -5,6 +5,7 @@
 package ifpb.monteiro.ads.pd.gerenciadores;
 
 import ifpb.monteiro.ads.pd.beans.Pedido;
+import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public interface GerenciadorPedidoIF {
 
-    public void addPedido(String telefoneCliente, String codigoProduto) throws HumQueCaroException;
+    public void addPedido(String telefoneCliente, List<Produto> produtos) throws HumQueCaroException;
 
     public void setStatusPedido(String codigo, String novoStatus) throws HumQueCaroException;
 

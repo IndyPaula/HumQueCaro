@@ -5,6 +5,7 @@
 package ifpb.monteiro.ads.pd.gerenciadores;
 
 import ifpb.monteiro.ads.pd.beans.Pedido;
+import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachada.FachadaBD;
 import ifpb.monteiro.ads.pd.fachadaIF.FachadaBancoIF;
@@ -23,8 +24,8 @@ public class GerenciadorPedido implements GerenciadorPedidoIF {
     }
     
     @Override
-    public void addPedido(String telefoneCliente, String codigoProduto) throws HumQueCaroException {
-        pedidoDAO.addPedidos(new Pedido(telefoneCliente, codigoProduto, "Pendente"));
+    public void addPedido(String telefoneCliente, List<Produto> produtos) throws HumQueCaroException {
+        pedidoDAO.addPedidos(new Pedido(telefoneCliente, produtos, "Pendente"));
     }
     
     @Override

@@ -56,6 +56,8 @@ public class PedidoDAO extends DAO<Pedido> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    //TODO Deivid, o consrutor de pedidos agora mudou. Agora recebe um List<Produto>.
+    //Veja essa questão, por favor.
     @Override
     public List<Pedido> getAll() throws HumQueCaroException {
         pedidos = new ArrayList<>();
@@ -69,12 +71,12 @@ public class PedidoDAO extends DAO<Pedido> {
                 String codigoProduto = rs.getString("codigo_produto");
                 String situacao = rs.getString("situacao");
                 String codigo = rs.getString("codigo");
-                ped = new Pedido(telefoneCliente, codigoProduto, situacao);
-                ped.setCodigo(codigo);
-                ped.setSituacao(situacao);
-                if (!pedidos.contains(ped)) {
-                    pedidos.add(ped);
-                }
+//                ped = new Pedido(telefoneCliente, codigoProduto, situacao);
+//                ped.setCodigo(codigo);
+//                ped.setSituacao(situacao);
+//                if (!pedidos.contains(ped)) {
+//                    pedidos.add(ped);
+//                }
             }
             rs.close();
             fecharBanco();

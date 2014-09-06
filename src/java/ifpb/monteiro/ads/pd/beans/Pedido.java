@@ -1,20 +1,22 @@
 package ifpb.monteiro.ads.pd.beans;
 
+import java.util.List;
+
 /**
  */
 public class Pedido {
 
     private String codigo;
     private String telefoneCliente;
-    private String codigoProduto;
+    private List<Produto> produtos;
     private String situacao;
 
     public Pedido() {
     }
 
-    public Pedido(String telefoneCliente, String codigoProduto, String situacao) {
+    public Pedido(String telefoneCliente, List<Produto> produtos, String situacao) {
         this.telefoneCliente = telefoneCliente;
-        this.codigoProduto = codigoProduto;
+        this.produtos = produtos;
         this.situacao = situacao;
     }
 
@@ -26,12 +28,12 @@ public class Pedido {
         this.codigo = codigo;
     }
 
-    public String getCodigoProduto() {
-        return codigoProduto;
+    public List<Produto> getProdutos() {
+        return produtos;
     }
 
-    public void setCodigoProduto(String codigoProduto) {
-        this.codigoProduto = codigoProduto;
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
     }
 
     public String getTelefoneCliente() {

@@ -41,9 +41,14 @@ public class PedidoMB {
         return model;
     }
 
+    //TODO Fiz uma mudança aqui para receber um List<Produto>, pois recebia apenas
+    //um código. POR FAVOR, AGORA NO COMENTÁRIO, FICANDO ASSIM REGISTRADO, QUE 
+    //APENAS MODIFIQUEI PARA NÃO CONTINUAR O ERRO, MESMO PODENDO ESTÁ INCORRETO.
+    //CABE A QUEM FOR O RESPONSAVEL PELO METODO, MODIFICAR E POR O CORRETO, NAO
+    //SEGIR O INCORRETO.
     public String cadastraPedido(ActionEvent actionEvent) {
         try {
-            fachadaIF.addPedido(pedido.getTelefoneCliente(), pedido.getCodigoProduto());
+            fachadaIF.addPedido(pedido.getTelefoneCliente(), pedido.getProdutos());
             Messages.mensInfo("Pedido cadastrado(a) com sucesso");
         } catch (HumQueCaroException ex) {
             Messages.mensInfo("P não cadastrado" + ex.getMessage());

@@ -103,8 +103,8 @@ public class Fachada implements FachadaIF {
     }
 
     @Override
-    public void addPedido(String telefoneCliente, String codigoProduto) throws HumQueCaroException {
-        gPedido.addPedido(telefoneCliente, codigoProduto);
+    public void addPedido(String telefoneCliente, List<Produto> produtos) throws HumQueCaroException {
+        gPedido.addPedido(telefoneCliente, produtos);
         
     }
 

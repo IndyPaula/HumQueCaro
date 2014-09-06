@@ -228,18 +228,19 @@ public interface FachadaIF {
         public List<Cliente> getClientes() throws HumQueCaroException;
         
         /**
-         * Esse metodo adcionira um pedido ao sistema.
+         * Esse metodo adcionira um pedido ao sistema. Lembre-se que quando adcio-
+         * nado, mostrara uma tela que notificara o usuario qual o codigo do pedido.
          * 
          * @param telefoneCliente
          *            telefone do Cliente.
-         * @param codigoProduto
-	 *            Codigo de identificacao do produto.
+         * @param List<Produto>
+	 *            lista de produtos solicitados no pedido
          * 
          * @throws HumQueCaroException 
          *            Excecao lancada caso o cliente ou o produto nao esteja
          *            cadastrado no banco.
          */
-        public void addPedido(String telefoneCliente, String codigoProduto) throws HumQueCaroException;
+        public void addPedido(String telefoneCliente, List<Produto> produtos) throws HumQueCaroException;
         
         /**
          * Esse metodo serve para mudar o status de algum pedido registrado no 
@@ -252,26 +253,31 @@ public interface FachadaIF {
          * @throws HumQueCaroException 
          *            Excecao lancada caso o pedido ainda nao esteja cadastrado 
          *            no sistema ou o novo status nao corresponda aos esperados
-         *            pelo sistema(Pedente, ...).
+         *            pelo sistema(Pendente, Entregue, ou Cancelado).
          */
         public void setStatusPedido(String codigo, String novoStatus) throws HumQueCaroException;
         
         /**
          * Esse metodo retornara todos os pedidos com status pedentes do sistema.
          * 
-         * * @return List<Pedido>
+         * @return List<Pedido>
          *            Lista de pedidos com status Pedente.
          */
         public List<Pedido> getPedidos() throws HumQueCaroException;
 
         
         /**
-         * Busca o pedido cadastrado no sistema. 
+         * Busca o pedido cadastrado no sistema.
          * 
-         * @param telefone
+         * @param codigo
+         *            Identificador de pedido que é o ID do banco.
          * @return Pedido
          * @throws HumQueCaroException 
          */
-	public Pedido buscaPedido(String telefone) throws HumQueCaroException;
-        
+        //TODO SERIA NECESSARIO ESSE METODO AQUI NA FACHADA JA QUE ELE NAO SERA 
+        //UTILIZADO POR NOSSO SISTEMA EM QUALQUER QUE SEJA A INTERFACE? POIS, 
+        //LEMBRO-ME QUE FICOU DECIDIDO QUE SO HAVERIA UM ADCIONA PEDIDO, UM BUSCA
+        //TODOS OS PEDIDOS E UM ALTERA STATUS DO PEDIDO NA INTERFACE...
+        //NAO EXCLUI E DEIXEI A CRITERIO DE VOCES DECIDIREM, POR MIM, TIRA.
+	public Pedido buscaPedido(String codigo) throws HumQueCaroException;
 }
