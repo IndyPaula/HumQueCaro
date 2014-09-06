@@ -51,8 +51,8 @@ public class ClienteDAO extends DAO<Cliente> {
             getStmt().executeUpdate(
                     "UPDATE clientes SET nome = '" + cli.getNome()
                     + "', telefone = '" + cli.getTelefone()
-                    + "', codigo_cliente ='" + cli.getCodigo()
-                    + "' WHERE codigo_cliente like '" + cli.getCodigo()
+                    + "', codigo ='" + cli.getCodigo()
+                    + "' WHERE codigo like '" + cli.getCodigo()
                     + "'");
             fecharBanco();
         } catch (SQLException e) {
@@ -72,7 +72,7 @@ public class ClienteDAO extends DAO<Cliente> {
                     "SELECT * FROM clientes WHERE telefone like '" + telefone
                     + "'");
             while (rs.next()) {
-                String codigo = rs.getString("codigo_cliente");
+                String codigo = rs.getString("codigo");
                 String fone = rs.getString("telefone");
                 String nome = rs.getString("nome");
                 cli = new Cliente(nome, fone);
@@ -97,7 +97,7 @@ public class ClienteDAO extends DAO<Cliente> {
             while (rs.next()) {
                 String nome = rs.getString("nome");
                 String telefone = rs.getString("telefone");
-                String codigo = rs.getString("codigo_cliente");
+                String codigo = rs.getString("codigo");
                 cliente = new Cliente(nome, telefone);
                 cliente.setCodigo(codigo);
                 if (!clientes.contains(cliente)) {
