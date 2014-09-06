@@ -280,4 +280,6 @@ public interface FachadaIF {
         //TODOS OS PEDIDOS E UM ALTERA STATUS DO PEDIDO NA INTERFACE...
         //NAO EXCLUI E DEIXEI A CRITERIO DE VOCES DECIDIREM, POR MIM, TIRA.
 	public Pedido buscaPedido(String codigo) throws HumQueCaroException;
+        
+        public void fazerLogin(String email, String senha) throws HumQueCaroException;
 }
