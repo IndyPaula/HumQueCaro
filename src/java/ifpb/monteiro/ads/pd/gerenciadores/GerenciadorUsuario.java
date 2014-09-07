@@ -60,7 +60,7 @@ public class GerenciadorUsuario implements GerenciadorUsuarioIF {
     public void removeUsuario(String email, String senha)
             throws HumQueCaroException {
         if (buscaUsuario(email).getSenha().equals(senha)) {
-            fachadaBd.removeUsuario(new Usuario(email, senha));
+            fachadaBd.removeUsuario(email);
         } else {
             throw new HumQueCaroException("Senha ou Email Invalido");
         }

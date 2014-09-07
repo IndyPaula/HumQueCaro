@@ -35,7 +35,7 @@ public class PedidoDAO extends DAO<Pedido> {
      * @throws HumQueCaroException
      */
     @Override
-    public void remove(Pedido algo) throws HumQueCaroException {
+    public void remove(String algo) throws HumQueCaroException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

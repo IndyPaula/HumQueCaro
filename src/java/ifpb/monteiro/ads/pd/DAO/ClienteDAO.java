@@ -31,12 +31,12 @@ public class ClienteDAO extends DAO<Cliente> {
     }
 
     @Override
-    public void remove(Cliente cli) throws HumQueCaroException {
+    public void remove(String telefone) throws HumQueCaroException {
         try {
             abrirBanco();
             getStmt().executeUpdate(
                     "DELETE FROM clientes WHERE telefone like '"
-                    + cli.getTelefone() + "'");
+                    + telefone + "'");
             fecharBanco();
         } catch (SQLException e) {
             throw new HumQueCaroException("Cliente n�o removido"

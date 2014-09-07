@@ -47,7 +47,7 @@ public class ProdutoMB {
 
     public String cadastraProduto(ActionEvent actionEvent) {
         try {
-            fachada.adicionaProduto(produto.getNome(), produto.getCodigo(),
+            fachada.adicionaProduto(produto.getNome(), produto.getCodigoBarras(),
                     produto.getFabricante(), produto.getValor());
             Messages.mensInfo("Produto cadastrado com sucesso");
         } catch (HumQueCaroException ex) {
@@ -59,9 +59,9 @@ public class ProdutoMB {
 
     public String alterarProduto(ActionEvent actionEvent) {
         try {
-            Produto temp = fachada.buscaProduto(produto.getCodigo());
+            Produto temp = fachada.buscaProduto(produto.getCodigoBarras());
             if (temp != null) {
-                fachada.alteraProduto(temp.getCodigo(), produto.getNome(), produto.getFabricante());
+                fachada.alteraProduto(temp.getCodigoBarras(), produto.getNome(), produto.getFabricante());
                 Messages.mensInfo("Produto alterado com sucesso!");
             } else {
                 Messages.mensInfo("Produto não encontrado!");
@@ -75,9 +75,9 @@ public class ProdutoMB {
 
     public String removerProduto(ActionEvent actionEvent) {
         try {
-            Produto temp = fachada.buscaProduto(produto.getCodigo());
+            Produto temp = fachada.buscaProduto(produto.getCodigoBarras());
             if (temp != null) {
-                fachada.removeProduto(temp.getCodigo());
+                fachada.removeProduto(temp.getCodigoBarras());
                 Messages.mensInfo("Produto removido com sucesso!");
             } else {
                 Messages.mensInfo("Produto não encontrado!");

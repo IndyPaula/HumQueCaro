@@ -40,7 +40,7 @@ public abstract class DAO<T> {
 
 	public abstract void adiciona(T algo) throws HumQueCaroException;
 
-	public abstract void remove(T algo) throws HumQueCaroException;
+	public abstract void remove(String algo) throws HumQueCaroException;
 
 	public abstract void altera(T algo) throws HumQueCaroException;
 

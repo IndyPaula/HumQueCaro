@@ -2,15 +2,15 @@ package ifpb.monteiro.ads.pd.beans;
 
 public class Produto {
 
-    private int codigoProduto;
+    private int codigo;
     private String nome;
-    private String codigo;
+    private String codigoBarras;
     private String fabricante;
     private String valor;
 
-    public Produto(String nome, String codigo, String fabricante, String valor) {
+    public Produto(String nome, String codigoBarras, String fabricante, String valor) {
         this.nome = nome;
-        this.codigo = codigo;
+        this.codigoBarras = codigoBarras;
         this.fabricante = fabricante;
         this.valor = valor;
     }
@@ -34,20 +34,20 @@ public class Produto {
         this.fabricante = fabricante;
     }
 
-    public String getCodigo() {
+    public String getCodigoBarras() {
+        return codigoBarras;
+    }
+
+    public void setCodigoBarras(String codigoBarras) {
+        this.codigoBarras = codigoBarras;
+    }
+
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
-    }
-
-    public int getCodigoProduto() {
-        return codigoProduto;
-    }
-
-    public void setCodigoProduto(int codigoProduto) {
-        this.codigoProduto = codigoProduto;
     }
 
     public String getValor() {
