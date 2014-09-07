@@ -30,7 +30,7 @@ public class GerenciadorProduto implements GerenciadorProdutoIF {
                 throw new HumQueCaroException("Produto já cadastrado");
             }
         } catch (HumQueCaroException e) {
-            throw new HumQueCaroException("Erro ao adicionar um produto");
+            throw new HumQueCaroException(e.getMessage());
         }
     }
 
@@ -55,17 +55,17 @@ public class GerenciadorProduto implements GerenciadorProdutoIF {
 
     @Override
     public void removeProduto(String codigo) throws HumQueCaroException {
+        buscaProduto(codigo);
         pDAO.removeProduto(codigo);
     }
 
     @Override
     public Produto buscaProduto(String codigo) throws HumQueCaroException {
         Produto produto = pDAO.buscaProduto(codigo);
-        if (produto != null) {
-            return produto;
-        } else {
+        if (produto == null) {
             throw new HumQueCaroException("Produto não cadastrado");
         }
+        return produto;
     }
 
     @Override

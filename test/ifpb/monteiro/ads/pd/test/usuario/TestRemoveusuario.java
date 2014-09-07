@@ -34,6 +34,11 @@ public class TestRemoveusuario {
     
     @After
     public void tearDown() {
+        try {
+            fachada.removeUsuario("luizAntonio@hotmail.com", "minhaSenha");
+        } catch (HumQueCaroException e) {
+            fail("Acusou erro no removeUsuário: " + e.getMessage());
+        }
     }
 
     @Test

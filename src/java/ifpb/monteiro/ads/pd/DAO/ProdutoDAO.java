@@ -93,15 +93,13 @@ public class ProdutoDAO extends DAO<Produto> {
             Produto produto;
             while (rs.next()) {
                 String nome = rs.getString("nome");
-                String codigo = rs.getString("codigo_barras");
+                String codigoBarras = rs.getString("codigo_barras");
                 String fabricante = rs.getString("fabricante");
                 String valor = rs.getString("valor");
-                int codigo_produto = rs.getInt("codigo");
-                produto = new Produto(nome, codigo, fabricante, valor);
-                produto.setCodigo(codigo_produto);
-                if (!produtos.contains(produto)) {
-                    produtos.add(produto);
-                }
+                int codigo = rs.getInt("codigo");
+                produto = new Produto(nome, codigoBarras, fabricante, valor);
+                produto.setCodigo(codigo);
+                produtos.add(produto);
             }
             rs.close();
             fecharBanco();
@@ -109,9 +107,5 @@ public class ProdutoDAO extends DAO<Produto> {
         } catch (SQLException ex) {
         }
         return null;
-    }
-
-    public ArrayList<Produto> getProdutos() {
-        return produtos;
     }
 }
