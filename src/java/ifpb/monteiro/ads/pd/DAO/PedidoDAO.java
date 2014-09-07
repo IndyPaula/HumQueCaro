@@ -5,11 +5,16 @@
 package ifpb.monteiro.ads.pd.DAO;
 
 import ifpb.monteiro.ads.pd.beans.Pedido;
+import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
+import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorProduto;
+import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorProdutoIF;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,6 +23,7 @@ import java.util.List;
 public class PedidoDAO extends DAO<Pedido> {
 
     private List<Pedido> pedidos;
+    private List<Produto> prodDePedido;
 
     public PedidoDAO() {
     }
@@ -67,22 +73,43 @@ public class PedidoDAO extends DAO<Pedido> {
             rs = getStmt().executeQuery("SELECT * FROM pedidos");
             Pedido ped;
             while (rs.next()) {
-                String telefoneCliente = rs.getString("codigo_cliente");
-                String codigoProduto = rs.getString("codigo_produto");
+                int codigo = rs.getInt("codigo");
+                String telefoneCliente = rs.getString("telefone_cliente");
                 String situacao = rs.getString("situacao");
-                String codigo = rs.getString("codigo");
-//                ped = new Pedido(telefoneCliente, codigoProduto, situacao);
-//                ped.setCodigo(codigo);
-//                ped.setSituacao(situacao);
-//                if (!pedidos.contains(ped)) {
-//                    pedidos.add(ped);
-//                }
+                ped = new Pedido(telefoneCliente, null, situacao);
+                ped.setCodigo(codigo + ""); // TIPO DE CODIGO DE PRODUTO NAO É O MESMO NO BANCO E NO BEAN / VERIFICAR
+                prodDePedido = produtosDePedido(ped);
+                ped.setProdutos(prodDePedido);
+                pedidos.add(ped);
             }
             rs.close();
             fecharBanco();
             return pedidos;
         } catch (SQLException ex) {
         }
+        return null;
+    }
+
+    private List<Produto> produtosDePedido(Pedido pedido) {
+
+        GerenciadorProdutoIF gProd = new GerenciadorProduto();
+        prodDePedido = new ArrayList<>();
+        Produto produto;
+        try {
+            abrirBanco();
+            ResultSet rs;
+            rs = getStmt().executeQuery("SELECT * FROM produtos_de_pedido WHERE codigo_pedido like '"
+                    + pedido.getCodigo() + "'");
+            while (rs.next()) {
+                String codigo_produto = rs.getString("codigo_produto");
+                produto = gProd.buscaProduto(codigo_produto);
+                prodDePedido.add(produto);
+            }
+            return prodDePedido;
+        } catch (SQLException | HumQueCaroException ex) {
+            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         return null;
     }
 }
