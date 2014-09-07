@@ -23,7 +23,7 @@ and open the template in the editor.
                             Pedidos Cadastrados 
                         </f:facet>  
 
-                        <p:column filterStyle="max-width: 40px; min-width: 130px; " filterBy="#{pedido.codigo}">  
+                        <p:column filterStyle="max-width: 40px; min-width: 100px; " filterBy="#{pedido.codigo}">  
                             <f:facet name="header">  
                                 <h:outputText value="Código" />  
                             </f:facet>  
@@ -38,14 +38,14 @@ and open the template in the editor.
                         </p:column>
 
 
-                        <p:column filterStyle="max-width: 40px; min-width: 130px; " filterBy="#{pedido.codigoProduto}">  
+                        <p:column filterStyle="max-width: 40px; min-width: 130px; ">  
                             <f:facet name="header">  
                                 <h:outputText value="Produtos" />  
                             </f:facet>  
-                            <h:outputText value="#{pedido.codigoProduto}" /> 
+                            <h:outputText value="#{pedido.produtos}" /> 
                         </p:column>
 
-                        <p:column filterStyle="max-width: 40px; min-width: 130px; " filterBy="#{pedido.situacao}">  
+                        <p:column filterStyle="max-width: 40px; min-width: 110px; " filterBy="#{pedido.situacao}">  
                             <f:facet name="header">  
                                 <h:outputText value="Situação" />  
                             </f:facet>  
