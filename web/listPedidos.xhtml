@@ -14,6 +14,33 @@ and open the template in the editor.
         <ui:composition template="./layout/template.xhtml">
             <ui:define name="content">
 
+                <p:growl id="growl" showDetail="true" life="300"/>
+                <p:dialog id="dlgpedido" header="Alterar situação/status do Pedido" widgetVar="altPedido" modal="true" resizable="false" width="500">
+                    <h:form acceptcharset="ISO-8859-1">
+                        <h:panelGrid columns="3">
+
+                            <h:outputText value="Pedido Nº: " />  
+                            <h:outputText value="#{PedidoMB.pedido.codigo}" />
+                            <p:separator/>
+
+                            <h:outputLabel for="altSituacao" value="Alterar Situação" />
+                            <p:selectOneMenu id="altSituacao" value="#{PedidoMB.pedido.situacao}" required="true" requiredMessage="Alterar a situação do pedido">
+                                <f:selectItem itemLabel="Selecione" itemValue="" />
+                                <f:selectItem itemLabel="Entregue" itemValue="Entregue" />
+                                <f:selectItem itemLabel="Pendente" itemValue="Pendente" />
+                                <f:selectItem itemLabel="Cancelado" itemValue="Cancelado" />
+                                <f:validateLength minimum="1" />  
+                                <p:ajax update="msgAltSituacao" event="keyup" />
+                            </p:selectOneMenu>
+                            <p:message for="altSituacao" id="msgAltSituacao" display="icon"/>
+
+                        </h:panelGrid>
+                        <div align="center">
+                            <p:commandButton id="btAlterar" icon="btAlterar" value="Alterar" update=":growl" actionListener="#{PedidoMB.alteraStatus}" oncomplete="handleLoginRequest(xhr, status, args)" ajax="false" immediate="true"/>
+                        </div>
+                    </h:form>
+                </p:dialog>
+
                 <h:form id="form"> 
                     <p:dataTable id="dataTable" var="pedido" value="#{PedidoMB.todosPedidos}"  
                                  paginator="true" rows="10"  
@@ -50,6 +77,18 @@ and open the template in the editor.
                                 <h:outputText value="Situação" />  
                             </f:facet>  
                             <h:outputText value="#{pedido.situacao}" /> 
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Alterar"/>
+                            </f:facet>
+
+                            <div align="center">
+                                <p:commandButton update=":dlgpedido" oncomplete="altPedido.show()" image="btAlterar" title="Alterar Status/Situação do Pedido">
+                                    <f:setPropertyActionListener target="#{PedidoMB.pedido}" value="#{pedido}" />
+                                </p:commandButton>
+                            </div>
                         </p:column>
 
                     </p:dataTable> 
