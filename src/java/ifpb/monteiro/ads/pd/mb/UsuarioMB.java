@@ -77,7 +77,7 @@ public class UsuarioMB {
 
     public String remover() {
         try {
-            fachadaBD.removeUsuario(usuario);
+            fachadaBD.removeUsuario(usuario.getEmail());
         } catch (HumQueCaroException e) {
             addMessage(getMessageFromI18N("msg.erro.remover.usuario"), e.getMessage());
             return "";

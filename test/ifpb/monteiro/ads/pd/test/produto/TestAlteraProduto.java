@@ -35,17 +35,17 @@ public class TestAlteraProduto {
     @Test
     public void testAlteraProduto() {
         try {
-            fachada.alteraProduto("01", "Nome", "X-Milho");
+            fachada.alteraProduto("01", "nome", "X-Milho");
         } catch (HumQueCaroException ex) {
             fail("Erro em adicionar Produto: " + ex.getMessage());
         }
         try {
-            fachada.alteraProduto("02", "Fabricante", "Maria Zefinha");
+            fachada.alteraProduto("02", "fabricante", "Maria Zefinha");
         } catch (HumQueCaroException ex) {
             fail("Erro em adicionar Produto: " + ex.getMessage());
         }
         try {
-            fachada.alteraProduto("03", "Nome", "Pippos");
+            fachada.alteraProduto("03", "nome", "Pippos");
         } catch (HumQueCaroException ex) {
             fail("Erro em adicionar Produto: " + ex.getMessage());
         }

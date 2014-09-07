@@ -11,7 +11,7 @@ public interface FachadaBancoIF {
 
     void addUsuario(Usuario usuario) throws HumQueCaroException;
 
-    void removeUsuario(Usuario usario) throws HumQueCaroException;
+    void removeUsuario(String email) throws HumQueCaroException;
 
     Usuario buscaUsuario(String email) throws HumQueCaroException;
 
@@ -19,17 +19,17 @@ public interface FachadaBancoIF {
 
     void addProduto(Produto produto) throws HumQueCaroException;
 
-    void removeProduto(Produto produto) throws HumQueCaroException;
+    void removeProduto(String codigoBarras) throws HumQueCaroException;
 
-    Produto buscaProduto(String codigo) throws HumQueCaroException;
+    Produto buscaProduto(String codigoBarras) throws HumQueCaroException;
 
-    void alteraProduto(String codigo, String atributo, String novoValor) throws HumQueCaroException;
+    void alteraProduto(Produto produto) throws HumQueCaroException;
 
     List<Produto> getProdutos() throws HumQueCaroException;
 
     void addCliente(Cliente cliente) throws HumQueCaroException;
 
-    void removeCliente(Cliente cliente) throws HumQueCaroException;
+    void removeCliente(String telefone) throws HumQueCaroException;
 
     Cliente buscaCliente(String telefone) throws HumQueCaroException;
 

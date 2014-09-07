@@ -19,12 +19,12 @@ create table usuarios(
 -- CRIA TABELA PRODUTO
 create table produtos(
 	codigo int not null auto_increment,
-	codigo_produto varchar(60) not null,
+	codigo_barras varchar(60) not null,
 	nome varchar(80) not null,
 	fabricante varchar(80) not null,
 	valor varchar(10) not null,
 	PRIMARY KEY (codigo),
-	UNIQUE (codigo_produto)
+	UNIQUE (codigo_barras)
 );
 
 
@@ -42,6 +42,7 @@ create table pedidos(
 	codigo int not null auto_increment,
 	telefone_cliente char(11) not null,
 	situacao varchar(10) not null,
+	valor float not null,
 	
 	PRIMARY KEY(codigo),
 	FOREIGN KEY (telefone_cliente) references clientes(telefone)
@@ -53,6 +54,6 @@ create table produtos_de_pedido(
 	codigo_produto varchar(60) not null,
 
 	FOREIGN KEY (codigo_pedido) references pedidos(codigo),
-	FOREIGN KEY (codigo_produto) references produtos(codigo_produto)
+	FOREIGN KEY (codigo_produto) references produtos(codigo_barras)
 )
 

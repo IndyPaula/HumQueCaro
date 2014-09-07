@@ -26,10 +26,10 @@ public class UsuarioDAO extends DAO<Usuario> {
     }
 
     @Override
-    public void remove(Usuario algo) throws HumQueCaroException {
+    public void remove(String email) throws HumQueCaroException {
         try {
             abrirBanco();
-            Usuario userAux = procura(algo.getEmail());
+            Usuario userAux = procura(email);
             getStmt().executeUpdate("DELETE FROM usuarios WHERE codigo ='" + userAux.getCodigoUsuario() + "'");
             fecharBanco();
         } catch (Exception e) {

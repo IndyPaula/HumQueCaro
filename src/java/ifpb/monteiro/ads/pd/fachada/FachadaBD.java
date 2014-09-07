@@ -34,8 +34,8 @@ public class FachadaBD implements FachadaBancoIF {
     }
 
     @Override
-    public void removeUsuario(Usuario usuario) throws HumQueCaroException {
-        pUsuario.remove(usuario);
+    public void removeUsuario(String email) throws HumQueCaroException {
+        pUsuario.remove(email);
     }
 
     @Override
@@ -45,7 +45,6 @@ public class FachadaBD implements FachadaBancoIF {
 
     @Override
     public void alteraUsuario(Usuario usuario) throws HumQueCaroException {
-        //Muito bem.
         pUsuario.altera(usuario);
     }
 
@@ -55,8 +54,8 @@ public class FachadaBD implements FachadaBancoIF {
     }
 
     @Override
-    public void removeProduto(Produto produto) throws HumQueCaroException {
-        pDAO.remove(produto);
+    public void removeProduto(String codigoBarras) throws HumQueCaroException {
+        pDAO.remove(codigoBarras);
     }
 
     @Override
@@ -65,24 +64,8 @@ public class FachadaBD implements FachadaBancoIF {
     }
 
     @Override
-    public void alteraProduto(String codigo, String atributo, String novoValor)
+    public void alteraProduto(Produto produto)
             throws HumQueCaroException {
-        Validacao.validaEntrada(codigo, "Campo código inválido");
-        Validacao.validaEntrada(atributo, "Campo atributo inválido");
-        Validacao.validaEntrada(novoValor, "Campo novoValor inválido");
-        Produto produto = pDAO.procura(codigo);
-        if (produto == null) {
-            throw new HumQueCaroException("Produto não cadastrado");
-        }
-        if (atributo.equals("Nome")) {
-            produto.setNome(novoValor);
-        } else if (atributo.equals("Fabricante")) {
-            produto.setFabricante(novoValor);
-        } else if (atributo.equals("Valor")) {
-            produto.setValor(novoValor);
-        } else {
-            throw new HumQueCaroException("Campo atributo invalido");
-        }
         pDAO.altera(produto);
     }
 
@@ -98,8 +81,8 @@ public class FachadaBD implements FachadaBancoIF {
     }
 
     @Override
-    public void removeCliente(Cliente cliente) throws HumQueCaroException {
-        cliDAO.remove(cliente);
+    public void removeCliente(String telefone) throws HumQueCaroException {
+        cliDAO.remove(telefone);
     }
 
     @Override

@@ -49,7 +49,7 @@ public class GerenciadorCliente implements GerenciadorClienteIF {
             throw new HumQueCaroException("Campo telefone inv�lido");
         }
         if (buscaCliente(telefone) != null) {
-            cliDAO.removeCliente(new Cliente(null, telefone));
+            cliDAO.removeCliente(telefone);
         } else {
             throw new HumQueCaroException("Cliente n�o cadastrado");
         }
