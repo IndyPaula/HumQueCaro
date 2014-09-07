@@ -10,14 +10,16 @@ public class Pedido {
     private String telefoneCliente;
     private List<Produto> produtos;
     private String situacao;
+    private float valor;
 
     public Pedido() {
     }
 
-    public Pedido(String telefoneCliente, List<Produto> produtos, String situacao) {
+    public Pedido(String telefoneCliente, List<Produto> produtos, String situacao, float valor) {
         this.telefoneCliente = telefoneCliente;
         this.produtos = produtos;
         this.situacao = situacao;
+        this.valor = valor;
     }
 
     public String getCodigo() {
@@ -50,5 +52,13 @@ public class Pedido {
 
     public void setSituacao(String situacao) {
         this.situacao = situacao;
+    }
+
+    public float getValor() {
+        return valor;
+    }
+
+    public void setValor(float valor) {
+        this.valor = valor;
     }
 }

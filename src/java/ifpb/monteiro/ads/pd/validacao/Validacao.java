@@ -83,4 +83,20 @@ public class Validacao {
     public static boolean contemApenasLetras(String msg) {
         return msg.matches("[a-zA-Z\\s]+");
     }
+
+    public static float stringToFloat(String valor) throws HumQueCaroException {
+        float valorFloat;
+        try {
+            valorFloat = Float.parseFloat(valor);
+        } catch (NumberFormatException e) {
+            throw new HumQueCaroException("Valor invalido.");
+        }
+        return valorFloat;
+    }
+    
+    public static void validaSituacao(String novoStatus, String message) throws HumQueCaroException {
+        if (!novoStatus.equals("Cancelado") && !novoStatus.equals("Entregue") && !novoStatus.equals("Pendente") ) {
+            throw new HumQueCaroException(message);
+        }
+    }
 }

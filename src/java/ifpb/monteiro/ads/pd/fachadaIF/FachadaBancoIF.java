@@ -39,7 +39,7 @@ public interface FachadaBancoIF {
 
     void addPedidos(Pedido pedido) throws HumQueCaroException;
 
-    void pedidoStatus(String codigo, String novoStatus) throws HumQueCaroException;
+    void alteraStatusPedido(Pedido pedido) throws HumQueCaroException;
 
     List<Pedido> getPedidos() throws HumQueCaroException;
     

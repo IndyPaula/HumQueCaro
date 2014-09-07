@@ -9,7 +9,7 @@ public class PersistenciaSQL {
 	public static Connection conectar() throws SQLException {
 		String url = "jdbc:mysql://localhost/projeto_HumQueCaro";
 		String username = "root";
-		String password = "senhafraca";
+		String password = "root";
 		Connection connection;
                 DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 		connection = DriverManager.getConnection(url, username, password);

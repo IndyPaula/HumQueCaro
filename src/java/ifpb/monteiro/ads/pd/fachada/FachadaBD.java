@@ -131,7 +131,8 @@ public class FachadaBD implements FachadaBancoIF {
     }
 
     @Override
-    public void pedidoStatus(String codigo, String novoStatus) throws HumQueCaroException {
+    public void alteraStatusPedido(Pedido pedido) throws HumQueCaroException {
+        pedidoDAO.altera(pedido);
     }
 
     @Override

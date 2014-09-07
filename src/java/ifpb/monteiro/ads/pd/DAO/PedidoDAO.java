@@ -30,7 +30,26 @@ public class PedidoDAO extends DAO<Pedido> {
 
     @Override
     public void adiciona(Pedido algo) throws HumQueCaroException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            abrirBanco();
+            getStmt().executeUpdate(
+                    "INSERT INTO pedidos (telefone_cliente, situacao, valor) VALUES ('"
+                    + algo.getTelefoneCliente() + "', '" 
+                    + algo.getSituacao() + "', '" 
+                    + algo.getValor()
+                    + "' )");
+
+            for (Produto produto : algo.getProdutos()) {
+                getStmt().executeUpdate(
+                        "INSERT INTO produtos_de_pedido (codigo_pedido, codigo_produto) VALUES ((select LAST_INSERT_ID()), '"
+                        + produto.getCodigoBarras()
+                        + "' )");
+            }
+            fecharBanco();
+        } catch (Exception e) {
+            throw new HumQueCaroException("Erro no adiciona de Pedido "
+                    + e.getMessage());
+        }
     }
 
     /**
@@ -54,39 +73,66 @@ public class PedidoDAO extends DAO<Pedido> {
      */
     @Override
     public void altera(Pedido algo) throws HumQueCaroException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try {
+            abrirBanco();
+            getStmt().executeUpdate(
+                    "UPDATE pedidos SET situacao = '"
+                    + algo.getSituacao() + "' WHERE codigo like '" + algo.getCodigo() + "'");
+            fecharBanco();
+        } catch (Exception e) {
+            throw new HumQueCaroException("Erro no altera status do pedido "
+                    + e.getMessage());
+        }
     }
 
     @Override
-    public Pedido procura(String algo) throws HumQueCaroException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Pedido procura(String codigo) throws HumQueCaroException {
+        try {
+            abrirBanco();
+            ResultSet rs;
+            Pedido pedido = null;
+            rs = getStmt().executeQuery(
+                    "SELECT * FROM pedidos WHERE codigo like '" + codigo + "'");
+            while (rs.next()) {
+                String telefoneCliente = rs.getString("telefone_cliente");
+                String situacao = rs.getString("situacao");
+                Float valor = rs.getFloat("valor");
+                pedido = new Pedido(telefoneCliente, null, situacao, valor);
+                pedido.setCodigo(codigo);
+            }
+            fecharBanco();
+            return pedido;
+        } catch (SQLException e) {
+            throw new HumQueCaroException("Erro no procura de Produto "
+                    + e.getMessage());
+        }
     }
 
     //TODO Deivid, o consrutor de pedidos agora mudou. Agora recebe um List<Produto>.
     //Veja essa questão, por favor.
     @Override
     public List<Pedido> getAll() throws HumQueCaroException {
-        pedidos = new ArrayList<>();
-        try {
-            abrirBanco();
-            ResultSet rs;
-            rs = getStmt().executeQuery("SELECT * FROM pedidos");
-            Pedido ped;
-            while (rs.next()) {
-                int codigo = rs.getInt("codigo");
-                String telefoneCliente = rs.getString("telefone_cliente");
-                String situacao = rs.getString("situacao");
-                ped = new Pedido(telefoneCliente, null, situacao);
-                ped.setCodigo(codigo + ""); // TIPO DE CODIGO DE PRODUTO NAO É O MESMO NO BANCO E NO BEAN / VERIFICAR
-                prodDePedido = produtosDePedido(ped);
-                ped.setProdutos(prodDePedido);
-                pedidos.add(ped);
-            }
-            rs.close();
-            fecharBanco();
-            return pedidos;
-        } catch (SQLException ex) {
-        }
+//        pedidos = new ArrayList<>();
+//        try {
+//            abrirBanco();
+//            ResultSet rs;
+//            rs = getStmt().executeQuery("SELECT * FROM pedidos");
+//            Pedido ped;
+//            while (rs.next()) {
+//                int codigo = rs.getInt("codigo");
+//                String telefoneCliente = rs.getString("telefone_cliente");
+//                String situacao = rs.getString("situacao");
+//                ped = new Pedido(telefoneCliente, null, situacao);
+//                ped.setCodigo(codigo + ""); // TIPO DE CODIGO DE PRODUTO NAO É O MESMO NO BANCO E NO BEAN / VERIFICAR
+//                prodDePedido = produtosDePedido(ped);
+//                ped.setProdutos(prodDePedido);
+//                pedidos.add(ped);
+//            }
+//            rs.close();
+//            fecharBanco();
+//            return pedidos;
+//        } catch (SQLException ex) {
+//        }
         return null;
     }
 

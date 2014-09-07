@@ -9,6 +9,7 @@ import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachada.FachadaBD;
 import ifpb.monteiro.ads.pd.fachadaIF.FachadaBancoIF;
+import ifpb.monteiro.ads.pd.validacao.Validacao;
 import java.util.List;
 
 /**
@@ -25,12 +26,22 @@ public class GerenciadorPedido implements GerenciadorPedidoIF {
     
     @Override
     public void addPedido(String telefoneCliente, List<Produto> produtos) throws HumQueCaroException {
-        pedidoDAO.addPedidos(new Pedido(telefoneCliente, produtos, "Pendente"));
+        float valorPedido = 0.0F;
+        for (Produto produto : produtos) {
+            valorPedido = valorPedido + Validacao.stringToFloat(produto.getValor());
+        }
+        pedidoDAO.addPedidos(new Pedido(telefoneCliente, produtos, "Pendente", valorPedido));
     }
     
     @Override
     public void setStatusPedido(String codigo, String novoStatus) throws HumQueCaroException {
-        pedidoDAO.pedidoStatus(codigo, novoStatus);
+        Validacao.validaEntrada(codigo, "Campo codigo inválido");
+        Validacao.validaEntrada(novoStatus, "Novo status inválido");
+        Validacao.validaSituacao(novoStatus," Situação inválida");
+        
+        Pedido pedido = pedidoDAO.buscaPedido(codigo);
+        pedido.setSituacao(novoStatus);
+        pedidoDAO.alteraStatusPedido(pedido);
     }
     
     @Override
