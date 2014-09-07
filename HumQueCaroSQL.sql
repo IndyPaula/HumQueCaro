@@ -42,6 +42,7 @@ create table pedidos(
 	codigo int not null auto_increment,
 	telefone_cliente char(11) not null,
 	situacao varchar(10) not null,
+	valor float not null,
 	
 	PRIMARY KEY(codigo),
 	FOREIGN KEY (telefone_cliente) references clientes(telefone)
