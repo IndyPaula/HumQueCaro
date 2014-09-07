@@ -19,7 +19,7 @@ create table usuarios(
 -- CRIA TABELA PRODUTO
 create table produtos(
 	codigo int not null auto_increment,
-	codigo_produto varchar(60) not null,
+	codigo_barras varchar(60) not null,
 	nome varchar(80) not null,
 	fabricante varchar(80) not null,
 	valor varchar(10) not null,
