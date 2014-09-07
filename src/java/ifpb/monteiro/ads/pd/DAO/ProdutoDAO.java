@@ -31,17 +31,12 @@ public class ProdutoDAO extends DAO<Produto> {
 
     @Override
     public void remove(String codigoBarras) throws HumQueCaroException {
-        Produto p = procura(codigoBarras);
         try {
-            if (p != null) {
-                abrirBanco();
-                getStmt().execute(
-                        "DELETE FROM produtos WHERE codigo_barras = '" + codigoBarras
-                        + "' ");
-                fecharBanco();
-            } else {
-                throw new HumQueCaroException("Produto não encontrado");
-            }
+            abrirBanco();
+            getStmt().execute(
+                    "DELETE FROM produtos WHERE codigo_barras like '" + codigoBarras
+                    + "' ");
+            fecharBanco();
         } catch (SQLException e) {
             throw new HumQueCaroException("Erro no remove de Produto "
                     + e.getMessage());
@@ -75,7 +70,9 @@ public class ProdutoDAO extends DAO<Produto> {
                     "SELECT * FROM produtos WHERE codigo_barras = '" + codigo + "' ");
             if (rSet.next()) {
                 produto = new Produto(rSet.getString("nome"),
-                        rSet.getString("codigo_barras"), rSet.getString("fabricante"), rSet.getString("valor"));
+                        rSet.getString("codigo_barras"),
+                        rSet.getString("fabricante"),
+                        rSet.getString("valor"));
                 produto.setCodigo(rSet.getInt("codigo"));
             }
             fecharBanco();
@@ -93,17 +90,17 @@ public class ProdutoDAO extends DAO<Produto> {
             abrirBanco();
             ResultSet rs;
             rs = getStmt().executeQuery("SELECT * FROM produtos");
-            Produto prod;
+            Produto produto;
             while (rs.next()) {
                 String nome = rs.getString("nome");
                 String codigo = rs.getString("codigo_barras");
                 String fabricante = rs.getString("fabricante");
                 String valor = rs.getString("valor");
                 int codigo_produto = rs.getInt("codigo");
-                prod = new Produto(nome, codigo, fabricante, valor);
-                prod.setCodigo(codigo_produto);
-                if (!produtos.contains(prod)) {
-                    produtos.add(prod);
+                produto = new Produto(nome, codigo, fabricante, valor);
+                produto.setCodigo(codigo_produto);
+                if (!produtos.contains(produto)) {
+                    produtos.add(produto);
                 }
             }
             rs.close();
