@@ -34,8 +34,8 @@ public class PedidoDAO extends DAO<Pedido> {
             abrirBanco();
             getStmt().executeUpdate(
                     "INSERT INTO pedidos (telefone_cliente, situacao, valor) VALUES ('"
-                    + algo.getTelefoneCliente() + "', '" 
-                    + algo.getSituacao() + "', '" 
+                    + algo.getTelefoneCliente() + "', '"
+                    + algo.getSituacao() + "', '"
                     + algo.getValor()
                     + "' )");
 
@@ -108,36 +108,53 @@ public class PedidoDAO extends DAO<Pedido> {
         }
     }
 
-    //TODO Deivid, o consrutor de pedidos agora mudou. Agora recebe um List<Produto>.
-    //Veja essa questão, por favor.
+    /**
+     * Método para carregar todos os pedidos da lista cadastrados no banco de
+     * dados. São carregados apenas os pedidos que constarem como "pendente" em
+     * sua situação. Pedidos cancelados ou entregues serão descartados desta
+     * listagem.
+     *
+     * @return lista de pedidos do banco
+     * @throws HumQueCaroException
+     */
     @Override
     public List<Pedido> getAll() throws HumQueCaroException {
-//        pedidos = new ArrayList<>();
-//        try {
-//            abrirBanco();
-//            ResultSet rs;
-//            rs = getStmt().executeQuery("SELECT * FROM pedidos");
-//            Pedido ped;
-//            while (rs.next()) {
-//                int codigo = rs.getInt("codigo");
-//                String telefoneCliente = rs.getString("telefone_cliente");
-//                String situacao = rs.getString("situacao");
-//                ped = new Pedido(telefoneCliente, null, situacao);
-//                ped.setCodigo(codigo + ""); // TIPO DE CODIGO DE PRODUTO NAO É O MESMO NO BANCO E NO BEAN / VERIFICAR
-//                prodDePedido = produtosDePedido(ped);
-//                ped.setProdutos(prodDePedido);
-//                pedidos.add(ped);
-//            }
-//            rs.close();
-//            fecharBanco();
-//            return pedidos;
-//        } catch (SQLException ex) {
-//        }
+        pedidos = new ArrayList<>();
+        try {
+            abrirBanco();
+            ResultSet rs;
+            rs = getStmt().executeQuery("SELECT * FROM pedidos WHERE situacao like 'Pendente'");
+            Pedido ped;
+            while (rs.next()) {
+                int codigo = rs.getInt("codigo");
+                String telefoneCliente = rs.getString("telefone_cliente");
+                String situacao = rs.getString("situacao");
+                float valor = rs.getFloat("valor");
+                ped = new Pedido(telefoneCliente, null, situacao, valor);
+                ped.setCodigo(codigo + ""); // TIPO DE CODIGO DE PRODUTO NAO É O MESMO NO BANCO E NO BEAN / VERIFICAR
+                prodDePedido = produtosDePedido(ped);
+                ped.setProdutos(prodDePedido);
+                pedidos.add(ped);
+            }
+            rs.close();
+            fecharBanco();
+            return pedidos;
+        } catch (SQLException ex) {
+        }
         return null;
     }
 
+    /**
+     * Método privado para fazer a captura da lista de produtos adicionados em
+     * um determinado pedido no banco de dados.. Este método é necessário pois
+     * são duas tabelas separadas no banco e para não deixar tudo em um método
+     * só, optei por dividir as consultas no banco.
+     *
+     * @param pedido cadastrado anteriormente no sistema
+     * @return List<Produto> que corresponde a este pedido
+     *
+     */
     private List<Produto> produtosDePedido(Pedido pedido) {
-
         GerenciadorProdutoIF gProd = new GerenciadorProduto();
         prodDePedido = new ArrayList<>();
         Produto produto;
