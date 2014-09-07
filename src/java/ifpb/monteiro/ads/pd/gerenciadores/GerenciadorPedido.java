@@ -35,7 +35,7 @@ public class GerenciadorPedido implements GerenciadorPedidoIF {
     
     @Override
     public List<Pedido> getPedidos() throws HumQueCaroException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return pedidoDAO.getPedidos();
     }
 
     @Override
