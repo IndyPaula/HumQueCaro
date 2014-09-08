@@ -131,5 +131,15 @@ public class Fachada implements FachadaIF {
         gLogin.fazerLogin(email, senha);
     }
 
+    @Override
+    public boolean isLogged() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void disconnect() throws HumQueCaroException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }

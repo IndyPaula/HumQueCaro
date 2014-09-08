@@ -282,4 +282,23 @@ public interface FachadaIF {
 	public Pedido buscaPedido(String codigo) throws HumQueCaroException;
         
         public void fazerLogin(String email, String senha) throws HumQueCaroException;
+        
+        /**
+         * Esse método verifica se ha algum usuario logado no sistema.
+         * 
+         * @return 
+         *          <i>true</i> caso haja algum usuario logado no sistema.
+         *          <i>false</i> caso não haja algum usuario logado no sistema.
+         */
+        public boolean isLogged();
+        
+        /**
+         * Esse metodo disconectara qualquer usuario que por ventura esteja logado
+         * no sistema.
+         * 
+         * @throws HumQueCaroException 
+         *          Excecao lancada caso alguma operacao do sistema impeca o
+         *          usuario de disconectar do sistema.
+         */
+        public void disconnect() throws HumQueCaroException;
 }

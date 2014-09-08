@@ -93,17 +93,19 @@ public class PedidoDAO extends DAO<Pedido> {
             Pedido pedido = null;
             rs = getStmt().executeQuery(
                     "SELECT * FROM pedidos WHERE codigo like '" + codigo + "'");
-            while (rs.next()) {
+            if (rs.next()) {
                 String telefoneCliente = rs.getString("telefone_cliente");
                 String situacao = rs.getString("situacao");
                 Float valor = rs.getFloat("valor");
                 pedido = new Pedido(telefoneCliente, null, situacao, valor);
                 pedido.setCodigo(codigo);
+                prodDePedido = produtosDePedido(pedido);
+                pedido.setProdutos(prodDePedido);
             }
             fecharBanco();
             return pedido;
         } catch (SQLException e) {
-            throw new HumQueCaroException("Erro no procura de Produto "
+            throw new HumQueCaroException("Erro no procura de Pedido "
                     + e.getMessage());
         }
     }
