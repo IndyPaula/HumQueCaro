@@ -66,7 +66,7 @@ public class UsuarioDAO extends DAO<Usuario> {
                     "SELECT * FROM usuarios WHERE usuarios.email like '"
                     + algo + "'");
             while (rs.next()) {
-                pessoa = new Usuario(rs.getString("email"), rs.getString("senha"), rs.getString("nome"), rs.getInt("codigo"));
+                pessoa = new Usuario(rs.getString("email"), rs.getString("senha"), rs.getString("nome"));
             }
             return pessoa;
 
