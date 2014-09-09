@@ -46,7 +46,7 @@ public class ClienteMB {
             fachada.adicionaCliente(cliente.getNome(), cliente.getTelefone());
             Messages.mensInfo("Cliente " + cliente.getNome() + " cadastrado(a) com sucesso");
         } catch (HumQueCaroException ex) {
-            Messages.mensInfo("Cliente não cadastrado" + ex.getMessage());
+            Messages.mensInfo("Cliente não cadastrado! " + ex.getMessage());
         }
         novo();
         return "home.xhtml";
@@ -78,7 +78,7 @@ public class ClienteMB {
                 Messages.mensInfo("Cliente não encontrado");
             }
         } catch (HumQueCaroException ex) {
-            Messages.mensInfo("Cliente não cadastrado" + ex.getMessage());
+            Messages.mensInfo("Cliente não removido! " + ex.getMessage());
         }
         return "home.xhtml";
     }
