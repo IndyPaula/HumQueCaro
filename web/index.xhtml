@@ -24,7 +24,7 @@
                     <p:outputLabel for="senha" value="Senha: "/> 
                     <p:password id="senha"  value="#{LoginMB.userLogin.senha}" /> 
 
-                    <p:commandButton id="btn" value="Entrar" image="btSalvar" actionListener="#{LoginMB.logarUsuario(actionEvent)}"/>
+                    <p:button id="entrar" value="Entrar" outcome="/home"/>
                     <p:button id="cadastrar" value="Cadastrar" outcome="/adicionaUsuario"/>
                 </p:panelGrid>
             </h:form>
