@@ -9,14 +9,17 @@ import java.util.List;
 public class GerenciadorCliente implements GerenciadorClienteIF {
 
     private FachadaBancoIF cliDAO;
+    private GerenciadorLoginIF gLogin;
 
     public GerenciadorCliente() {
         cliDAO = new FachadaBD();
+        gLogin = GerenciadorLogin.getInstance();
     }
 
     @Override
     public void adicionaCliente(String nome, String telefone)
             throws HumQueCaroException {
+        gLogin.logado();
         if (cliDAO.buscaCliente(telefone) == null
                 && verificaAtributos(nome, telefone)) {
             cliDAO.addCliente(new Cliente(nome, telefone));
@@ -40,11 +43,13 @@ public class GerenciadorCliente implements GerenciadorClienteIF {
     @Override
     public void alteraCliente(String telefone, String atributo, String novoValor)
             throws HumQueCaroException {
+        gLogin.logado();
         cliDAO.alteraCliente(telefone, atributo, novoValor);
     }
 
     @Override
     public void removeCliente(String telefone) throws HumQueCaroException {
+        gLogin.logado();
         if (telefone == null || telefone.equals("")) {
             throw new HumQueCaroException("Campo telefone inv�lido");
         }
