@@ -1,10 +1,13 @@
 package ifpb.monteiro.ads.pd.mb;
 
 import ifpb.monteiro.ads.pd.beans.Pedido;
+import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachada.Fachada;
 import ifpb.monteiro.ads.pd.fachadaIF.FachadaIF;
 import ifpb.monteiro.ads.pd.messages.Messages;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
@@ -18,10 +21,13 @@ public class PedidoMB {
     FachadaIF fachadaIF;
     private Pedido pedido;
     private DataModel model;
+    private List<Produto> produtos;
+    private String codigo;
 
     public PedidoMB() {
         pedido = new Pedido();
         fachadaIF = new Fachada();
+        produtos = new ArrayList<Produto>();
     }
 
     protected void novo() {
@@ -40,16 +46,24 @@ public class PedidoMB {
         model = new ListDataModel(fachadaIF.getPedidos());
         return model;
     }
+    
+    public void addProdutoPedido(ActionEvent actionEvent) {
+        try {
+            Produto produto = fachadaIF.buscaProduto(codigo);
+            produtos.add(produto);
+        } catch (HumQueCaroException ex) {
+            Messages.mensInfo("Pedido não cadastrado! " + ex.getMessage());
+        }
 
-    //TODO Fiz uma mudança aqui para receber um List<Produto>, pois recebia apenas
-    //um código. Lembrando que eu modifiquei apenas para retirar o erro. Quem for
-    //o resposável pelo método, verifique se o método continua correto ou não.
+    }
+
     public String cadastraPedido(ActionEvent actionEvent) {
         try {
-            fachadaIF.addPedido(pedido.getTelefoneCliente(), pedido.getProdutos());
+            addProdutoPedido(actionEvent);
+            fachadaIF.addPedido(pedido.getTelefoneCliente(), produtos);
             Messages.mensInfo("Pedido cadastrado(a) com sucesso");
         } catch (HumQueCaroException ex) {
-            Messages.mensInfo("P não cadastrado" + ex.getMessage());
+            Messages.mensInfo("Pedido não cadastrado!!! " + ex.getMessage());
         }
         novo();
         return "home.xhtml";
