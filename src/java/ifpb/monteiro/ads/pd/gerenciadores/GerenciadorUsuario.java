@@ -9,9 +9,11 @@ import ifpb.monteiro.ads.pd.validacao.Validacao;
 public class GerenciadorUsuario implements GerenciadorUsuarioIF {
 
     FachadaBD fachadaBd;
+    private GerenciadorLoginIF gLogin;
 
     public GerenciadorUsuario() {
         fachadaBd = new FachadaBD();
+        gLogin = GerenciadorLogin.getInstance();
     }
 
     @Override
@@ -33,11 +35,12 @@ public class GerenciadorUsuario implements GerenciadorUsuarioIF {
     @Override
     public void alteraUsuario(String email, String atributo, String novoValor)
             throws HumQueCaroException {
+        gLogin.logado();
         Validacao.validaEntrada(atributo, "Atributo invalido");
         Validacao.validaEntrada(novoValor, "NovoValor invalido");
         Usuario usuAntigo = buscaUsuario(email);
         if (atributo.equals(Dados.NOME.getNome())) {
-            if(!Validacao.contemApenasLetras(novoValor)){
+            if (!Validacao.contemApenasLetras(novoValor)) {
                 throw new HumQueCaroException("Senha ou Email Invalido");
             }
             usuAntigo.setNome(novoValor);
@@ -47,11 +50,11 @@ public class GerenciadorUsuario implements GerenciadorUsuarioIF {
             Validacao.validaSenha(novoValor, "Atributo Invalido");
             usuAntigo.setSenha(novoValor);
             fachadaBd.alteraUsuario(usuAntigo);
-         } else if (atributo.equals(Dados.EMAIL.getNome())) {
+        } else if (atributo.equals(Dados.EMAIL.getNome())) {
             Validacao.verifEmail(novoValor, "Atributo Invalido");
             usuAntigo.setEmail(novoValor);
             fachadaBd.alteraUsuario(usuAntigo);
-        }else{
+        } else {
             throw new HumQueCaroException("Atributo invalido");
         }
     }
@@ -59,6 +62,7 @@ public class GerenciadorUsuario implements GerenciadorUsuarioIF {
     @Override
     public void removeUsuario(String email, String senha)
             throws HumQueCaroException {
+        gLogin.logado();
         if (buscaUsuario(email).getSenha().equals(senha)) {
             fachadaBd.removeUsuario(email);
         } else {
@@ -76,5 +80,4 @@ public class GerenciadorUsuario implements GerenciadorUsuarioIF {
         }
 
     }
-
 }
