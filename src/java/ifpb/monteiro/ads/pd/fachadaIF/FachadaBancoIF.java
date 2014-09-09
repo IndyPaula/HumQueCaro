@@ -33,7 +33,7 @@ public interface FachadaBancoIF {
 
     Cliente buscaCliente(String telefone) throws HumQueCaroException;
 
-    void alteraCliente(String telefone, String atributo, String novoValor) throws HumQueCaroException;
+    void alteraCliente(Cliente cliente) throws HumQueCaroException;
 
     List<Cliente> getClientes() throws HumQueCaroException;
 
