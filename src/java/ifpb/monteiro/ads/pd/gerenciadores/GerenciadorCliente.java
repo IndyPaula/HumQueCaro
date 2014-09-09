@@ -45,6 +45,9 @@ public class GerenciadorCliente implements GerenciadorClienteIF {
             throws HumQueCaroException {
         gLogin.logado();
         Cliente cliente = cliDAO.buscaCliente(telefone);
+        if(cliente == null) {
+            throw new HumQueCaroException("Cliente não existe");
+        }
         if (atributo == null || atributo.equals("") || novoValor == null
                 || novoValor.equals("")) {
             throw new HumQueCaroException("Campo invalido");
