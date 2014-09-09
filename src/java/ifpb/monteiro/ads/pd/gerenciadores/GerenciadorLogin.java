@@ -9,11 +9,10 @@ import ifpb.monteiro.ads.pd.validacao.Validacao;
 public class GerenciadorLogin implements GerenciadorLoginIF {
 
     private Usuario userLogado;
-    private GerenciadorUsuario usuario;
+    private GerenciadorUsuarioIF usuario;
     private static GerenciadorLoginIF instance = null;
 
     private GerenciadorLogin() {
-        usuario = new GerenciadorUsuario();
     }
 
     public static GerenciadorLoginIF getInstance() {
@@ -25,6 +24,7 @@ public class GerenciadorLogin implements GerenciadorLoginIF {
 
     @Override
     public void fazerLogin(String email, String senha) throws HumQueCaroException {
+        usuario = new GerenciadorUsuario();
         Validacao.validaEntrada(email, "Login ou senha invalido");
         Validacao.validaEntrada(senha, "Login ou senha invalido");
         Validacao.verifEmail(email, "Login ou senha invalido");
@@ -35,6 +35,15 @@ public class GerenciadorLogin implements GerenciadorLoginIF {
         } else {
             setUserLogado(null);
             throw new HumQueCaroException("Usuario nao encontrado");
+        }
+    }
+
+    @Override
+    public void fazerLogout() throws HumQueCaroException {
+        if (userLogado != null) {
+            setUserLogado(null);
+        } else {
+            throw new HumQueCaroException("Usuario nao esta logado");
         }
     }
 
