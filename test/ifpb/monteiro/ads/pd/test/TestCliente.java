@@ -3,6 +3,7 @@ package ifpb.monteiro.ads.pd.test;
 import static org.junit.Assert.*;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachada.Fachada;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
 import org.junit.Test;
@@ -17,6 +18,12 @@ public class TestCliente {
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
         try {
+            fachada.fazerLogin("widan@gmail.com", "42152244215224");
+        } catch (HumQueCaroException ex) {
+            fail("Usuario nao logou");
+        }
+
+        try {
             fachada.adicionaCliente("Alvaro", "08799001122");
         } catch (HumQueCaroException e) {
             fail("Cliente nao adicionado");
@@ -27,6 +34,10 @@ public class TestCliente {
         } catch (HumQueCaroException e) {
             fail("Cliente nao adicionado");
         }
+    }
+
+    @AfterClass
+    public static void tearDownAfterClass() throws Exception {
     }
     // TESTE PARA ADICIONAR CLIENTE
 
@@ -101,7 +112,7 @@ public class TestCliente {
         } catch (HumQueCaroException e) {
         }
     }
-    
+
     // TESTE PARA REMOVER CLIENTE
     @Test
     public void testRemoveCliente() {
@@ -148,6 +159,71 @@ public class TestCliente {
             fail("Campo invalido");
         } catch (HumQueCaroException e) {
         }
+    }
 
+    @Test
+    public void testAlteraCliente() {
+        //ALTERANDO CLIENTES CADASTRADOS
+        try {
+            fachada.alteraCliente("08791001122", "Nome", "Cheirozinho");
+        } catch (HumQueCaroException e) {
+            fail("Cliente nao alterado");
+        }
+
+        try {
+            fachada.alteraCliente("08792001122", "Telefone", "08796332211");
+        } catch (HumQueCaroException e) {
+            fail("Cliente nao alterado");
+        }
+
+        //ALTERANDO CLIENTES QUE NÃO EXISTEM
+        try {
+            fachada.alteraCliente("11111111111", "Nome", "Juniorzito");
+            fail("Cliente nao existe");
+        } catch (HumQueCaroException e) {
+        }
+
+        try {
+            fachada.alteraCliente("00011112222", "Telefone", "09735261534");
+            fail("Cliente nao existe");
+        } catch (HumQueCaroException e) {
+        }
+
+        //ALTERANDO CLIENTES COM ENTRADAS INVALIDAS
+        try {
+            fachada.alteraCliente("", "Nome", "Juniorzito");
+            fail("Camo invalido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraCliente(null, "Nome", "Juniorzito");
+            fail("Camo invalido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraCliente("08788001122", "", "Juniorzito");
+            fail("Camo invalido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraCliente("08788001122", null, "Juniorzito");
+            fail("Camo invalido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraCliente("08788001122", "Nome", "");
+            fail("Camo invalido");
+        } catch (HumQueCaroException e) {
+        }
+        
+        try {
+            fachada.alteraCliente("08788001122", "Nome", null);
+            fail("Camo invalido");
+        } catch (HumQueCaroException e) {
+        }
     }
 }
