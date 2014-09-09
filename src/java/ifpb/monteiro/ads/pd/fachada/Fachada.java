@@ -24,7 +24,7 @@ public class Fachada implements FachadaIF {
     GerenciadorUsuarioIF gUsuario = new GerenciadorUsuario();
     GerenciadorClienteIF gCliente = new GerenciadorCliente();
     GerenciadorPedidoIF gPedido = new GerenciadorPedido();
-    GerenciadorLoginIF gLogin = new GerenciadorLogin();
+    GerenciadorLoginIF gLogin = GerenciadorLogin.getInstance();
 
     @Override
     public void adicionaUsuario(String email, String senha, String nome)
