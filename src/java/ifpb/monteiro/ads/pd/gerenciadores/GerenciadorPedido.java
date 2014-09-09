@@ -19,13 +19,16 @@ import java.util.List;
 public class GerenciadorPedido implements GerenciadorPedidoIF {
     
     private FachadaBancoIF pedidoDAO;
+    private GerenciadorLoginIF gLogin;
     
     public GerenciadorPedido() {
         pedidoDAO = new FachadaBD();
+        gLogin = GerenciadorLogin.getInstance();
     }
     
     @Override
     public void addPedido(String telefoneCliente, List<Produto> produtos) throws HumQueCaroException {
+        gLogin.logado();
         float valorPedido = 0.0F;
         for (Produto produto : produtos) {
             valorPedido = valorPedido + Validacao.stringToFloat(produto.getValor());
@@ -35,6 +38,7 @@ public class GerenciadorPedido implements GerenciadorPedidoIF {
     
     @Override
     public void setStatusPedido(String codigo, String novoStatus) throws HumQueCaroException {
+        gLogin.logado();
         Validacao.validaEntrada(codigo, "Campo codigo inválido");
         Validacao.validaEntrada(novoStatus, "Novo status inválido");
         Validacao.validaSituacao(novoStatus," Situação inválida");
