@@ -87,37 +87,13 @@ public class FachadaBD implements FachadaBancoIF {
 
     @Override
     public Cliente buscaCliente(String telefone) throws HumQueCaroException {
-        Cliente c = cliDAO.procura(telefone);
-        if (telefone == null || telefone.equals("")) {
-            throw new HumQueCaroException("Campo telefone inv�lido");
-        }
-        if (c != null) {
-            return c;
-        }
-        return null;
+        return cliDAO.procura(telefone);
     }
 
     @Override
-    public void alteraCliente(String telefone, String atributo, String novoValor)
+    public void alteraCliente(Cliente cliente)
             throws HumQueCaroException {
-        Cliente c = cliDAO.procura(telefone);
-        if (atributo == null || atributo.equals("") || novoValor == null
-                || novoValor.equals("")) {
-            throw new HumQueCaroException("Campo invalido");
-        }
-        if (!atributo.equals("Nome") && !atributo.equals("Telefone")) {
-            throw new HumQueCaroException("Campo atributo invalido");
-        }
-        if (atributo.equals("Nome") && (novoValor != null || novoValor != (""))) {
-            c.setNome(novoValor);
-        }
-        if (atributo.equals("Telefone")
-                && (novoValor != null || novoValor != (""))
-                && novoValor.length() == 11) {
-            c.setTelefone(novoValor);
-        }
-        cliDAO.altera(c);
-
+        cliDAO.altera(cliente);
     }
 
     @Override
