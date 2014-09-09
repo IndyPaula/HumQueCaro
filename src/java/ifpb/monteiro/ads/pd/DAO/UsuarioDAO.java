@@ -66,12 +66,12 @@ public class UsuarioDAO extends DAO<Usuario> {
                     "SELECT * FROM usuarios WHERE usuarios.email like '"
                     + algo + "'");
             while (rs.next()) {
-                pessoa = new Usuario(rs.getString("email"), rs.getString("senha"), rs.getString("nome"));
+                pessoa = new Usuario(rs.getString("email"), rs.getString("senha"), rs.getString("nome"), rs.getInt("codigo"));
             }
             return pessoa;
 
         } catch (Exception e) {
-            throw new HumQueCaroException(" Erro ao procurar uma Usuario - "
+            throw new HumQueCaroException(" Erro ao procurar um Usuario - "
                     + e.getMessage());
         }
     }
