@@ -44,7 +44,23 @@ public class GerenciadorCliente implements GerenciadorClienteIF {
     public void alteraCliente(String telefone, String atributo, String novoValor)
             throws HumQueCaroException {
         gLogin.logado();
-        cliDAO.alteraCliente(telefone, atributo, novoValor);
+        Cliente cliente = cliDAO.buscaCliente(telefone);
+        if (atributo == null || atributo.equals("") || novoValor == null
+                || novoValor.equals("")) {
+            throw new HumQueCaroException("Campo invalido");
+        }
+        if (!atributo.equals("Nome") && !atributo.equals("Telefone")) {
+            throw new HumQueCaroException("Campo atributo invalido");
+        }
+        if (atributo.equals("Nome") && (novoValor != null || novoValor != (""))) {
+            cliente.setNome(novoValor);
+        }
+        if (atributo.equals("Telefone")
+                && (novoValor != null || novoValor != (""))
+                && novoValor.length() == 11) {
+            cliente.setTelefone(novoValor);
+        }
+        cliDAO.alteraCliente(cliente);
     }
 
     @Override
@@ -63,11 +79,10 @@ public class GerenciadorCliente implements GerenciadorClienteIF {
     @Override
     public Cliente buscaCliente(String telefone) throws HumQueCaroException {
         Cliente cliente = cliDAO.buscaCliente(telefone);
-        if (cliente != null) {
-            return cliente;
-        } else {
+        if (cliente == null) {
             throw new HumQueCaroException("Cliente na� cadastrado");
         }
+        return cliente;
     }
 
     @Override
