@@ -45,7 +45,7 @@ public class GerenciadorLogin implements GerenciadorLoginIF {
     @Override
     public void logado() throws HumQueCaroException {
         if (userLogado == null) {
-            throw new HumQueCaroException("Erro");
+            throw new HumQueCaroException("Efetue login para executar essa funcionalidade.");
         }
     }
 
