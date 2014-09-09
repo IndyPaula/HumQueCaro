@@ -138,7 +138,7 @@ public class Fachada implements FachadaIF {
 
     @Override
     public void disconnect() throws HumQueCaroException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        gLogin.fazerLogout();
     }
 
     
