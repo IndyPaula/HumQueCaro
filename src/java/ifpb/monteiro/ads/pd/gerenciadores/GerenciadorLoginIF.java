@@ -7,5 +7,7 @@ public interface GerenciadorLoginIF {
 
     public void fazerLogin(String email, String senha) throws HumQueCaroException;
     
+    public void fazerLogout() throws HumQueCaroException;
+    
     public void logado() throws HumQueCaroException;
 }
