@@ -108,7 +108,7 @@ public class Fachada implements FachadaIF {
     @Override
     public void addPedido(String telefoneCliente, List<Produto> produtos) throws HumQueCaroException {
         gPedido.addPedido(telefoneCliente, produtos);
-        
+
     }
 
     @Override
@@ -141,5 +141,13 @@ public class Fachada implements FachadaIF {
         gLogin.fazerLogout();
     }
 
-    
+    @Override
+    public void gerarComprovante(String tipoComprovante, Pedido pedido) throws HumQueCaroException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void gerarSegundaVia(String identificadorCliente) throws HumQueCaroException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
