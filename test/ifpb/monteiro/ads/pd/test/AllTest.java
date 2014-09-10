@@ -29,7 +29,9 @@ import org.junit.runners.Suite;
     TestAdicionaProduto.class,
     TestAlteraProduto.class,
     TestBuscaProduto.class,
-    TestRemoveProduto.class
+    TestRemoveProduto.class,
+    TestGetAllClientes.class,
+    TestGetAllProdutos.class
 })
 public class AllTest {
 }
