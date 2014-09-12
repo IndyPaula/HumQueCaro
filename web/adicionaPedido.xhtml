@@ -37,7 +37,17 @@
                         </h:panelGrid>
                         <p:spacer height="10" />
                         <p:separator/>
-                        <p:commandButton id="btn" value="Cadastrar" image="btCadastrar" update="panel" actionListener="#{PedidoMB.cadastraPedido}"/>
+
+                        <p:commandButton value="Gerar Comprovante" onclick="dlg.show();">
+                            <p:confirm header="Tipo de comprovante" message="Escolha a forma para gerar o comprovante" />
+                        </p:commandButton>
+
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
+                            <center>
+                                <p:commandButton value="VIA SMS" onclick="dlg.hide();" type="button" />
+                                <p:commandButton value="IMPRESSO" onclick="dlg.hide();" type="button" />
+                            </center>
+                        </p:confirmDialog>
 
                     </p:panel>
                 </h:form>
