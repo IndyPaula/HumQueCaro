@@ -19,10 +19,10 @@
                 <p:layoutUnit position="north" size="110">  
                     <h:form>
                         <img src="./resources/imagens/banner.png" alt="humQueCaroComNotas"/>
-                        <p:menuButton value="Config."  >
-                            <p:menuitem value="Alterar usuário" outcome="/alteraUsuario.xhtml"/>
-                            <p:menuitem value="Remover usuário" outcome="/removeUsuario.xhtml"/>
-                            <p:menuitem value="Sair" action="#{LoginMB.deslogarUsuario(actionEvent)}"/>
+                        <p:menuButton value="Configurações"  >
+                            <p:menuitem value="Alterar usuário" outcome="/alteraUsuario.xhtml" icon="btAlterar"/>
+                            <p:menuitem value="Remover usuário" outcome="/removeUsuario.xhtml" icon="btExcluir"/>
+                            <p:menuitem value="Sair" action="#{LoginMB.deslogarUsuario(actionEvent)}" icon="btCancela"/>
                         </p:menuButton>
                     </h:form>
                 </p:layoutUnit>  
@@ -37,21 +37,21 @@
 
                                 <p:panelMenu style="width:250px">
                                     <p:submenu label="Clientes" >
-                                        <p:menuitem value="Cadastrar" outcome="/adicionaCliente.xhtml"/>
-                                        <p:menuitem value="Alterar" outcome="/alteraCliente.xhtml"/>
-                                        <p:menuitem value="Remover" outcome="/removeCliente.xhtml"/>
-                                        <p:menuitem value="Listar" outcome="/listClientes" />
+                                        <p:menuitem value="Cadastrar" outcome="/adicionaCliente.xhtml" icon="btAdd"/>
+                                        <p:menuitem value="Alterar" outcome="/alteraCliente.xhtml" icon="btAlterar"/>
+                                        <p:menuitem value="Remover" outcome="/removeCliente.xhtml" icon="btExcluir"/>
+                                        <p:menuitem value="Listar" outcome="/listClientes" icon="listar"/>
                                     </p:submenu>
                                     <p:submenu label="Produtos" >
-                                        <p:menuitem value="Cadastrar" outcome="/adicionaProduto.xhtml"/>
-                                        <p:menuitem value="Alterar" outcome="/alteraProduto.xhtml"/>
-                                        <p:menuitem value="Remover" outcome="/removeProduto.xhtml"/>
-                                        <p:menuitem value="Listar" outcome="/listProdutos"/>
+                                        <p:menuitem value="Cadastrar" outcome="/adicionaProduto.xhtml" icon="btAdd"/>
+                                        <p:menuitem value="Alterar" outcome="/alteraProduto.xhtml" icon="btAlterar"/>
+                                        <p:menuitem value="Remover" outcome="/removeProduto.xhtml" icon="btExcluir"/>
+                                        <p:menuitem value="Listar" outcome="/listProdutos" icon="listar"/>
                                     </p:submenu>
 
                                     <p:submenu label="Pedidos" >
-                                        <p:menuitem value="Cadastrar" outcome="/adicionaPedido.xhtml"/>
-                                        <p:menuitem value="Listar" outcome="/listPedidos.xhtml"/>
+                                        <p:menuitem value="Cadastrar" outcome="/adicionaPedido.xhtml" icon="btAdd"/>
+                                        <p:menuitem value="Listar" outcome="/listPedidos.xhtml" icon="listar"/>
                                     </p:submenu>
                                 </p:panelMenu>
 
