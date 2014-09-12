@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import static javax.faces.context.FacesContext.getCurrentInstance;
 
 /**
@@ -67,12 +68,14 @@ public class UsuarioMB {
     public String salvar() {
         try {
             fachadaBD.addUsuario(usuario);
-            Messages.mensInfo("Usuario " + usuario.getNome() + " cadastrado(a) com sucesso");
+            String msg = "Cadastrado com sucesso, efetue login!";
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, msg, ""));
+            FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         } catch (HumQueCaroException e) {
             addMessage(getMessageFromI18N("msg.erro.salvar.usuario"), e.getMessage());
             return "";
         }
-        return "";
+        return "login?faces-redirect=true";
     }
 
     public String remover() {
