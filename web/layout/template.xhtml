@@ -21,8 +21,8 @@
                         <img src="./resources/imagens/banner.png" alt="humQueCaroComNotas"/>
                         <p:menuButton value="Config."  >
                             <p:menuitem value="Alterar usuário" outcome="/alteraUsuario.xhtml"/>
-                            <p:menuitem value="Remover usuário"  outcome="/removeUsuario.xhtml"/>
-                            <p:menuitem value="Sair"  outcome="/index.xhtml"/>
+                            <p:menuitem value="Remover usuário" outcome="/removeUsuario.xhtml"/>
+                            <p:menuitem value="Sair" action="#{LoginMB.deslogarUsuario(actionEvent)}"/>
                         </p:menuButton>
                     </h:form>
                 </p:layoutUnit>  
