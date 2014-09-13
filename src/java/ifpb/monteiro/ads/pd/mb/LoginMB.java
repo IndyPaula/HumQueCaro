@@ -35,7 +35,7 @@ public class LoginMB implements Serializable {
             String msg = "Erro! Usuario ou senha invalido!";
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, msg, ""));
             FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
-            return "login?faces-redirect=true";
+            return "index?faces-redirect=true";
         }
     }
 
@@ -45,7 +45,7 @@ public class LoginMB implements Serializable {
             String msg = "Você saiu do HumQueCaro!";
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, msg, "Você saiu do HumQueCaro!"));
             FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
-            return "login?faces-redirect=true";
+            return "index?faces-redirect=true";
         } catch (HumQueCaroException ex) {
             return null;
         }
