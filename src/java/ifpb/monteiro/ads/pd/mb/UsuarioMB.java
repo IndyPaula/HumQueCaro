@@ -75,7 +75,7 @@ public class UsuarioMB {
             addMessage(getMessageFromI18N("msg.erro.salvar.usuario"), e.getMessage());
             return "";
         }
-        return "login?faces-redirect=true";
+        return "index?faces-redirect=true";
     }
 
     public String remover() {
