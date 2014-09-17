@@ -9,15 +9,14 @@
         <link rel="stylesheet" type="text/css" href="resources/css/estilo.css" />  
         <link rel="shortcut icon" href="/imagens/favicon.ico"/>
         <style type="text/css">
-            body {background-color: #eeeeee; font-size: 12px}
+            body {background-color: #ffffff; font-size: 12px}
         </style> 
     </h:head>
     <h:body>
-
         <div align="center">
             <p:layout style="min-width:1020px;max-width:1020px;min-height:600px">  
-                <p:layoutUnit position="north" size="110">  
-                    <h:form>
+                <p:layoutUnit position="north" size="110" styleClass="bordas">  
+                    <h:form> 
                         <img src="./resources/imagens/banner.png" alt="humQueCaroComNotas"/>
                         <p:menuButton value="Configurações"  >
                             <p:menuitem value="Alterar usuário" outcome="/alteraUsuario.xhtml" icon="btAlterar"/>
@@ -27,7 +26,7 @@
                     </h:form>
                 </p:layoutUnit>  
 
-                <p:layoutUnit position="west" size="260">  
+                <p:layoutUnit position="west" size="260" styleClass="bordas">  
                     <ui:insert name="menu">
                         <h:form>
                             <h3 style="margin-top: 0"> Menu HumQueCaro </h3>
@@ -60,9 +59,14 @@
                         </h:form>
                     </ui:insert>
                 </p:layoutUnit>  
-                <p:layoutUnit position="center">  
+                <p:layoutUnit position="center" styleClass="bordas">  
                     <ui:insert name="content">
                     </ui:insert>
+                    <div style="border-top: 1px solid #eeeeee; width: 96%; padding-top: 10px; text-align:left">
+                        <a>IFPB - Instituto Federal de Educação, Ciência e Tecnologia da Paraíba - Campus Monteiro<br>
+                                Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas - 4º Período </br>
+                        </a>
+                    </div>
                 </p:layoutUnit>  
             </p:layout>  
         </div>

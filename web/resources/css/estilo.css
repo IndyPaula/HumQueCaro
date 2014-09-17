@@ -15,6 +15,10 @@
    height:30px; 
 }
 
+.bordas {
+     border: none;
+}
+
 /* Define as imagens da barra de Cadastros e em seus itens de menu */
 .cadastros{ 
     width: 16px; height: 16px; background-image: url(icones/cadastro.png) !important;

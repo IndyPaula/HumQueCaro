@@ -14,10 +14,16 @@
         <ui:composition template="./layout/template.xhtml">
             <ui:define name="content">
                 <h:form id="form" acceptcharset="ISO-8859-1">
-                    <p:panel id="panel" header="Cadastrar Cliente">
+                    <p:panel id="panel" styleClass="bordas">
+
+                        <h:panelGrid width="100%" style="text-align:left"> 
+                            <h:outputText style="font-size: 20px" value="Cadastrar Cliente"/>
+                        </h:panelGrid>
+                        <p:spacer height="10" />
+                        <div style="border-top: 1px solid #eeeeee"/>
+                        <p:spacer height="10" />
 
                         <p:messages id="msgs"/> 
-
                         <h:panelGrid columns="3">
 
                             <h:outputLabel for="nome" value="Nome: *" />  
@@ -35,8 +41,8 @@
                             <h:outputLabel for="telefone" value="Ex:(08399887766)" />
                             <p:message for="telefone" id="msgTelefone" display="icon"/>
                         </h:panelGrid>
-                        <p:spacer height="10" />
-                        <p:separator/>
+
+                        <p:spacer height="25" />
                         <p:commandButton id="btn" value="Salvar" image="cadastrar" update="panel" actionListener="#{ClienteMB.cadastraCliente(actionEvent)}"/>
 
                     </p:panel>

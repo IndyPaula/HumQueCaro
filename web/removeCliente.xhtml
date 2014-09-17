@@ -14,10 +14,17 @@
         <ui:composition template="./layout/template.xhtml">
             <ui:define name="content">
                 <h:form id="form" acceptcharset="ISO-8859-1">
-                    <p:panel id="panel" header="Remover Cliente">
+                    <p:panel id="panel" styleClass="bordas">
 
+                        <h:panelGrid width="100%" style="text-align:left"> 
+                            <h:outputText style="font-size: 20px" value="Remover Cliente"/>
+                        </h:panelGrid>
+                        <p:spacer height="10" />
+                        <div style="border-top: 1px solid #eeeeee"/>
+                        <p:spacer height="10" />
+                        
                         <p:messages id="msgs"/> 
-                        <h:panelGrid columns="3">
+                        <h:panelGrid columns="3" id="pan">
 
                             <h:outputLabel for="telefone" value="Telefone: *" />  
                             <p:inputText id="telefone"  value="#{ClienteMB.cliente.telefone}" size="15" required="true" requiredMessage="Digite o telefone do Cliente">  
@@ -28,9 +35,9 @@
                             <p:message for="telefone" id="msgTelefone" display="icon"/>
 
                         </h:panelGrid>
-                        <p:spacer height="10" />
-                        <p:separator/>
-                        <p:commandButton id="btn" value="Remover" image="btExcluir" update="panel" actionListener="#{ClienteMB.removeCliente(actionEvent)}"/>
+                        
+                        <p:spacer height="25" />
+                        <p:commandButton id="btn" value="Remover" image="btExcluir" update="pan" actionListener="#{ClienteMB.removeCliente(actionEvent)}"/>
 
                     </p:panel>
                 </h:form>
