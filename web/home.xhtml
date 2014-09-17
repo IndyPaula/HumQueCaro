@@ -12,10 +12,26 @@ and open the template in the editor.
 
     <body>
         <ui:composition template="./layout/template.xhtml">
-
-            <ui:define name="title">Home</ui:define>
-
+            <ui:define name="title">
+            </ui:define>
             <ui:define name="content">
+
+                <h:form id="form" acceptcharset="ISO-8859-1">
+
+                    <p:panel id="panel" styleClass="bordas">
+                        <h:panelGrid width="100%" style="text-align:left"> 
+                            <h:outputText style="font-size: 20px" value="Home"/>
+                        </h:panelGrid>
+                        <p:spacer height="10" />
+                        <div style="border-top: 1px solid #eeeeee"/>
+                        <p:spacer height="10" />
+
+                        <center>
+                            <img src="./resources/imagens/humQueCaroComNotas.png" alt="humQueCaroComNotas" 
+                                 style="width: 500px; height: 300px"/>
+                        </center>
+                    </p:panel>
+                </h:form>
             </ui:define>
 
         </ui:composition>
