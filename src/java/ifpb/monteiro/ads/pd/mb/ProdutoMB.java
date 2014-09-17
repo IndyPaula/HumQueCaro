@@ -10,12 +10,12 @@ import ifpb.monteiro.ads.pd.fachada.Fachada;
 import ifpb.monteiro.ads.pd.fachadaIF.FachadaIF;
 import ifpb.monteiro.ads.pd.messages.Messages;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
-@SessionScoped
+@ViewScoped
 @ManagedBean(name = "ProdutoMB")
 public class ProdutoMB {
 
