@@ -34,11 +34,11 @@
                 <label class="control-label"><h:outputText
                         value="Senha" /></label>
                 <div class="controls">
-                    <h:inputText value="#{usuarioMB.usuario.senha}"
+                    <h:inputSecret value="#{usuarioMB.usuario.senha}"
                                  label="Senha" required="true"
                                  styleClass="input-small">
                         <f:validateLength minimum="8"/>
-                    </h:inputText>
+                    </h:inputSecret>
                 </div>
             </div>
 
