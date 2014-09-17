@@ -9,12 +9,12 @@ import ifpb.monteiro.ads.pd.messages.Messages;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
-@SessionScoped
+@ViewScoped
 @ManagedBean(name = "PedidoMB")
 public class PedidoMB {
 
