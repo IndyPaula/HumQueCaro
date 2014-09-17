@@ -266,18 +266,9 @@ public interface FachadaIF {
      * formas de gerar o comprovante para o cliente.
      *
      * @param tipoComprovante pode ser apenas "sms" ou "impresso";
-     * @param pedido cadastrado
+     * @param idCliente cadastrado
      * @throws HumQueCaroException caso algum erro aconteça ao gerar o
      * comprovante do Pedido
      */
-    public void gerarComprovante(String tipoComprovante, Pedido pedido) throws HumQueCaroException;
-
-    /**
-     * Método para gerar uma 2ª via de comprovante impresso, onde é necessário o
-     * identificador do cliente deste pedido.
-     *
-     * @param identificadorCliente
-     * @throws HumQueCaroException
-     */
-    public void gerarSegundaVia(String identificadorCliente) throws HumQueCaroException;
+    public void gerarComprovante(String tipoComprovante, String idCliente) throws HumQueCaroException;
 }

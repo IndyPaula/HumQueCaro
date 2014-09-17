@@ -92,13 +92,14 @@ public class PedidoDAO extends DAO<Pedido> {
             ResultSet rs;
             Pedido pedido = null;
             rs = getStmt().executeQuery(
-                    "SELECT * FROM pedidos WHERE codigo like '" + codigo + "'");
+                    "SELECT * FROM pedidos WHERE telefone_cliente like '" + codigo + "'");
             if (rs.next()) {
                 String telefoneCliente = rs.getString("telefone_cliente");
                 String situacao = rs.getString("situacao");
+                String codBanco = rs.getString("codigo");
                 Float valor = rs.getFloat("valor");
                 pedido = new Pedido(telefoneCliente, null, situacao, valor);
-                pedido.setCodigo(codigo);
+                pedido.setCodigo(codBanco);
                 prodDePedido = produtosDePedido(pedido);
                 pedido.setProdutos(prodDePedido);
             }

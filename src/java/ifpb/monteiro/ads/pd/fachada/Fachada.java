@@ -142,12 +142,8 @@ public class Fachada implements FachadaIF {
     }
 
     @Override
-    public void gerarComprovante(String tipoComprovante, Pedido pedido) throws HumQueCaroException {
+    public void gerarComprovante(String tipoComprovante, String idCliente) throws HumQueCaroException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void gerarSegundaVia(String identificadorCliente) throws HumQueCaroException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
