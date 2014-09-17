@@ -271,4 +271,22 @@ public interface FachadaIF {
      * comprovante do Pedido
      */
     public void gerarComprovante(String tipoComprovante, String idCliente) throws HumQueCaroException;
+
+    /**
+     * Método para mostrar pedido pronto ao cliente
+     *
+     * @param codigo
+     * @throws HumQueCaroException
+     */
+    public void mostrarPedidoCliente(String codigo) throws HumQueCaroException;
+
+    /**
+     * Método para mostrar o pedido pendente ao cozinheiro, o pedido pendente
+     * que estiver na primeira posição da lista de pedidos será exibido aos
+     * cozinheiros
+     *
+     * @return
+     * @throws HumQueCaroException
+     */
+    public List<Produto> mostrarPedidoCozinheiro() throws HumQueCaroException;
 }
