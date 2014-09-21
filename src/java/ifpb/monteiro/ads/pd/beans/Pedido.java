@@ -1,10 +1,11 @@
 package ifpb.monteiro.ads.pd.beans;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  */
-public class Pedido {
+public class Pedido implements Serializable{
 
     private String codigo;
     private String telefoneCliente;

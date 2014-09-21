@@ -1,6 +1,8 @@
 package ifpb.monteiro.ads.pd.beans;
 
-public class Produto {
+import java.io.Serializable;
+
+public class Produto implements Serializable{
 
     private int codigo;
     private String nome;
