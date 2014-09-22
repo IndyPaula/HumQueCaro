@@ -15,5 +15,5 @@ public interface GerenciadorComprovanteIF {
 
     public void comprovanteSms(Pedido pedido) throws HumQueCaroException;
 
-    public void comprovanteImpresso(String idCliente) throws HumQueCaroException;
+    public void comprovanteImpresso(String identificadorCliente) throws HumQueCaroException;
 }
