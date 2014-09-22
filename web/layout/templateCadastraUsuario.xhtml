@@ -9,27 +9,22 @@
         <link rel="stylesheet" type="text/css" href="resources/css/estilo.css" />  
         <link rel="shortcut icon" href="/imagens/favicon.ico"/>
         <style type="text/css">
-            body {background-color: #ffffff; font-size: 16px}
+            body {background-color: #eeeeee; font-size: 16px}
 
         </style> 
     </h:head>
     <h:body>
         <div align="center">
             <p:layout style="min-width:1020px;max-width:1020px;min-height:600px">  
-                <p:layoutUnit position="north" size="105" styleClass="bordas">  
+                <p:layoutUnit position="north" size="105">  
                     <img src="./resources/imagens/banner.png" alt="humQueCaroComNotas"/>
 
                     <h:graphicImage/>
                 </p:layoutUnit>  
 
-                <p:layoutUnit position="center" styleClass="bordas">  
+                <p:layoutUnit position="center">  
                     <ui:insert name="content">
                     </ui:insert>
-                    <div style="border-top: 1px solid #eeeeee; width: 96%; padding-top: 10px; text-align:left">
-                        <a>IFPB - Instituto Federal de Educação, Ciência e Tecnologia da Paraíba - Campus Monteiro<br>
-                                Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas - 4º Período </br>
-                        </a>
-                    </div>
                 </p:layoutUnit>  
             </p:layout>  
         </div>
