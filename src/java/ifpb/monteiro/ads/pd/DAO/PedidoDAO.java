@@ -89,10 +89,15 @@ public class PedidoDAO extends DAO<Pedido> {
     public Pedido procura(String codigo) throws HumQueCaroException {
         try {
             abrirBanco();
-            ResultSet rs;
+            ResultSet rs = null;
             Pedido pedido = null;
-            rs = getStmt().executeQuery(
-                    "SELECT * FROM pedidos WHERE telefone_cliente like '" + codigo + "'");
+            if (codigo.length() == 11) {
+                rs = getStmt().executeQuery(
+                        "SELECT * FROM pedidos WHERE telefone_cliente like '" + codigo + "'");
+            } else {
+                rs = getStmt().executeQuery(
+                        "SELECT * FROM pedidos WHERE codigo like '" + codigo + "'");
+            }
             if (rs.next()) {
                 String telefoneCliente = rs.getString("telefone_cliente");
                 String situacao = rs.getString("situacao");
@@ -168,8 +173,10 @@ public class PedidoDAO extends DAO<Pedido> {
                     + pedido.getCodigo() + "'");
             while (rs.next()) {
                 String codigo_produto = rs.getString("codigo_produto");
-                produto = gProd.buscaProduto(codigo_produto);
-                prodDePedido.add(produto);
+                if (codigo_produto != null) {
+                    produto = gProd.buscaProduto(codigo_produto);
+                    prodDePedido.add(produto);
+                }
             }
             return prodDePedido;
         } catch (SQLException | HumQueCaroException ex) {

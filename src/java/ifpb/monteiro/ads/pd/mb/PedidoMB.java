@@ -46,7 +46,7 @@ public class PedidoMB {
         model = new ListDataModel(fachadaIF.getPedidos());
         return model;
     }
-    
+
     public void addProdutoPedido(ActionEvent actionEvent) {
         try {
             Produto produto = fachadaIF.buscaProduto(codigo);
@@ -71,12 +71,16 @@ public class PedidoMB {
 
     public String alteraStatus(ActionEvent actionEvent) {
         try {
-            Pedido pedidoCad = fachadaIF.buscaPedido(pedido.getTelefoneCliente());
-            if (pedidoCad != null) {
-                fachadaIF.setStatusPedido(pedidoCad.getCodigo(), pedido.getSituacao());
-                Messages.mensInfo("Status alterado com sucesso!");
+            if (pedido.getTelefoneCliente() != null) {
+                Pedido pedidoCad = fachadaIF.buscaPedido(pedido.getTelefoneCliente());
+                if (pedidoCad != null) {
+                    fachadaIF.setStatusPedido(pedidoCad.getCodigo(), pedido.getSituacao());
+                    Messages.mensInfo("Status alterado com sucesso!");
+                } else {
+                    Messages.mensInfo("Pedido não encontrado!");
+                }
             } else {
-                Messages.mensInfo("Pedido não encontrado!");
+                Messages.mensInfo("Não é possível alterar a situação deste pedido");
             }
         } catch (HumQueCaroException ex) {
             Messages.mensInfo("Status não alterado! " + ex.getMessage());
