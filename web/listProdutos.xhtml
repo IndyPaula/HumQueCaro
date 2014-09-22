@@ -34,11 +34,11 @@ and open the template in the editor.
                             <h:outputText value="#{produto.nome}" />  
                         </p:column>
 
-                        <p:column filterStyle="max-width: 40px; min-width: 130px; " filterBy="#{produto.codigo}">  
+                        <p:column filterStyle="max-width: 40px; min-width: 130px; " filterBy="#{produto.codigoBarras}">  
                             <f:facet name="header">  
-                                <h:outputText value="Código" />  
+                                <h:outputText value="Código Barras" />  
                             </f:facet>  
-                            <h:outputText value="#{produto.codigo}" /> 
+                            <h:outputText value="#{produto.codigoBarras}" /> 
                         </p:column>
 
                         <p:column filterStyle="max-width: 40px; min-width: 130px; " filterBy="#{produto.fabricante}">  
