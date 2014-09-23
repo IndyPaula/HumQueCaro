@@ -25,20 +25,20 @@ and open the template in the editor.
                             <h:outputText value="#{PedidoMB.pedido.codigo}" />
                             <p:separator/>
 
-                            <h:outputLabel for="altSituacao" value="Alterar Situação" />
-                            <p:selectOneMenu id="altSituacao" value="#{PedidoMB.pedido.situacao}" required="true" requiredMessage="Alterar a situação do pedido">
+                            <h:outputText value="Alterar Situação" />
+                            <p:inputText id="altSituacao" value="#{PedidoMB.situacao.situacao}" required="true" requiredMessage="Alterar a situação do pedido">
                                 <f:selectItem itemLabel="Selecione" itemValue="" />
                                 <f:selectItem itemLabel="Entregue" itemValue="Entregue" />
                                 <f:selectItem itemLabel="Pendente" itemValue="Pendente" />
                                 <f:selectItem itemLabel="Cancelado" itemValue="Cancelado" />
                                 <f:validateLength minimum="1" />  
                                 <p:ajax update="msgAltSituacao" event="keyup" />
-                            </p:selectOneMenu>
+                            </p:inputText>
                             <p:message for="altSituacao" id="msgAltSituacao" display="icon"/>
 
                         </h:panelGrid>
                         <div align="center">
-                            <p:commandButton id="btAlterar" icon="btAlterar" value="Alterar" update=":growl" actionListener="#{PedidoMB.alteraStatus}" oncomplete="handleLoginRequest(xhr, status, args)" ajax="false" immediate="true"/>
+                            <p:commandButton id="btAlterar" icon="btAlterar" value="Alterar" update=":growl" actionListener="#{PedidoMB.alteraStatus(actionEvent)}" oncomplete="handleLoginRequest(xhr, status, args)" ajax="false" immediate="true"/>
                         </div>
                     </h:form>
                 </p:dialog>
