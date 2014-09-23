@@ -43,14 +43,7 @@
                         </h:panelGrid>
                         <p:spacer height="25" />
 
-                        <p:commandButton value="Gerar Comprovante" actionListener="#{PedidoMB.cadastraPedido}"/>
-
-                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
-                            <center>
-                                <p:commandButton value="VIA SMS" onclick="dlg.hide();" type="button" />
-                                <p:commandButton value="IMPRESSO" onclick="dlg.hide();" type="button" />
-                            </center>
-                        </p:confirmDialog>
+                        <p:commandButton id="btn" value="Gerar Pedido" image="cadastrar" update="panel" actionListener="#{PedidoMB.cadastraPedido(actionEvent)}"/>
 
                     </p:panel>
                 </h:form>
