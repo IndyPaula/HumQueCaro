@@ -21,11 +21,13 @@ public class PedidoMB {
     FachadaIF fachadaIF;
     private Pedido pedido;
     private Produto produto;
+    private Pedido situacao;
     private DataModel model;
     private List<Produto> produtos;
 
     public PedidoMB() {
         produto = new Produto();
+        situacao = new Pedido();
         pedido = new Pedido();
         fachadaIF = new Fachada();
         produtos = new ArrayList<Produto>();
@@ -33,6 +35,15 @@ public class PedidoMB {
 
     protected void novo() {
         pedido = new Pedido();
+        situacao = new Pedido();
+    }
+
+    public Pedido getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Pedido situacao) {
+        this.situacao = situacao;
     }
 
     public Pedido getPedido() {
@@ -81,9 +92,9 @@ public class PedidoMB {
     public String alteraStatus(ActionEvent actionEvent) {
         try {
             if (pedido.getTelefoneCliente() != null) {
-                Pedido pedidoCad = fachadaIF.buscaPedido(pedido.getTelefoneCliente());
+                Pedido pedidoCad = fachadaIF.buscaPedido(pedido.getCodigo());
                 if (pedidoCad != null) {
-                    fachadaIF.setStatusPedido(pedidoCad.getCodigo(), pedido.getSituacao());
+                    fachadaIF.setStatusPedido(pedidoCad.getCodigo(), situacao.getSituacao());
                     Messages.mensInfo("Status alterado com sucesso!");
                 } else {
                     Messages.mensInfo("Pedido não encontrado!");
