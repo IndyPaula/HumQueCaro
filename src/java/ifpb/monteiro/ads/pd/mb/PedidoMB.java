@@ -20,11 +20,12 @@ public class PedidoMB {
 
     FachadaIF fachadaIF;
     private Pedido pedido;
+    private Produto produto;
     private DataModel model;
     private List<Produto> produtos;
-    private String codigo;
 
     public PedidoMB() {
+        produto = new Produto();
         pedido = new Pedido();
         fachadaIF = new Fachada();
         produtos = new ArrayList<Produto>();
@@ -42,6 +43,14 @@ public class PedidoMB {
         this.pedido = pedido;
     }
 
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
     public DataModel getTodosPedidos() throws HumQueCaroException {
         model = new ListDataModel(fachadaIF.getPedidos());
         return model;
@@ -49,8 +58,8 @@ public class PedidoMB {
 
     public void addProdutoPedido(ActionEvent actionEvent) {
         try {
-            Produto produto = fachadaIF.buscaProduto(codigo);
-            produtos.add(produto);
+            Produto prod = fachadaIF.buscaProduto(produto.getCodigoBarras());
+            produtos.add(prod);
         } catch (HumQueCaroException ex) {
             Messages.mensInfo("Pedido não cadastrado! " + ex.getMessage());
         }
