@@ -34,7 +34,7 @@
                             <p:message for="telefone" id="msgTelefone" display="icon"/>
 
                             <h:outputLabel for="codigoProduto" value="Código do Produto: *" />  
-                            <p:inputText id="codigo"  value="#{PedidoMB.pedido.codigo}" size="60" required="true" requiredMessage="Digite o código do Produto">  
+                            <p:inputText id="codigo"  value="#{PedidoMB.produto.codigoBarras}" size="60" required="true" requiredMessage="Digite o código do Produto">  
                                 <f:validateLength minimum="1" />  
                                 <p:ajax update="msgCodigo" event="keyup" />
                             </p:inputText>  
@@ -43,9 +43,7 @@
                         </h:panelGrid>
                         <p:spacer height="25" />
 
-                        <p:commandButton value="Gerar Comprovante" onclick="dlg.show();">
-                            <p:confirm header="Tipo de comprovante" message="Escolha a forma para gerar o comprovante" />
-                        </p:commandButton>
+                        <p:commandButton value="Gerar Comprovante" actionListener="#{PedidoMB.cadastraPedido}"/>
 
                         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
                             <center>
